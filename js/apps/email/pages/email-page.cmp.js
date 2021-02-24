@@ -8,13 +8,13 @@ import { eventBus } from '../../../services/event-bus.service.js';
 export default {
     template: `
     <section>
-        <email-nav/>
+        <email-nav />
 
         <section class="main-content">
             <email-dev />
                 <!-- <book-list v-if="!selectedBook" :books="booksToShow" @selected="selectBook" />
                 <book-details v-else :book="selectedBook" @close="selectedBook=null" />  -->
-            <email-list eventBus :msgs="msgs" @filtered="filterMsgs(filter)"/>
+            <email-list eventBus :msgs="filterMsgs"/>
         </section>
         
     </section>
@@ -24,7 +24,7 @@ export default {
             isList: null,
             isDetails: null,
             msgs: null,
-            // filterBy: null
+            filter: null
         }
     },
     methods: {
@@ -36,15 +36,16 @@ export default {
                 })
         },
     },
-    computed:{
-        filterMsgs(filter) {
-            if (!filter) return this.msgs;
-            var currFilter=filter;
-            console.log(filter);
-            this.msgs=emailService.query().filter((msg)=>{
-                return msg.filters[currFilter]
-            })
-          },
+    computed: {
+        filterMsgs() {
+            if (!this.filter) {
+                return this.msgs;
+            } else {
+                var currFilter = this.filter;
+                var filteredMsgs = this.msgs.filter((msg) => { return msg.filters[currFilter] })
+                return filteredMsgs
+            }
+        },
     },
     created() {
         this.isList = true;
@@ -53,7 +54,15 @@ export default {
         eventBus.$on('remove', (msg) => {
             emailService.removeMsg(msg)
                 .then(() => this.loadEmails())
-        });
+        })
+        eventBus.$on('filtered', (filter) =>{this.filter = filter})
+    },
+    destroyed(){
+        eventBus.$off('remove', (msg) => {
+            emailService.removeMsg(msg)
+                .then(() => this.loadEmails())
+        })
+        eventBus.$off('filtered', (filter) =>{this.filter = filter})
     },
 
     components: {

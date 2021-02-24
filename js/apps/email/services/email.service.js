@@ -14,7 +14,8 @@ const gTempMsgs = [{
         sender: 'Don',
         getter: ''
     },
-    filters: {
+    filters: {       
+        all:true,
         inbox:false,
         sent:false,
         important:false,
@@ -33,9 +34,10 @@ const gTempMsgs = [{
         getter: ''
     },
     filters: {
+        all:true,
         inbox: false,
         sent: false,
-        important: false,
+        important: true,
         unread: false,
         viewed: false,
     }
@@ -51,9 +53,10 @@ const gTempMsgs = [{
         getter: ''
     },
     filters: {
+        all:true,
         inbox: false,
-        sent: false,
-        important: false,
+        sent: true,
+        important: true,
         unread: false,
         viewed: false,
     }
