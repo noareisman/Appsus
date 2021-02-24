@@ -19,6 +19,7 @@ export default {
                         <option value="trash">Trash</option>
                     </select>
                 </form>
+                <button class="new-mail-btn" @click="openComposeMsg">New email</button>
             </nav>
     
         </section>
@@ -34,5 +35,8 @@ export default {
             var filter= this.filterBy;
             eventBus.$emit('filtered', filter)
         },
+        openComposeMsg(){
+            eventBus.$emit('compose', true)
+        }
     }
 }
