@@ -1,3 +1,4 @@
+import {emailService} from '../services/email.service.js'
 export default {
     template: `
         <section> 
@@ -5,8 +6,8 @@ export default {
                 <div class="email-logo">Email</div>    
                 <form>
                     <span>Filter by</span>
-                    <input v-model="searchStr" type="text" placeholder="Search..." >
-                    <select v-model="filterBy" name="msg-filter-selector">
+                    <input v-model="searchStr" @input="setSearch" type="text" placeholder="Search..." >
+                    <select v-model="filterBy" @change="setFilter" name="msg-filter-selector">
                         <option value="all">All</option>
                         <option value="inbox">Inbox</option>
                         <option value="sent">Sent</option>
@@ -22,7 +23,14 @@ export default {
     data() {
         return {
             searchedStr: null,
-            filterBy: null,
+            filterBy: "inbox",
         }
+    },
+    methods: {
+        setFilter() {
+            this.$emit('filtered', this.filterBy)
+
+
+        },
     }
 }
