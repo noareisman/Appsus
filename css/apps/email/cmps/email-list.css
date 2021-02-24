@@ -1,3 +1,22 @@
+/* GENERAL */
+
+button {
+    background-color: unset;
+    border: unset;
+    cursor: pointer;
+    padding: 2px;
+}
+
+button:hover {
+    background-color: rgba(211, 211, 211, 0.486);
+    border-radius: 20%;
+}
+
+img {
+    height: 20px;
+}
+
+
 /* EMAILS LIST */
 
 .emails-container {
@@ -35,14 +54,28 @@
 }
 
 .msg-short-body {
-    width: 50%;
+    width: 40%;
+}
+
+.send-time {
+    width: 10%;
+    padding: 2px;
+    text-align: center;
 }
 
 
 /* EMAIL DETAILS */
 
+.msg-btns {
+    padding: 10px;
+}
+
 .msg-details {
     padding-top: 10px;
+}
+
+.msg-details h3 {
+    padding: 3px;
 }
 
 .msg-main-content {

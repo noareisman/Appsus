@@ -8,7 +8,7 @@ const gTempMsgs = [{
     subject: 'Wassap1?',
     body: 'Lorem ipsum',
     isRead: false,
-    sentAt: 155113393343,
+    sentAt: 85511323,
     isTrash: false,
     participants: {
         sender: 'Don',
@@ -26,7 +26,7 @@ const gTempMsgs = [{
     subject: 'Wassap2?',
     body: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus illo dolores vitae rem animi fugiat quos maiores nam soluta. Voluptatum incidunt consequuntur vitae impedit qui eius itaque ipsa deserunt accusantium ex! Rerum, quasi soluta. Quis dicta provident similique delectus magnam accusantium, praesentium sint eaque beatae, ullam molestiae eveniet totam omnis.',
     isRead: false,
-    sentAt: 155113393173,
+    sentAt: 25511313,
     isTrash: false,
     participants: {
         sender: 'Gabbi',
@@ -44,7 +44,7 @@ const gTempMsgs = [{
     subject: 'Wassap3?',
     body: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus illo dolores vitae rem animi fugiat quos maiores nam soluta. Voluptatum incidunt consequuntur vitae impedit qui eius itaque ipsa deserunt accusantium ex! Rerum, quasi soluta. Quis dicta provident similique delectus magnam accusantium, praesentium sint eaque beatae, ullam molestiae eveniet totam omnis.',
     isRead: false,
-    sentAt: 155113393982,
+    sentAt: 1614185145937,
     isTrash: false,
     participants: {
         sender: 'Shulman',
@@ -62,7 +62,8 @@ const eMails = query();
 
 export const emailService = {
     query,
-    updateEmailStat
+    updateEmailStat,
+    removeMsg
 }
 
 function query() {
@@ -79,6 +80,7 @@ function query() {
 function updateEmailStat(msg) {
     return getById(msg.id)
         .then(msg => {
+            console.log(msg);
             msg.isRead = true;
             saveMsg(msg);
             return msg;
@@ -92,4 +94,10 @@ function getById(id) {
 function saveMsg(msg) {
     if (msg.id) return asyncStorageService.put(MSGS_KEY, msg);
     else return asyncStorageService.post(MSGS_KEY, msg);
+}
+
+
+
+function removeMsg(msg) {
+    return asyncStorageService.remove(MSGS_KEY, msg.id)
 }
