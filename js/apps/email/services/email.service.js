@@ -15,11 +15,11 @@ const gTempMsgs = [{
         getter: ''
     },
     filters: {
-        inbox:false,
-        sent:false,
-        important:false,
-        unread:false,
-        viewed:false,
+        inbox: false,
+        sent: false,
+        important: false,
+        unread: false,
+        viewed: false,
     }
 }, {
     id: 'temptry2',
@@ -63,6 +63,7 @@ const eMails = query();
 export const emailService = {
     query,
     updateEmailStat,
+    toogleReadStat,
     removeMsg
 }
 
@@ -85,6 +86,17 @@ function updateEmailStat(msg) {
             saveMsg(msg);
             return msg;
         })
+}
+
+function toogleReadStat(msg) {
+    return getById(msg.id)
+        .then(msg => {
+            console.log(msg);
+            msg.isRead = !msg.isRead;
+            saveMsg(msg);
+            return msg;
+        })
+
 }
 
 function getById(id) {
