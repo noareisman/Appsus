@@ -46,6 +46,10 @@ p {
     padding-inline-start: 0px;
 }
 
+.email-dev-item {
+    padding: 0;
+}
+
 .email-dev-item>* {
     list-style: none;
     padding: 1em 3em;
