@@ -66,6 +66,7 @@ const eMails = query();
 export const emailService = {
     query,
     updateEmailStat,
+    toogleReadStat,
     removeMsg
 }
 
@@ -88,6 +89,17 @@ function updateEmailStat(msg) {
             saveMsg(msg);
             return msg;
         })
+}
+
+function toogleReadStat(msg) {
+    return getById(msg.id)
+        .then(msg => {
+            console.log(msg);
+            msg.isRead = !msg.isRead;
+            saveMsg(msg);
+            return msg;
+        })
+
 }
 
 function getById(id) {
