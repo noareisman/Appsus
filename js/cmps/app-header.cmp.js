@@ -2,7 +2,7 @@ export default {
     template: `
     <header class="flex">
         <div class="logo">
-            <h1>My app</h1>
+            <h1>Appsus</h1>
         </div>
         <nav>
             <router-link to="/" exact>Home</router-link> |

@@ -1,6 +1,7 @@
 import emailList from '../cmps/email-list.cmp.js';
 import emailDev from '../cmps/email-dev.cmp.js';
 import emailNav from '../cmps/email-nav.cmp.js';
+import { emailService } from '../services/email.service.js';
 
 
 export default {
@@ -10,31 +11,32 @@ export default {
 
         <section class="main-content">
             <email-dev />
-            <email-list :msgs="msgsToDisplay"/>
+            <email-list :msgs="msgs" />
         </section>
         
     </section>
     `,
     data() {
         return {
-            list: null,
-            details: null
+            isList: null,
+            isDetails: null,
+            msgs: null
         }
     },
-    computed: {
-        msgsToDisplay() {
-            return [{
-                id: 1,
-                subject: 'Wassap?',
-                body: 'bla bla',
-                isRead: false,
-                sentAt: 1551133930594
-            }]
+    methods: {
+        loadEmails() {
+            return emailService.query()
+                .then(msgs => {
+                    this.msgs = msgs
+                    console.log(this.msgs);
+                    return this.msgs
+                })
         }
     },
     created() {
-        this.list = true;
-        this.details = false
+        this.isList = true;
+        this.isDetails = false;
+        this.loadEmails();
     },
     components: {
         emailList,
