@@ -1,3 +1,13 @@
+/* MAIN */
+
+@import "../css/main/helpers.css";
+
+/* EMAIL */
+
+@import "../css/apps/email/cmps/email-list.css";
+
+/* GENERAL */
+
 * {
     box-sizing: border-box;
 }
@@ -10,11 +20,4 @@ h5,
 h6,
 p {
     margin: 0;
-}
-
-
-/* HELPERS */
-
-.flex {
-    display: flex;
 }

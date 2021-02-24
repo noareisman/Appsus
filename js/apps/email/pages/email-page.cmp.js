@@ -23,7 +23,13 @@ export default {
     },
     computed: {
         msgsToDisplay() {
-            return [{ id: 1, txt: 'bla bla' }]
+            return [{
+                id: 1,
+                subject: 'Wassap?',
+                body: 'bla bla',
+                isRead: false,
+                sentAt: 1551133930594
+            }]
         }
     },
     created() {

@@ -5,10 +5,10 @@ export default {
     props: ['msgs'],
     template: `
         <ul> 
-            <li class="preview-container" v-for="msg in msgs" :key="msg.id">
+            <li class="preview-container-email" v-for="msg in msgs" :key="msg.id">
                 {{msg.txt}}
-                <msg-prev @click.native="toggleDetails" ></msg-prev>
-                <msg-details  v-if="details" ></msg-details>
+                <msg-prev @click.native="toggleDetails" />
+                <msg-details :msg="msg" v-if="details" />
             </li>
         </ul>
     `,
