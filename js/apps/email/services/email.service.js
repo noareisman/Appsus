@@ -21,6 +21,8 @@ const gTempMsgs = [{
         important:false,
         unread:false,
         viewed:false,
+        draft: false,
+        trash: false
     }
 }, {
     id: 'temptry2',
@@ -40,6 +42,8 @@ const gTempMsgs = [{
         important: true,
         unread: false,
         viewed: false,
+        draft: false,
+        trash: true
     }
 }, {
     id: 'temptry3',
@@ -59,6 +63,8 @@ const gTempMsgs = [{
         important: true,
         unread: false,
         viewed: false,
+        draft: true,
+        trash: false
     }
 }]
 const eMails = query();
@@ -110,7 +116,6 @@ function saveMsg(msg) {
     if (msg.id) return asyncStorageService.put(MSGS_KEY, msg);
     else return asyncStorageService.post(MSGS_KEY, msg);
 }
-
 
 
 function removeMsg(msg) {

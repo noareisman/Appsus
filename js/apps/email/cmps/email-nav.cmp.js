@@ -15,6 +15,8 @@ export default {
                         <option value="important">Important</option>
                         <option value="unread">Unread</option>
                         <option value="viewed">Viewed</option>
+                        <option value="draft">Drafts</option>
+                        <option value="trash">Trash</option>
                     </select>
                 </form>
             </nav>
