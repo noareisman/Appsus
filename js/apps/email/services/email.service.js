@@ -94,7 +94,6 @@ function updateEmailStat(msg) {
 function toogleReadStat(msg) {
     return getById(msg.id)
         .then(msg => {
-            console.log(msg);
             msg.isRead = !msg.isRead;
             saveMsg(msg);
             return msg;
