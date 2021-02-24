@@ -1,4 +1,41 @@
+/* EMAILS LIST */
+
+.emails-container {
+    padding: 10px;
+    border: 3px solid black;
+    width: 80%;
+}
+
+
+/* EMAILS PREVIEW */
+
 .preview-container-email {
+    padding: 3px;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
     cursor: pointer;
     list-style: none;
+}
+
+.msg-prev span {
+    font-weight: bolder !important;
+}
+
+.isMsgNotRead {
+    font-weight: bolder;
+}
+
+.isMsgRead {
+    font-weight: unset;
+}
+
+.msg-sender {
+    outline: 1px solid black;
+    flex-grow: 1;
+}
+
+.msg-subject {
+    outline: 1px solid black;
+    flex-grow: 2;
 }

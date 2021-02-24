@@ -9,6 +9,11 @@ const gTempMsgs = [{
     body: 'bla bla',
     isRead: false,
     sentAt: 155113393343,
+    isTrash: false,
+    participants: {
+        sender: 'Don',
+        getter: ''
+    },
     filters: {}
 }, {
     id: 'temptry2',
@@ -16,6 +21,11 @@ const gTempMsgs = [{
     body: 'bla bla',
     isRead: false,
     sentAt: 155113393173,
+    isTrash: false,
+    participants: {
+        sender: 'Gabbi',
+        getter: ''
+    },
     filters: {}
 }, {
     id: 'temptry3',
@@ -23,11 +33,18 @@ const gTempMsgs = [{
     body: 'bla bla',
     isRead: false,
     sentAt: 155113393982,
+    isTrash: false,
+    participants: {
+        sender: 'Shulman',
+        getter: ''
+    },
     filters: {}
 }]
+const eMails = query();
 
 export const emailService = {
-    query
+    query,
+    updateEmailStat
 }
 
 function query() {
@@ -39,4 +56,22 @@ function query() {
             }
             return msgs;
         })
+}
+
+function updateEmailStat(msg) {
+    return getById(msg.id)
+        .then(msg => {
+            msg.isRead = true;
+            saveMsg(msg);
+            return msg;
+        })
+}
+
+function getById(id) {
+    return asyncStorageService.get(MSGS_KEY, id)
+}
+
+function saveMsg(msg) {
+    if (msg.id) return asyncStorageService.put(MSGS_KEY, msg);
+    else return asyncStorageService.post(MSGS_KEY, msg);
 }
