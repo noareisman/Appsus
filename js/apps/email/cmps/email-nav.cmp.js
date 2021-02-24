@@ -1,10 +1,28 @@
 export default {
     template: `
         <section> 
-            
-
-                Hi i am Email nav-bar
-        
+            <nav class="flex email-nav space-between align-center" >
+                <div class="email-logo">Email</div>    
+                <form>
+                    <span>Filter by</span>
+                    <input v-model="searchStr" type="text" placeholder="Search..." >
+                    <select v-model="filterBy" name="msg-filter-selector">
+                        <option value="all">All</option>
+                        <option value="inbox">Inbox</option>
+                        <option value="sent">Sent</option>
+                        <option value="important">Important</option>
+                        <option value="unread">Unread</option>
+                        <option value="viewed">Viewed</option>
+                    </select>
+                </form>
+            </nav>
+    
         </section>
-    `
+    `,
+    data() {
+        return {
+            searchedStr: null,
+            filterBy: null,
+        }
+    }
 }

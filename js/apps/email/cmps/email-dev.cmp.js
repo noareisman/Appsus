@@ -1,7 +1,12 @@
 export default {
     template: `
         <section> 
-            Hi i am Email Dev tools
+            <ul>
+                <li>Inbox</li>
+                <li>Sent</li>
+                <li>Drafts</li>
+                <li>Trash</li>
+            </ul>
         </section>
     `
 }
