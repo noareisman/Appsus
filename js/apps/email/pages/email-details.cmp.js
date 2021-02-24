@@ -1,12 +1,19 @@
 export default {
     props: ['msg'],
     template: `
-        <section>
-            <h1>{{msg.id}}</h1>
-            <h1>{{msg.body}}</h1>
-            <h1>{{msg.subject}}</h1>
-            <h1>{{msg.isRead}}</h1>
-            <h1>{{msg.sentAt}}</h1>
+        <section  class="msg-details flex column" >
+            <div class="flex center">    
+                <h1>Subject:</h1> <h2>{{msg.subject}}</h2>
+                <!-- <h1>From:</h1> <h2>{{msg.participants.sender}}</h2> -->
+            </div>
+            <div class="flex">    
+                <!-- <h1>Subject:</h1> <h2>{{msg.subject}}</h2> -->
+                <h1>From:</h1> <h2>{{msg.participants.sender}}</h2>
+            </div>
+            
+            <div class="msg-main-content">
+                <p>{{msg.body}}</p>
+            </div>
         </section>
     `
 }
