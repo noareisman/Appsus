@@ -6,7 +6,7 @@ const DRAFT_KEY = 'drafts';
 const gTempMsgs = [{
     id: 'temptry1',
     subject: 'Wassap1?',
-    body: 'bla bla',
+    body: 'Lorem ipsum',
     isRead: false,
     sentAt: 155113393343,
     isTrash: false,
@@ -18,7 +18,7 @@ const gTempMsgs = [{
 }, {
     id: 'temptry2',
     subject: 'Wassap2?',
-    body: 'bla bla',
+    body: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus illo dolores vitae rem animi fugiat quos maiores nam soluta. Voluptatum incidunt consequuntur vitae impedit qui eius itaque ipsa deserunt accusantium ex! Rerum, quasi soluta. Quis dicta provident similique delectus magnam accusantium, praesentium sint eaque beatae, ullam molestiae eveniet totam omnis.',
     isRead: false,
     sentAt: 155113393173,
     isTrash: false,
@@ -30,7 +30,7 @@ const gTempMsgs = [{
 }, {
     id: 'temptry3',
     subject: 'Wassap3?',
-    body: 'bla bla',
+    body: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus illo dolores vitae rem animi fugiat quos maiores nam soluta. Voluptatum incidunt consequuntur vitae impedit qui eius itaque ipsa deserunt accusantium ex! Rerum, quasi soluta. Quis dicta provident similique delectus magnam accusantium, praesentium sint eaque beatae, ullam molestiae eveniet totam omnis.',
     isRead: false,
     sentAt: 155113393982,
     isTrash: false,

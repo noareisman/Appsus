@@ -10,16 +10,12 @@
 /* EMAILS PREVIEW */
 
 .preview-container-email {
-    padding: 3px;
+    padding: 10px;
     border-right: 2px solid black;
     border-left: 2px solid black;
     border-bottom: 2px solid black;
     cursor: pointer;
     list-style: none;
-}
-
-.msg-prev span {
-    font-weight: bolder !important;
 }
 
 .isMsgNotRead {
@@ -31,11 +27,24 @@
 }
 
 .msg-sender {
-    outline: 1px solid black;
-    flex-grow: 1;
+    width: 20%;
 }
 
 .msg-subject {
-    outline: 1px solid black;
-    flex-grow: 2;
+    width: 30%;
+}
+
+.msg-short-body {
+    width: 50%;
+}
+
+
+/* EMAIL DETAILS */
+
+.msg-details {
+    padding-top: 10px;
+}
+
+.msg-main-content {
+    padding: 10px;
 }

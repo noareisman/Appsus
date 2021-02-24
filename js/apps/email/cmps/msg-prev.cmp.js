@@ -5,14 +5,18 @@ export default {
     props: ['msg'],
     template: `
         <section>
-            <div @click="detailsToggle" :class="isNewMsg">
+            <div @click="detailsToggle">
                 <div class ="msg-prev flex center">
-                    <div class="msg-sender">
-                        <span>From:</span> {{msg.participants.sender}} 
+                    <div class="msg-sender" :class="isNewMsg">
+                         {{msg.participants.sender}} 
                     </div>
 
-                    <div class="msg-subject">
-                        <span>subject:</span> {{msg.subject}}
+                    <div class="msg-subject" :class="isNewMsg">
+                        {{msg.subject}}
+                    </div>
+
+                    <div class="msg-short-body">                        
+                        {{shortBodyMsg}}{{showDots}}
                     </div>
                 </div>
                 <msg-details :msg="msg" v-if="msgDetails" />
@@ -36,6 +40,12 @@ export default {
         isNewMsg() {
             if (this.msgRead === false) return { isMsgNotRead: true, isMsgRead: false }
             else return { isMsgNotRead: false, isMsgRead: true }
+        },
+        shortBodyMsg() {
+            return this.msg.body.slice(0, 30)
+        },
+        showDots() {
+            if (this.msg.body.length > 30) return '...'
         }
     },
     created() {
