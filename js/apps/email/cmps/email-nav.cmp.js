@@ -6,7 +6,7 @@ export default {
                 <div class="email-logo">Email</div>    
                 <form>
                     <span>Filter by</span>
-                    <input v-model="searchStr" @input="setSearch" type="text" placeholder="Search..." >
+                    <!-- <input v-model="searchStr" @input="setSearch" type="text" placeholder="Search..." > -->
                     <select v-model="filterBy" @change="setFilter" name="msg-filter-selector">
                         <option value="all">All</option>
                         <option value="inbox">Inbox</option>
@@ -28,9 +28,8 @@ export default {
     },
     methods: {
         setFilter() {
-            this.$emit('filtered', this.filterBy)
-
-
+            var filter= this.filterBy;
+            this.$emit('filtered', filter)
         },
     }
 }

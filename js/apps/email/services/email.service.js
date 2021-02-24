@@ -14,7 +14,13 @@ const gTempMsgs = [{
         sender: 'Don',
         getter: ''
     },
-    filters: {}
+    filters: {
+        inbox:false,
+        sent:false,
+        important:false,
+        unread:false,
+        viewed:false,
+    }
 }, {
     id: 'temptry2',
     subject: 'Wassap2?',
@@ -26,7 +32,13 @@ const gTempMsgs = [{
         sender: 'Gabbi',
         getter: ''
     },
-    filters: {}
+    filters: {
+        inbox: false,
+        sent: false,
+        important: false,
+        unread: false,
+        viewed: false,
+    }
 }, {
     id: 'temptry3',
     subject: 'Wassap3?',
@@ -38,7 +50,13 @@ const gTempMsgs = [{
         sender: 'Shulman',
         getter: ''
     },
-    filters: {}
+    filters: {
+        inbox: false,
+        sent: false,
+        important: false,
+        unread: false,
+        viewed: false,
+    }
 }]
 const eMails = query();
 
