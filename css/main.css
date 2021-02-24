@@ -5,7 +5,7 @@
 /* EMAIL */
 
 @import "../css/apps/email/cmps/email-list.css";
-/* @import "../css/apps/email/cmps/ */
+@import "../css/apps/email/cmps/email-compose.css";
 
 /* GENERAL */
 
@@ -24,61 +24,61 @@ p {
     margin: 0;
 }
 
+
 /* EMAIL NAV*/
 
-.email-nav{
+.email-nav {
     background-color: #292929;
     height: 131px;
     padding: 30px;
-    border-bottom: solid  #1c1c1c; 
+    border-bottom: solid #1c1c1c;
     justify-content: center;
 }
 
-.email-nav > *{
-color:antiquewhite
+.email-nav>* {
+    color: antiquewhite
 }
 
-.email-dev-container{
-    background:red;
-    width:fit-content;
+.email-dev-container {
+    background: red;
+    width: fit-content;
     padding-inline-start: unset;
     padding-inline-start: 0px;
 }
 
-.email-dev-item > *{
+.email-dev-item>* {
     list-style: none;
     padding: 1em 3em;
     text-align: center;
     /* padding-inline-start:unset; */
     border-bottom: 1px solid black;
-
-}
-.email-dev-item > *:hover{
-cursor: pointer;
 }
 
+.email-dev-item>*:hover {
+    cursor: pointer;
+}
 
-.flex{
+.flex {
     display: flex;
 }
 
-.flex.align-center{
+.flex.align-center {
     align-items: center;
 }
 
-.flex.space-between{
-justify-content: space-between;
+.flex.space-between {
+    justify-content: space-between;
 }
 
-.flex.space-around{
+.flex.space-around {
     justify-content: space-around;
 }
 
-.flex.column{
+.flex.column {
     flex-direction: column;
 }
 
-.border{
+.border {
     border-style: solid;
     border-width: 1px;
 }

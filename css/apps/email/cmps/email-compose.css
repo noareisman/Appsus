@@ -1,0 +1,46 @@
+/* GENERAL */
+
+.new-msg {
+    width: 80%;
+}
+
+.new-msg * {
+    /* outline: 1px solid black; */
+    /* width: 100%; */
+}
+
+hr {
+    margin: 4px 0;
+}
+
+
+/* HEADER */
+
+.new-msg-header {
+    background-color: black;
+    color: white;
+    height: 45px;
+    padding: 14px;
+    font-weight: bolder;
+}
+
+
+/* MAIN CONTENT */
+
+.new-msg table {
+    padding: 5px;
+}
+
+.new-msg td {
+    width: 100%;
+}
+
+.new-msg input {
+    border: unset;
+    outline: unset;
+    width: 88%;
+}
+
+.new-msg-content input {
+    width: 100%;
+}

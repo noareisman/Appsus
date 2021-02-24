@@ -1,10 +1,10 @@
 import { eventBus } from '../../../services/event-bus.service.js';
-import {emailService} from '../services/email.service.js'
+import { emailService } from '../services/email.service.js'
 export default {
     template: `
         <section> 
             <nav class="flex email-nav space-between align-center" >
-                <div class="email-logo">Email</div>    
+                <div @click="openEmailList" class="email-logo">Email</div>    
                 <form>
                     <span>Filter by</span>
                     <!-- <input v-model="searchStr" @input="setSearch" type="text" placeholder="Search..." > -->
@@ -32,11 +32,14 @@ export default {
     },
     methods: {
         setFilter() {
-            var filter= this.filterBy;
+            var filter = this.filterBy;
             eventBus.$emit('filtered', filter)
         },
-        openComposeMsg(){
-            eventBus.$emit('compose', true)
+        openComposeMsg() {
+            eventBus.$emit('compose')
+        },
+        openEmailList() {
+            eventBus.$emit('email')
         }
     }
 }

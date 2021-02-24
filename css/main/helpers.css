@@ -9,3 +9,7 @@
 .column {
     flex-direction: column;
 }
+
+.center {
+    align-items: center;
+}
