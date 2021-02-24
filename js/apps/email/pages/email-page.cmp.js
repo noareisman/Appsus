@@ -8,13 +8,13 @@ import { eventBus } from '../../../services/event-bus.service.js';
 export default {
     template: `
     <section>
-        <email-nav @filtered="filterMsgs(filter)"/>
+        <email-nav/>
 
         <section class="main-content">
             <email-dev />
                 <!-- <book-list v-if="!selectedBook" :books="booksToShow" @selected="selectBook" />
                 <book-details v-else :book="selectedBook" @close="selectedBook=null" />  -->
-            <email-list eventBus :msgs="showMsgs" />
+            <email-list eventBus :msgs="msgs" @filtered="filterMsgs(filter)"/>
         </section>
         
     </section>
@@ -38,17 +38,13 @@ export default {
     },
     computed:{
         filterMsgs(filter) {
+            if (!filter) return this.msgs;
             var currFilter=filter;
-            if (!currFilter) return this.msgs;
+            console.log(filter);
             this.msgs=emailService.query().filter((msg)=>{
                 return msg.filters[currFilter]
             })
           },
-    },
-    computed: {
-        showMsgs() {
-            return this.msgs
-        }
     },
     created() {
         this.isList = true;
