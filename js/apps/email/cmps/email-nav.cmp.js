@@ -4,7 +4,7 @@ export default {
     template: `
         <section> 
             <nav class="flex email-nav space-between align-center" >
-                <div class="email-logo">Email</div>    
+                <div @click="openEmailList" class="email-logo">Email</div>    
                 <form>
                     <input v-model="searchedStr" @input="searchMsg" type="text" placeholder="Search E-mail..." >
                     <select v-model="filterBy" @change="setFilter" name="msg-filter-selector">
@@ -41,12 +41,16 @@ export default {
         searchMsg(str) {
             return emailService.query()
                 .then((msgs) => {
-                    var filteredMsgs=msgs.filter((msg)=>{
+                    var filteredMsgs = msgs.filter((msg) => {
                         return msg.body.includes(str) || msg.subject.includes(str)
                     })
-                    return this.results=filteredMsgs
+                    return this.results = filteredMsgs
                 })
 
+        },
+        openEmailList() {
+            eventBus.$emit('email')
+            // eventBus.$emit('compose')//////////////////////////////////////????
         }
     }
 }
