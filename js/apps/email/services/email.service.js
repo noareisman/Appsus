@@ -36,7 +36,7 @@ const gTempMsgs = [{
         getter: ''
     },
     filters: {
-        all:true,
+        all: true,
         inbox: false,
         sent: false,
         important: true,
@@ -57,7 +57,7 @@ const gTempMsgs = [{
         getter: ''
     },
     filters: {
-        all:true,
+        all: true,
         inbox: false,
         sent: true,
         important: true,
@@ -73,7 +73,8 @@ export const emailService = {
     query,
     updateEmailStat,
     toogleReadStat,
-    removeMsg
+    removeMsg,
+    msgToTrash
 }
 
 function query() {
@@ -90,7 +91,6 @@ function query() {
 function updateEmailStat(msg) {
     return getById(msg.id)
         .then(msg => {
-            console.log(msg);
             msg.isRead = true;
             saveMsg(msg);
             return msg;
@@ -100,7 +100,6 @@ function updateEmailStat(msg) {
 function toogleReadStat(msg) {
     return getById(msg.id)
         .then(msg => {
-            console.log(msg);
             msg.isRead = !msg.isRead;
             saveMsg(msg);
             return msg;
@@ -117,7 +116,16 @@ function saveMsg(msg) {
     else return asyncStorageService.post(MSGS_KEY, msg);
 }
 
+function msgToTrash(msg) {
+    return getById(msg.id)
+        .then(msg => {
+            msg.isTrash = true;
+            saveMsg(msg);
+            return msg;
+        })
+}
 
+//STANDBUY
 function removeMsg(msg) {
     return asyncStorageService.remove(MSGS_KEY, msg.id)
 }
