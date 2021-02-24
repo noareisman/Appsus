@@ -1,13 +1,12 @@
 import { eventBus } from '../../../services/event-bus.service.js';
-import {emailService} from '../services/email.service.js'
+import { emailService } from '../services/email.service.js'
 export default {
     template: `
         <section> 
             <nav class="flex email-nav space-between align-center" >
                 <div class="email-logo">Email</div>    
                 <form>
-                    <span>Filter by</span>
-                    <!-- <input v-model="searchStr" @input="setSearch" type="text" placeholder="Search..." > -->
+                    <input v-model="searchedStr" @input="searchMsg" type="text" placeholder="Search E-mail..." >
                     <select v-model="filterBy" @change="setFilter" name="msg-filter-selector">
                         <option value="all">All</option>
                         <option value="inbox">Inbox</option>
@@ -28,15 +27,26 @@ export default {
         return {
             searchedStr: null,
             filterBy: "inbox",
+            results: []
         }
     },
     methods: {
         setFilter() {
-            var filter= this.filterBy;
+            var filter = this.filterBy;
             eventBus.$emit('filtered', filter)
         },
-        openComposeMsg(){
+        openComposeMsg() {
             eventBus.$emit('compose', true)
+        },
+        searchMsg(str) {
+            return emailService.query()
+                .then((msgs) => {
+                    var filteredMsgs=msgs.filter((msg)=>{
+                        return msg.body.includes(str) || msg.subject.includes(str)
+                    })
+                    return this.results=filteredMsgs
+                })
+
         }
     }
 }
