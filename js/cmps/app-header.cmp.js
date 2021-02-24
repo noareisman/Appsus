@@ -1,6 +1,6 @@
 export default {
     template: `
-    <header class="app-header">
+    <header class="flex">
         <div class="logo">
             <h1>My app</h1>
         </div>

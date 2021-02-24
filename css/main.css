@@ -11,3 +11,10 @@ h6,
 p {
     margin: 0;
 }
+
+
+/* HELPERS */
+
+.flex {
+    display: flex;
+}

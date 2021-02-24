@@ -10,7 +10,7 @@ export default {
 
         <section class="main-content">
             <email-dev />
-            <email-list />
+            <email-list :msgs="msgsToDisplay"/>
         </section>
         
     </section>
@@ -19,6 +19,11 @@ export default {
         return {
             list: null,
             details: null
+        }
+    },
+    computed: {
+        msgsToDisplay() {
+            return [{ id: 1, txt: 'bla bla' }]
         }
     },
     created() {
