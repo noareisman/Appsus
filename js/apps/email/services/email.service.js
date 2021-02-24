@@ -9,8 +9,9 @@ const gTempMsgs = [{
     body: 'bla bla',
     isRead: false,
     sentAt: 155113393343,
+    isTrash: false,
     participants: {
-        sender: '',
+        sender: 'Don',
         getter: ''
     },
     filters: {}
@@ -20,8 +21,9 @@ const gTempMsgs = [{
     body: 'bla bla',
     isRead: false,
     sentAt: 155113393173,
+    isTrash: false,
     participants: {
-        sender: '',
+        sender: 'Gabbi',
         getter: ''
     },
     filters: {}
@@ -31,8 +33,9 @@ const gTempMsgs = [{
     body: 'bla bla',
     isRead: false,
     sentAt: 155113393982,
+    isTrash: false,
     participants: {
-        sender: '',
+        sender: 'Shulman',
         getter: ''
     },
     filters: {}

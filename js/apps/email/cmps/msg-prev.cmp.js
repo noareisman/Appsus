@@ -6,7 +6,15 @@ export default {
     template: `
         <section>
             <div @click="detailsToggle" :class="isNewMsg">
-                {{msg.subject}}
+                <div class ="msg-prev flex center">
+                    <div class="msg-sender">
+                        <span>From:</span> {{msg.participants.sender}} 
+                    </div>
+
+                    <div class="msg-subject">
+                        <span>subject:</span> {{msg.subject}}
+                    </div>
+                </div>
                 <msg-details :msg="msg" v-if="msgDetails" />
             </div>
         </section>

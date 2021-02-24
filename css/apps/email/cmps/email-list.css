@@ -18,10 +18,24 @@
     list-style: none;
 }
 
+.msg-prev span {
+    font-weight: bolder !important;
+}
+
 .isMsgNotRead {
     font-weight: bolder;
 }
 
 .isMsgRead {
     font-weight: unset;
+}
+
+.msg-sender {
+    outline: 1px solid black;
+    flex-grow: 1;
+}
+
+.msg-subject {
+    outline: 1px solid black;
+    flex-grow: 2;
 }
