@@ -52,17 +52,17 @@ export default {
         this.isDetails = false;
         this.loadEmails();
         eventBus.$on('remove', (msg) => {
-            emailService.removeMsg(msg)
+            emailService.msgToTrash(msg)
                 .then(() => this.loadEmails())
         })
-        eventBus.$on('filtered', (filter) =>{this.filter = filter})
+        eventBus.$on('filtered', (filter) => { this.filter = filter })
     },
-    destroyed(){
+    destroyed() {
         eventBus.$off('remove', (msg) => {
-            emailService.removeMsg(msg)
+            emailService.msgToTrash(msg)
                 .then(() => this.loadEmails())
         })
-        eventBus.$off('filtered', (filter) =>{this.filter = filter})
+        eventBus.$off('filtered', (filter) => { this.filter = filter })
     },
 
     components: {

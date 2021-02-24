@@ -1,3 +1,4 @@
+import { emailService } from '../services/email.service.js';
 import { eventBus } from '../../../services/event-bus.service.js';
 
 
