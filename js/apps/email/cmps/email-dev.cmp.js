@@ -1,7 +1,7 @@
 export default {
     template: `
-        <section> 
-            <ul>
+        <section class="email-dev-container"> 
+            <ul class="email-dev-item">
                 <li>Inbox</li>
                 <li>Sent</li>
                 <li>Drafts</li>

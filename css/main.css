@@ -37,6 +37,24 @@ p {
 color:antiquewhite
 }
 
+.email-dev-container{
+    background:red;
+    width:fit-content;
+    padding-inline-start: unset;
+    padding-inline-start: 0px;
+}
+
+.email-dev-item > *{
+    list-style: none;
+    padding: 1em 3em;
+    text-align: center;
+    /* padding-inline-start:unset; */
+    border-bottom: 1px solid black;
+
+}
+.email-dev-item > *:hover{
+cursor: pointer;
+}
 
 
 .flex{
