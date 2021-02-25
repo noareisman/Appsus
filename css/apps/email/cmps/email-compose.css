@@ -51,6 +51,6 @@ hr {
 textarea {
     border: 1px solid lightgrey;
     outline: 1px solid lightgrey;
-    width: 112.5% !important;
+    width: 100% !important;
     height: 200px;
 }
