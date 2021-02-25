@@ -28,7 +28,9 @@ export default {
             isList: null,
             isDetails: null,
             msgs: null,
-            filter: null
+            filter: null,
+            searchResults: [],
+            searchedStr:''
         }
     },
     methods: {
@@ -38,6 +40,12 @@ export default {
                     this.msgs = msgs
                     return this.msgs
                 })
+        },
+        searchMsg(str) {
+            var filteredMsgs = msgs.filter((msg) => {
+                return msg.body.includes(str) || msg.subject.includes(str)
+            })
+            return filteredMsgs
         },
     },
     computed: {
@@ -50,6 +58,9 @@ export default {
                 return filteredMsgs
             }
         },
+        updateResults() {
+            this.searchResults = this.searchMsg(this.searchedStr)
+        }
     },
     created() {
         this.isList = true;
@@ -61,6 +72,9 @@ export default {
                 .then(() => this.loadEmails())
         })
         eventBus.$on('filtered', (filter) => { this.filter = filter })
+        eventBus.$on('search', (searchedStr) => { 
+            this.searchedStr=searchedStr 
+            })
         eventBus.$on('compose', () => {
             this.isList = false;
             this.isCompose = true;

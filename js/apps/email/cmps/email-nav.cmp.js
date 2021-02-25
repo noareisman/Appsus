@@ -6,7 +6,7 @@ export default {
             <nav class="flex email-nav space-between align-center" >
                 <div @click="openEmailList" class="email-logo">Email</div>    
                 <form>
-                    <input v-model="searchedStr" @input="searchMsg" type="text" placeholder="Search E-mail..." >
+                    <input v-model="searchedStr" @input="search" type="text" placeholder="Search E-mail..." />
                     <select v-model="filterBy" @change="setFilter" name="msg-filter-selector">
                         <option value="all">All</option>
                         <option value="inbox">Inbox</option>
@@ -27,30 +27,37 @@ export default {
         return {
             searchedStr: null,
             filterBy: "inbox",
-            results: []
         }
     },
     methods: {
+        search(){
+            eventBus.$emit('search', searchedStr)
+        },
         setFilter() {
             var filter = this.filterBy;
             eventBus.$emit('filtered', filter)
         },
         openComposeMsg() {
-            eventBus.$emit('compose', true)
+            eventBus.$emit('compose')
         },
-        searchMsg(str) {
-            return emailService.query()
-                .then((msgs) => {
-                    var filteredMsgs = msgs.filter((msg) => {
-                        return msg.body.includes(str) || msg.subject.includes(str)
-                    })
-                    return this.results = filteredMsgs
-                })
 
-        },
         openEmailList() {
             eventBus.$emit('email')
-            // eventBus.$emit('compose')//////////////////////////////////////????
         }
-    }
+    },
+    // debounce(func, wait, immediate) {
+    //     var timeout;
+    //     return function executedFunction() {
+    //         var context = this;
+    //         var args = arguments;
+    //         var later = function () {
+    //             timeout = null;
+    //             if (!immediate) func.apply(context, args);
+    //         };
+    //         var callNow = immediate && !timeout;
+    //         clearTimeout(timeout);
+    //         timeout = setTimeout(later, wait);
+    //         if (callNow) func.apply(context, args);
+    //     };
+    // },
 }
