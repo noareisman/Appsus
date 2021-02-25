@@ -243,9 +243,8 @@ function msgToTrash(msg) {
         .then(msg => {
             msg.isTrash = true;
             msg.filters.trash = true;
-            msg.filters.inbox=false
             saveMsg(msg);
-            return msg;///////////////////////////////////////////////////////////////
+            return msg;
         })
 }
 
