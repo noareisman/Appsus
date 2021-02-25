@@ -16,27 +16,27 @@ export default {
         `,
     data() {
         return {
-            id:null,
-            type:null,
-            pin:null,
-            info:{},
-            style:{}
+            id: null,
+            type: null,
+            pin: null,
+            info: {},
+            style: {}
         }
     },
-    components:{
+    components: {
         // noteTodos,
         // noteTxt,
         // noteVideo,
         noteImg
     },
-    created(){
-        this.type=this.note.type,
-        this.pin=this.note.isPined,
-        this.info=this.note.info,
-        this.style=this.note.style,
-        this.id=this.note.id
+    created() {
+        this.type = this.note.type,
+            this.pin = this.note.isPined,
+            this.info = this.note.info,
+            this.style = this.note.style,
+            this.id = this.note.id
     }
 
 }
 
-    // < component : is = "cmp.type"  : info = "cmp.info" @setVal="setAns($event, idx)" ></component >
+// < component : is = "cmp.type"  : info = "cmp.info" @setVal="setAns($event, idx)" ></component >

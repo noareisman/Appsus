@@ -1,28 +1,31 @@
 import { eventBus } from '../../../services/event-bus.service.js';
+import { keepService } from '../services/keep.service.js';
+
 export default {
     template: `
         <section> 
             <div class="new-keep">
 
                 <div class="line1 flex center">
-                    <input type="text" placeholder="Header..." />
+                    <input @click="activateNewKeep" type="text" placeholder="Header..." />
                     <div class="icons flex space-around">
 
-                        <div class="icon" @click="activeNewKeep" ref="imageKeep">
-                            <img src="images/keepType/imagekeep.webp" alt="" />
+                        <div class="icon iText"  ref="textKeep">
+                            <img  @click="activateNewKeep" src="images/keepType/textkeep.webp" alt="" />
+                        </div>
+
+                        <div class="icon iImage" ref="imageKeep">
+                            <img @click="activateNewKeep"  src="images/keepType/imagekeep.webp" alt="" />
                         </div>
                         
-                        <div class="icon" @click="activeNewKeep" ref="textKeep">
-                            <img src="images/keepType/textkeep.png" alt="" />
+                        <div class="icon iVideo" ref="videoKeep">
+                            <img @click="activateNewKeep"  src="images/keepType/videokeep.webp" alt="" />
                         </div>
                         
-                        <div class="icon" @click="activeNewKeep" ref="todosKeep">
-                            <img src="images/keepType/todokeep.png" alt="" />
+                        <div class="icon iTodos" ref="todosKeep">
+                            <img  @click="activateNewKeep" src="images/keepType/todokeep.webp" alt="" />
                         </div>
                         
-                        <div class="icon" @click="activeNewKeep" ref="videoKeep">
-                            <img src="images/keepType/videokeep.webp" alt="" />
-                        </div>
                     </div>
                 </div>
                 <hr />
@@ -43,14 +46,91 @@ export default {
     },
     computed: {
         noteType() {
-            return 'New note...';
+            switch (this.newKeep.type) {
+                case 'noteImg':
+                    return 'Enter image URL...';
+
+                case 'noteVideo':
+                    return 'Enter video URL...';
+                case 'noteTodos':
+                    return 'Enter comma separated list...';
+            }
+            return 'Enter text here...';
         }
     },
     methods: {
-        activeNewKeep(ev) {
-            console.log(ev.target.value);
-            this.newKeep = true
+        activateNewKeep(ev) {
 
+            const els = this.$refs;
+            const elsArr = Object.keys(els).map((el) => [els[el]]);
+
+            let val = ev.target.src.slice(38, -5);
+            let currEl;
+
+            if (ev.target.type === 'text' && this.newKeep) return;
+            if (ev.target.type === 'text') val = 'textkeep';
+
+            switch (val) {
+                case 'imagekeep':
+                    elsArr.forEach(el => {
+                        el[0].style.border = 'unset';
+                        el[0].style.backgroundColor = 'unset';
+                    });
+
+                    currEl = this.$refs.imageKeep;
+                    currEl.style.border = '1px solid black';
+                    currEl.style.backgroundColor = 'rgb(207, 207, 207)';
+
+                    this.newKeep = keepService.newKeep('noteImg')
+                    break;
+
+                case 'textkeep':
+                    elsArr.forEach(el => {
+                        el[0].style.border = 'unset';
+                        el[0].style.backgroundColor = 'unset';
+                    });
+
+                    currEl = this.$refs.textKeep;
+                    currEl.style.border = '1px solid black';
+                    currEl.style.backgroundColor = 'rgb(207, 207, 207)';
+
+                    this.newKeep = keepService.newKeep('noteTxt')
+                    break;
+
+                case 'todokeep':
+                    elsArr.forEach(el => {
+                        el[0].style.border = 'unset';
+                        el[0].style.backgroundColor = 'unset';
+                    });
+
+                    currEl = this.$refs.todosKeep;
+                    currEl.style.border = '1px solid black';
+                    currEl.style.backgroundColor = 'rgb(207, 207, 207)';
+
+                    this.newKeep = keepService.newKeep('noteTodos')
+                    break;
+
+                case 'videokeep':
+                    elsArr.forEach(el => {
+                        el[0].style.border = 'unset';
+                        el[0].style.backgroundColor = 'unset';
+                    });
+
+                    currEl = this.$refs.videoKeep;
+                    currEl.style.border = '1px solid black';
+                    currEl.style.backgroundColor = 'rgb(207, 207, 207)';
+
+                    this.newKeep = keepService.newKeep('noteVideo')
+                    break;
+            }
+
+            // this.newKeep = true
+        },
+        focus() {
+            console.log('focus');
+        },
+        saveNote() {
+            console.log('saved a note');
         }
     },
     created() {

@@ -70,7 +70,7 @@ export const keepService = {
 function query() {
     return asyncStorageService.query(KEEPS_KEY)
         .then(keeps => {
-            if (!keeps || !!keeps) {
+            if (!keeps || !keeps.length) {
                 keeps = gTempKeeps;
                 asyncStorageService.save(KEEPS_KEY, keeps);
             }
