@@ -6,7 +6,9 @@ export default {
     template: `
         <section>
                 <div class ="msg-prev flex center">
-                    <div class="fav">S</div>
+                    <div class="fav" @click="favToggle">
+                        <img class="fav-stat-img" :src=favStat alt="">
+                    </div>
                     <div @click="detailsToggle" class="msg-sender" :class="isNewMsg">
                          {{msg.participants.sender}} 
                     </div>
@@ -35,7 +37,8 @@ export default {
         return {
             msgDetails: null,
             msgRead: null,
-            incominMsg: null
+            incominMsg: null,
+            msgFav: null
         }
     },
     methods: {
@@ -45,8 +48,12 @@ export default {
                 .then(msg => this.msgRead = msg.filters.viewd)
         },
         readToggle() {
-            emailService.toogleReadStat(this.msg)
+            emailService.toggleReadStat(this.msg)
                 .then(msg => this.msgRead = msg.filters.viewd)
+        },
+        favToggle() {
+            emailService.toggleFav(this.msg)
+                .then(msg => this.msgFav = msg.filters.important)
         }
     },
     computed: {
@@ -84,12 +91,17 @@ export default {
         readingStat() {
             if (!this.msgRead) return 'images/closeMail.png';
             if (this.msgRead) return 'images/openMail.png';
+        },
+        favStat() {
+            if (!this.msgFav) return 'images/unfav.jpg';
+            if (this.msgFav) return 'images/fav.jpg';
         }
     },
     created() {
         this.msgDetails = false;
         this.msgRead = this.msg.filters.viewd;
-        this.incominMsg = !this.msg.filters.sent
+        this.incominMsg = !this.msg.filters.sent;
+        this.msgFav = this.msg.filters.important;
     },
     components: {
         msgDetails
