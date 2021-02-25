@@ -14,14 +14,32 @@
     height: 25px;
 }
 
-.new-keep .icon {
+.icon {
     display: inline-block;
-    padding: 5px;
+    margin: 3px;
+    padding: 3px 3px 0 3px;
+    border-radius: 10%;
     cursor: pointer;
 }
 
 .icons {
     width: 20%;
+}
+
+.iImage:hover {
+    background-color: rgb(207, 207, 207);
+}
+
+.iText:hover {
+    background-color: rgb(207, 207, 207);
+}
+
+.iTodos:hover {
+    background-color: rgb(207, 207, 207);
+}
+
+.iVideo:hover {
+    background-color: rgb(207, 207, 207);
 }
 
 .line1 {

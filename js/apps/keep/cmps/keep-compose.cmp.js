@@ -8,20 +8,20 @@ export default {
                     <input type="text" placeholder="Header..." />
                     <div class="icons flex space-around">
 
-                        <div class="icon" @click="activeNewKeep" ref="imageKeep">
-                            <img src="images/keepType/imagekeep.webp" alt="" />
+                        <div class="icon iImage" ref="imageKeep">
+                            <img @click="activeNewKeep"  src="images/keepType/imagekeep.webp" alt="" />
                         </div>
                         
-                        <div class="icon" @click="activeNewKeep" ref="textKeep">
-                            <img src="images/keepType/textkeep.png" alt="" />
+                        <div class="icon iText"  ref="textKeep">
+                            <img  @click="activeNewKeep" src="images/keepType/textkeep.webp" alt="" />
                         </div>
                         
-                        <div class="icon" @click="activeNewKeep" ref="todosKeep">
-                            <img src="images/keepType/todokeep.png" alt="" />
+                        <div class="icon iTodos" ref="todosKeep">
+                            <img  @click="activeNewKeep" src="images/keepType/todokeep.webp" alt="" />
                         </div>
                         
-                        <div class="icon" @click="activeNewKeep" ref="videoKeep">
-                            <img src="images/keepType/videokeep.webp" alt="" />
+                        <div class="icon iVideo" ref="videoKeep">
+                            <img @click="activeNewKeep"  src="images/keepType/videokeep.webp" alt="" />
                         </div>
                     </div>
                 </div>
@@ -48,9 +48,61 @@ export default {
     },
     methods: {
         activeNewKeep(ev) {
-            console.log(ev.target.value);
-            this.newKeep = true
+            let currEl;
+            const val = ev.target.src.slice(38, -5);
+            const els = this.$refs;
+            const elsArr = Object.keys(els).map((el) => [els[el]]);
 
+            switch (val) {
+                case 'imagekeep':
+                    elsArr.forEach(el => {
+                        el[0].style.border = 'unset';
+                        el[0].style.backgroundColor = 'unset';
+                    });
+
+                    currEl = this.$refs.imageKeep;
+                    currEl.style.border = '1px solid black';
+                    currEl.style.backgroundColor = 'rgb(207, 207, 207)';
+                    break;
+                case 'textkeep':
+                    elsArr.forEach(el => {
+                        el[0].style.border = 'unset';
+                        el[0].style.backgroundColor = 'unset';
+                    });
+
+                    currEl = this.$refs.textKeep;
+                    currEl.style.border = '1px solid black';
+                    currEl.style.backgroundColor = 'rgb(207, 207, 207)';
+                    break;
+                case 'todokeep':
+                    elsArr.forEach(el => {
+                        el[0].style.border = 'unset';
+                        el[0].style.backgroundColor = 'unset';
+                    });
+
+                    currEl = this.$refs.todosKeep;
+                    currEl.style.border = '1px solid black';
+                    currEl.style.backgroundColor = 'rgb(207, 207, 207)';
+                    break;
+                case 'videokeep':
+                    elsArr.forEach(el => {
+                        el[0].style.border = 'unset';
+                        el[0].style.backgroundColor = 'unset';
+                    });
+
+                    currEl = this.$refs.videoKeep;
+                    currEl.style.border = '1px solid black';
+                    currEl.style.backgroundColor = 'rgb(207, 207, 207)';
+                    break;
+            }
+
+            this.newKeep = true
+        },
+        focus() {
+            console.log('focus');
+        },
+        saveNote() {
+            console.log('saved a note');
         }
     },
     created() {
