@@ -47,54 +47,53 @@ export default {
         filterMsgs() {
             var currFilter = this.filter;
             var str = this.searchedStr;
+            console.log(str)
             if (!currFilter) {
                 if (!str) {
                     return this.allMsgs;
                 } else {
                     return this.allMsgs.filter((msg) => {
                         return msg.body.includes(str) ||
-                            msg.participants.sender.includes(str) ||
-                            msg.subject.includes(str)
+                        msg.participants.sender.includes(str) ||
+                        msg.subject.includes(str)
                     })
                 }
             } else {
                 if (!str) {
                     return this.allMsgs.filter((msg) => { return msg.filters[currFilter] })
                 } else {
+                    console.log('search:',str);
                     var filteredMsgs = this.allMsgs.filter((msg) => { return msg.filters[currFilter] })
-                    filteredMsgs.filter((msg) => {
+                    return filteredMsgs.filter((msg) => {
                         return msg.body.includes(str) ||
-                            msg.participants.sender.includes(str) ||
-                            msg.subject.includes(str)
+                        msg.participants.sender.includes(str) ||
+                        msg.subject.includes(str)
                     })
-                    return filteredMsgs
+                    }
                 }
             }
-        }
-    },
-
-    created() {
-        this.isList = true;
-        this.isCompose = false;
-        this.isDetails = false;
-        this.loadEmails();
-        eventBus.$on('remove', (msg) => {
-            emailService.msgToTrash(msg)
-                .then(() => this.loadEmails())
-        })
-        eventBus.$on('filtered', (filter) => { this.filter = filter })
-        eventBus.$on('search', (searchedStr) => {
-            this.searchedStr = searchedStr
-        })
-        eventBus.$on('compose', () => {
-            this.isList = false;
-            this.isCompose = true;
-        })
-        eventBus.$on('email', () => {
-            this.isCompose = false;
+        },
+        
+        created() {
             this.isList = true;
-        })
-        eventBus.$on('newMsg', (msg) => {
+            this.isCompose = false;
+            this.isDetails = false;
+            this.loadEmails();
+            eventBus.$on('remove', (msg) => {
+                emailService.msgToTrash(msg)
+                .then(() => this.loadEmails())
+            })
+            eventBus.$on('filtered', (filter) => { this.filter = filter })
+            eventBus.$on('search', (searchedStr) => {this.searchedStr = searchedStr})
+            eventBus.$on('compose', () => {
+                this.isList = false;
+                this.isCompose = true;
+            })
+            eventBus.$on('email', () => {
+                this.isCompose = false;
+                this.isList = true;
+            })
+            eventBus.$on('newMsg', (msg) => {
             console.log('we moved here', msg);
             emailService.saveNewMsg(msg)
                 .then(() => this.loadEmails())
