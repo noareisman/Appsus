@@ -7,6 +7,10 @@
 @import "../css/apps/email/cmps/email-list.css";
 @import "../css/apps/email/cmps/email-compose.css";
 
+/* KEEP */
+
+@import "../css/apps/keep/cmps/compose.css";
+
 /* GENERAL */
 
 * {
