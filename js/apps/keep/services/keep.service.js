@@ -59,7 +59,7 @@ const gTempKeeps = [{
 ];
 
 const keeps = query();
-console.log(keeps);
+// console.log(keeps);
 
 export const keepService = {
     query,
@@ -81,29 +81,29 @@ function query() {
 
 function newKeep(keepType) {
     switch (keepType) {
-        case 'note-txt':
+        case 'noteTxt':
             return {
                 id: _makeId(5),
-                type: "NoteTxt",
+                type: 'noteTxt',
                 isPinned: false,
                 info: { txt: '' },
-                style: { backgroundColor: "white", color: 'black' }
+                style: { backgroundColor: 'white', color: 'black' }
             }
-        case 'note-img':
+        case 'noteImg':
             return {
                 id: _makeId(5),
-                type: "NoteImg",
+                type: 'noteImg',
                 isPinned: false,
                 info: {
-                    url: '',
-                    title: ''
+                    url: 'https://images.unsplash.com/photo-1502124225665-6282a0146f6a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+                    title: 'Fighting eval eye!'
                 },
-                style: { backgroundColor: "#00d", color: 'black' }
+                style: { backgroundColor: '#00d', color: 'black' }
             }
-        case 'note-todos':
+        case 'noteTodos':
             return {
                 id: _makeId(5),
-                type: "NoteTodos",
+                type: 'noteTodos',
                 isPinned: false,
                 info: {
                     label: '',
@@ -111,18 +111,18 @@ function newKeep(keepType) {
                         { txt: '', doneAt: 0 },
                     ]
                 },
-                style: { backgroundColor: "white", color: 'black' }
+                style: { backgroundColor: 'white', color: 'black' }
             }
-        case 'note-video':
+        case 'noteVideo':
             return {
                 id: _makeId(5),
-                type: "NoteVideo",
+                type: "noteVideo",
                 isPinned: false,
                 info: {
                     url: '',
                     title: ''
                 },
-                style: { backgroundColor: "white", color: 'black' }
+                style: { backgroundColor: 'white', color: 'black' }
             }
     }
 }

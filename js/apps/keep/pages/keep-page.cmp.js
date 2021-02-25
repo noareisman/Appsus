@@ -30,14 +30,14 @@ export default {
                     return this.allNotes
                 })
             },
-    },
+        },
     computed:{
         filterNotes(){
             var currFilter = this.filter;
             var str = this.searchedStr;
             if (!currFilter) {
                 if (!str) {
-                    return this.allMsgs;
+                    return this.allNotes;
                 }
             }
         }
