@@ -33,7 +33,10 @@ export default {
                 <div v-if="newKeep" class="line2 flex">
 
                     <textarea class="keep-text-area" @click="focus" :placeholder="noteType" name="Text1" cols="100"></textarea>
-                    <button class="sentKeep" @click="saveNote"><img src="/images/sendkeep.png" alt="" /></button>
+                    <div class="new-keep-btns flex column">
+                        <button class="pin-keep-btn" @click="pinKeep"><img src="./images/keepType/pinkeep.png" alt="" /></button>
+                        <button class="save-keep-btn" @click="saveNote"><img src="/images/sendkeep.png" alt="" /></button>
+                    </div>
                 </div>
 
             </div>
