@@ -37,9 +37,9 @@ export default {
             this.id = this.note.id
     },
     components: {
-        noteTodos,
-        noteTxt,
-        noteVideo,
+        // noteTodos,
+        // noteTxt,
+        // noteVideo,
         noteImg
     }
 
