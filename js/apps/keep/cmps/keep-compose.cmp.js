@@ -3,11 +3,12 @@ export default {
     template: `
         <section> 
             <div class="new-keep">
-            <textarea @click="focus" :placeholder="noteType" name="Text1" cols="130"></textarea>
-                <button @click="saveNote">Save</button>
+                <textarea @click="focus" :placeholder="noteType" name="Text1" cols="130">
+                </textarea>
+                <button @click="saveNote"><img src="/images/sendkeep.png" alt="" /></button>
             </div>
         <form @submit.prevent="saveNote">
-            <input :txt="noteTxt" @input="updateTxt" type="text" placeholder="Write your note here...">
+            <!-- <input :txt="noteTxt" @input="updateTxt" type="text" placeholder="Write your note here..."> -->
         </form>
         </section>
     `,

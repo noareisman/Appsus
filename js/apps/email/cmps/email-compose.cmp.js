@@ -26,7 +26,7 @@ export default {
                 </tr>
                 <hr />
                 <tr> 
-                    <td class="new-msg-content"><textarea @keyup="updateNewMsgContent" placeholder="New message..." name="Text1" cols="130"></textarea></td>
+                    <td class="new-msg-content"><textarea class="email-text-area" @keyup="updateNewMsgContent" placeholder="New message..." name="Text1" cols="130"></textarea></td>
                 </tr>
             </table>
 

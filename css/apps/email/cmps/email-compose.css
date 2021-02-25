@@ -55,7 +55,7 @@ hr {
     width: 90%;
 }
 
-textarea {
+.email-text-area {
     border: 1px solid lightgrey;
     outline: 1px solid lightgrey;
     width: 113.5%;
