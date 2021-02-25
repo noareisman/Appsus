@@ -13,7 +13,7 @@ export default {
         <section class="main-content flex">
             <email-dev />
             <div class="list-new-msg-container">
-                <email-list v-if="isList" eventBus :msgs="filterMsgs"/>
+                <email-list v-if="isList" :msgs="filterMsgs"/>
                 <email-compose v-if="isCompose" />
             </div>
             <!-- <book-list v-if="!selectedBook" :books="booksToShow" @selected="selectBook" />

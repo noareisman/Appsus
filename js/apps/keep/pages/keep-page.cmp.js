@@ -1,39 +1,54 @@
 import keepNav from '../cmps/keep-nav.cmp.js';
 import keepDev from '../cmps/keep-dev.cmp.js';
-import keepInput from '../cmps/keep-input.cmp.js';
 import keepList from '../cmps/keep-list.cmp.js';
 import { keepService } from '../services/keep.service.js';
+import keepCompose from '../cmps/keep-compose.cmp.js';
+
 export default {
 
     template: `
     <section>
         <keep-nav />
         <keep-dev />
-        <keep-input />
-        <keep-list />
+        <keep-compose />
+        <keep-list :notes="filterNotes"/>
     </section>
     `,
     data() {
         return {
-            allNotes: null
+            allNotes: null,
+            notes:null,
+            filter:null,
+            searchStr:''
         }
-    },
-    created() {
-        this.allNotes = loadNotes()
     },
     methods: {
         loadNotes() {
             return keepService.query()
                 .then(notes => {
                     this.allNotes = notes
-                    return this.allMsgs
+                    return this.allNotes
                 })
-        },
+            },
+    },
+    computed:{
+        filterNotes(){
+            var currFilter = this.filter;
+            var str = this.searchedStr;
+            if (!currFilter) {
+                if (!str) {
+                    return this.allMsgs;
+                }
+            }
+        }
+    }, 
+    created() {
+        this.loadNotes()
     },
     components: {
         keepNav,
         keepDev,
-        keepInput,
-        keepList
+        keepList,
+        keepCompose
     }
 }
