@@ -16,8 +16,6 @@ export default {
                 <email-list v-if="isList" :msgs="filterMsgs"/>
                 <email-compose v-if="isCompose" />
             </div>
-            <!-- <book-list v-if="!selectedBook" :books="booksToShow" @selected="selectBook" />
-            <book-details v-else :book="selectedBook" @close="selectedBook=null" />  -->
             
         </section>
         

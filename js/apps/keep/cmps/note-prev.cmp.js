@@ -1,17 +1,15 @@
-import noteTodos  from './note-todos.cmp.js';
-import noteTxt  from './note-txt.cmp.js';
-import noteVideo  from './note-video.cmp.js';
-import noteImg  from './note-img.cmp.js';
+// import noteTodos from './note-todos.cmp.js';
+// import noteTxt from './note-txt.cmp.js';
+// import noteVideo from './note-video.cmp.js';
+import noteImg from './note-img.cmp.js';
 import { keepService } from '../services/keep.service.js';
 
 export default {
     props: ['note'],
     template: `
         <section> 
-                <div class="note-container" :style="{background-color: style.color}">
-                    <button @click="pin">Pin</button>        
-                    <button @click="Edit">Edit</button>
-                    <compotent :is="type" :info="info"/>
+                <div class="note-container">
+                    <!-- <compotent :is="type" :info="info"/> -->
                     <pre :style="{color: style.color}">{{this.txt}}</pre>
                 </div>        
         </section>
@@ -25,17 +23,10 @@ export default {
             style:{}
         }
     },
-    methods:{
-        pin(){            
-        }
-    },
-    computed(){
-        
-    },
     components:{
-        noteTodos,
-        noteTxt,
-        noteVideo,
+        // noteTodos,
+        // noteTxt,
+        // noteVideo,
         noteImg
     },
     created(){

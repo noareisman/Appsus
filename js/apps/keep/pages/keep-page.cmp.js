@@ -5,43 +5,38 @@ import { keepService } from '../services/keep.service.js';
 import keepCompose from '../cmps/keep-compose.cmp.js';
 
 export default {
-
     template: `
     <section>
         <keep-nav />
         <keep-dev />
         <keep-compose />
-        <keep-list :notes="filterNotes"/>
+        <keep-list :notes="fliterNotes"/>
     </section>
     `,
     data() {
         return {
             allNotes: null,
-            notes:null,
-            filter:null,
-            searchStr:''
+            notes: null,
+            filter: null,
+            searchStr: ''
         }
     },
     methods: {
         loadNotes() {
             return keepService.query()
                 .then(notes => {
-                    this.allNotes = notes
-                    return this.allNotes
-                })
-            },
-        },
-    computed:{
-        filterNotes(){
-            var currFilter = this.filter;
-            var str = this.searchedStr;
-            if (!currFilter) {
-                if (!str) {
+                    this.allNotes = notes;
                     return this.allNotes;
-                }
-            }
+                })
+        },
+    },
+    computed:{
+        
+        fliterNotes() {
+            console.log(this.allNotes);
+            return this.allNotes
         }
-    }, 
+    },
     created() {
         this.loadNotes()
     },
