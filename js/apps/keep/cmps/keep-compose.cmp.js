@@ -10,13 +10,15 @@ export default {
     `,
     data(){
         return{
-            noteType:'txt',
+            type:'txt',
             txt:null,
             file:null
         }
     },
     computed:{
-
+        updateNote(){
+            this.not
+        }
     },
     methods:{
 
