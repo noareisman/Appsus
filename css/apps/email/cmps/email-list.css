@@ -20,6 +20,10 @@ img {
 
 /* EMAILS LIST */
 
+.list-new-msg-container {
+    width: 88%;
+}
+
 .emails-container {
     margin: 10px;
     padding: 10px;
