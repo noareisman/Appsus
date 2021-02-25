@@ -10,7 +10,6 @@ export default {
     template: `
     <section>
         <email-nav />
-
         <section class="main-content flex">
             <email-dev />
             <div>
@@ -29,41 +28,51 @@ export default {
             isCompose: null,
             isList: null,
             isDetails: null,
+            allMsgs: null,
             msgs: null,
             filter: null,
-            searchResults: [],
-            searchedStr:''
+            searchedStr: '',
         }
     },
     methods: {
         loadEmails() {
             return emailService.query()
                 .then(msgs => {
-                    this.msgs = msgs
-                    return this.msgs
+                    this.allMsgs = msgs
+                    return this.allMsgs
                 })
-        },
-        searchMsg(str) {
-            var filteredMsgs = msgs.filter((msg) => {
-                return msg.body.includes(str) || msg.subject.includes(str)
-            })
-            return filteredMsgs
         },
     },
     computed: {
         filterMsgs() {
-            if (!this.filter) {
-                return this.msgs;
+            var currFilter = this.filter;
+            var str = this.searchedStr;
+            if (!currFilter) {
+                if (!str) {
+                    return this.allMsgs;
+                } else {
+                    return this.allMsgs.filter((msg) => {
+                        return msg.body.includes(str) ||
+                        msg.participants.sender.includes(str)||
+                        msg.subject.includes(str)
+                    })
+                }
             } else {
-                var currFilter = this.filter;
-                var filteredMsgs = this.msgs.filter((msg) => { return msg.filters[currFilter] })
-                return filteredMsgs
+                if (!str) {
+                    return this.allMsgs.filter((msg) => { return msg.filters[currFilter] })
+                } else {
+                    var filteredMsgs = this.allMsgs.filter((msg) => { return msg.filters[currFilter] })
+                    filteredMsgs.filter((msg) => {
+                        return msg.body.includes(str) || 
+                        msg.participants.sender.includes(str)||
+                        msg.subject.includes(str)  
+                    })
+                    return filteredMsgs
+                }
             }
-        },
-        updateResults() {
-            this.searchResults = this.searchMsg(this.searchedStr)
         }
     },
+
     created() {
         this.isList = true;
         this.isCompose = false;
@@ -74,9 +83,9 @@ export default {
                 .then(() => this.loadEmails())
         })
         eventBus.$on('filtered', (filter) => { this.filter = filter })
-        eventBus.$on('search', (searchedStr) => { 
-            this.searchedStr=searchedStr 
-            })
+        eventBus.$on('search', (searchedStr) => {
+            this.searchedStr = searchedStr
+        })
         eventBus.$on('compose', () => {
             this.isList = false;
             this.isCompose = true;
@@ -98,7 +107,7 @@ export default {
                 .then(() => this.loadEmails())
         })
         eventBus.$off('filtered', (filter) => { this.filter = filter })
-        eventBus.$off('newMsg', () => {})
+        eventBus.$off('newMsg', () => { })
     },
 
     components: {

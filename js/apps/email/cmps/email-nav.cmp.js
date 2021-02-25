@@ -31,7 +31,7 @@ export default {
     },
     methods: {
         search(){
-            eventBus.$emit('search', searchedStr)
+            eventBus.$emit('search', this.searchedStr)
         },
         setFilter() {
             var filter = this.filterBy;
