@@ -242,6 +242,7 @@ function msgToTrash(msg) {
     return getById(msg.id)
         .then(msg => {
             msg.isTrash = true;
+            msg.filters.trash = true;
             saveMsg(msg);
             return msg;
         })
