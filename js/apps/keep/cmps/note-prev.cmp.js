@@ -1,4 +1,4 @@
-import noteTodo  from './note-todo.cmp.js';
+import noteTodos  from './note-todos.cmp.js';
 import noteTxt  from './note-txt.cmp.js';
 import noteVideo  from './note-video.cmp.js';
 import noteImg  from './note-img.cmp.js';
@@ -8,17 +8,16 @@ export default {
     props: ['note'],
     template: `
         <section> 
-                <div class="note-container">
+                <div class="note-container" :style="{background-color: style.color}">
                     <button @click="pin">Pin</button>        
                     <button @click="Edit">Edit</button>
-                    <pre>{{this.txt}}</pre>
                     <compotent :is="type" :info="info"/>
+                    <pre :style="{color: style.color}">{{this.txt}}</pre>
                 </div>        
         </section>
         `,
     data() {
         return {
-
             id:null,
             type:null,
             pin:null,
@@ -30,12 +29,15 @@ export default {
         pin(){            
         }
     },
+    computed(){
+        
+    },
     components:{
-        noteTodo,
+        noteTodos,
         noteTxt,
         noteVideo,
         noteImg
-    }
+    },
     created(){
         this.type=this.note.type,
         this.pin=this.note.isPined,

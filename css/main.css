@@ -141,7 +141,16 @@ p {
 
 
 /*////////////////////////////////////////////////////////*/
+/*NOTE PREV*/
+.note-container{
+    width: fit-content;
+    height: fit-content;
+    ;
+}
 
+.preview-container-note{
+    background: red;
+}
 
 /*HANDLERS*/
 
