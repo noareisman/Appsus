@@ -7,24 +7,25 @@ export default {
             <div class="new-keep">
 
                 <div class="line1 flex center">
-                    <input type="text" placeholder="Header..." />
+                    <input @click="activateNewKeep" type="text" placeholder="Header..." />
                     <div class="icons flex space-around">
+
+                        <div class="icon iText"  ref="textKeep">
+                            <img  @click="activateNewKeep" src="images/keepType/textkeep.webp" alt="" />
+                        </div>
 
                         <div class="icon iImage" ref="imageKeep">
                             <img @click="activateNewKeep"  src="images/keepType/imagekeep.webp" alt="" />
                         </div>
                         
-                        <div class="icon iText"  ref="textKeep">
-                            <img  @click="activateNewKeep" src="images/keepType/textkeep.webp" alt="" />
+                        <div class="icon iVideo" ref="videoKeep">
+                            <img @click="activateNewKeep"  src="images/keepType/videokeep.webp" alt="" />
                         </div>
                         
                         <div class="icon iTodos" ref="todosKeep">
                             <img  @click="activateNewKeep" src="images/keepType/todokeep.webp" alt="" />
                         </div>
                         
-                        <div class="icon iVideo" ref="videoKeep">
-                            <img @click="activateNewKeep"  src="images/keepType/videokeep.webp" alt="" />
-                        </div>
                     </div>
                 </div>
                 <hr />
@@ -45,15 +46,29 @@ export default {
     },
     computed: {
         noteType() {
-            return 'New note...';
+            switch (this.newKeep.type) {
+                case 'noteImg':
+                    return 'Enter image URL...';
+
+                case 'noteVideo':
+                    return 'Enter video URL...';
+                case 'noteTodos':
+                    return 'Enter comma separated list...';
+            }
+            return 'Enter text here...';
         }
     },
     methods: {
         activateNewKeep(ev) {
-            const val = ev.target.src.slice(38, -5);
+
             const els = this.$refs;
             const elsArr = Object.keys(els).map((el) => [els[el]]);
+
+            let val = ev.target.src.slice(38, -5);
             let currEl;
+
+            if (ev.target.type === 'text' && this.newKeep) return;
+            if (ev.target.type === 'text') val = 'textkeep';
 
             switch (val) {
                 case 'imagekeep':
