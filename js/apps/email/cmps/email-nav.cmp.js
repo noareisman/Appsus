@@ -50,7 +50,6 @@ export default {
         },
         openEmailList() {
             eventBus.$emit('email')
-            // eventBus.$emit('compose')//////////////////////////////////////????
         }
     }
 }

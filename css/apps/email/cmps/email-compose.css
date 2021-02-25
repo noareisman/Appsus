@@ -4,9 +4,10 @@
     width: 80%;
 }
 
-.new-msg * {
+.new-msg {
     /* outline: 1px solid black; */
-    /* width: 100%; */
+    margin: 10px;
+    width: 110%;
 }
 
 hr {
@@ -22,6 +23,12 @@ hr {
     height: 45px;
     padding: 14px;
     font-weight: bolder;
+}
+
+.new-msg img {
+    background-color: white;
+    border-radius: 15%;
+    cursor: pointer;
 }
 
 
@@ -41,6 +48,9 @@ hr {
     width: 88%;
 }
 
-.new-msg-content input {
-    width: 100%;
+textarea {
+    border: 1px solid lightgrey;
+    outline: 1px solid lightgrey;
+    width: 112.5% !important;
+    height: 200px;
 }

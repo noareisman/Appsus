@@ -11,12 +11,14 @@ export default {
     <section>
         <email-nav />
 
-        <section class="main-content">
+        <section class="main-content flex">
             <email-dev />
-                <!-- <book-list v-if="!selectedBook" :books="booksToShow" @selected="selectBook" />
-                <book-details v-else :book="selectedBook" @close="selectedBook=null" />  -->
-            <email-list v-if="isList" eventBus :msgs="filterMsgs"/>
-            <email-compose v-if="isCompose" />
+            <div>
+                <email-list v-if="isList" eventBus :msgs="filterMsgs"/>
+                <email-compose v-if="isCompose" />
+            </div>
+            <!-- <book-list v-if="!selectedBook" :books="booksToShow" @selected="selectBook" />
+            <book-details v-else :book="selectedBook" @close="selectedBook=null" />  -->
             
         </section>
         
@@ -69,6 +71,12 @@ export default {
             this.isCompose = false;
             this.isList = true;
         })
+        eventBus.$on('newMsg', (msg) => {
+            console.log('we moved here', msg);
+            emailService.saveNewMsg(msg)
+                .then(() => this.loadEmails())
+
+        })
     },
     destroyed() {
         eventBus.$off('remove', (msg) => {
@@ -76,6 +84,7 @@ export default {
                 .then(() => this.loadEmails())
         })
         eventBus.$off('filtered', (filter) => { this.filter = filter })
+        eventBus.$off('newMsg', () => {})
     },
 
     components: {

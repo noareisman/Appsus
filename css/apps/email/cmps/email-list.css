@@ -5,6 +5,7 @@ button {
     border: unset;
     cursor: pointer;
     padding: 2px;
+    outline: unset;
 }
 
 button:hover {
@@ -20,9 +21,12 @@ img {
 /* EMAILS LIST */
 
 .emails-container {
+    margin: 10px;
     padding: 10px;
     border: 3px solid black;
-    width: 80%;
+    width: 115%;
+    height: 70vh;
+    overflow-y: scroll;
 }
 
 
@@ -35,6 +39,15 @@ img {
     border-bottom: 2px solid black;
     cursor: pointer;
     list-style: none;
+}
+
+.msg-prev {
+    padding: 5px;
+}
+
+.msg-prev:hover {
+    background-color: rgba(0, 0, 0, 0.561);
+    color: white;
 }
 
 .isMsgNotRead {
@@ -76,7 +89,9 @@ img {
 }
 
 .msg-details {
-    padding-top: 10px;
+    padding-top: 15px;
+    background-color: rgba(0, 0, 0, 0.561);
+    color: white;
 }
 
 .msg-details h3 {
