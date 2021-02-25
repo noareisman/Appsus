@@ -8,7 +8,7 @@ export default {
             <div class="flex space-between">
                 <div>
                     <h3>{{msg.subject}}</h3>
-                    <h3>{{msg.participants.sender}}</h3>
+                    <h3 v-if="incominMsg">{{msg.participants.sender}}</h3>
                 </div>
 
                 <div class="msg-btns">
@@ -22,9 +22,17 @@ export default {
             </div>
         </section>
     `,
+    data() {
+        return {
+            incominMsg: null
+        }
+    },
     methods: {
         deleteMsg() {
             eventBus.$emit('remove', this.msg);
         }
+    },
+    created() {
+        this.incominMsg = !this.msg.filters.sent
     }
 }

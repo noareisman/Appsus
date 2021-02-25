@@ -18,7 +18,7 @@ export default {
                         {{shortBodyMsg}}{{showDots}}
                     </div>
                     
-                    <div @click="readToggle">
+                    <div v-if="incominMsg" @click="readToggle">
                         <img class="reading-stat-img" :src=readingStat alt="">
                     </div>
 
@@ -33,7 +33,8 @@ export default {
     data() {
         return {
             msgDetails: null,
-            msgRead: null
+            msgRead: null,
+            incominMsg: null
         }
     },
     methods: {
@@ -87,6 +88,7 @@ export default {
     created() {
         this.msgDetails = false;
         this.msgRead = this.msg.filters.viewd;
+        this.incominMsg = !this.msg.filters.sent
     },
     components: {
         msgDetails

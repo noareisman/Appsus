@@ -125,8 +125,8 @@ const gTempMsgs = [{
         body: 'I want to be Kim Kardashian!\n Thank you, \n Some random well behaved girl ',
         sentAt: 25511313,
         participants: {
-            sender: 'Me',
-            getter: 'Santa Claus'
+            sender: 'To: Santa Claus',
+            getter: 'Me'
         },
         filters: {
             all: true,
@@ -226,7 +226,6 @@ function msgToTrash(msg) {
     return getById(msg.id)
         .then(msg => {
             msg.filters.trash = true;
-            console.log(msg);
             saveMsg(msg);
             return msg;
         })

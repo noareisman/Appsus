@@ -49,7 +49,7 @@ export default {
         updateNewMsgBcc(ev) { this.newMsgBcc = ev.target.value; },
         sendMsg() {
             const newMsg = emailService.getNewEmail();
-            newMsg.participants.getter = this.newMsgDestanation;
+            newMsg.participants.sender = 'To: ' + this.newMsgDestanation;
             newMsg.subject = this.newMsgSubject;
             newMsg.body = this.newMsgContent;
             eventBus.$emit('newMsg', newMsg);
