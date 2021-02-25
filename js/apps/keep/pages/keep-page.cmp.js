@@ -11,25 +11,39 @@ export default {
         <keep-nav />
         <keep-dev />
         <keep-compose />
-        <keep-list />
+        <keep-list :notes="filterNotes"/>
     </section>
     `,
     data() {
         return {
-            allNotes: null
+            allNotes: null,
+            notes:null,
+            filter:null,
+            searchStr:''
         }
-    },
-    created() {
-        this.allNotes = loadNotes()
     },
     methods: {
         loadNotes() {
             return keepService.query()
                 .then(notes => {
                     this.allNotes = notes
-                    return this.allMsgs
+                    return this.allNotes
                 })
-        },
+            },
+    },
+    computed:{
+        filterNotes(){
+            var currFilter = this.filter;
+            var str = this.searchedStr;
+            if (!currFilter) {
+                if (!str) {
+                    return this.allMsgs;
+                }
+            }
+        }
+    }, 
+    created() {
+        this.loadNotes()
     },
     components: {
         keepNav,

@@ -17,10 +17,12 @@ export default {
     `,
     data() {
         return {
-
+            comp:'null'
         }
     },
-    crearet(){
+    crearte(){
         keepService.query()
     }
 }
+
+<component :is="cmp.type"  :info="cmp.info" @setVal="setAns($event, idx)"></component>

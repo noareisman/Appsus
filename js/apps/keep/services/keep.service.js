@@ -125,32 +125,9 @@ function newKeep(keepType) {
                 style: { backgroundColor: "white", color: 'black' }
             }
     }
-
-
-
-
-
-    return {
-        id: _makeId(),
-        type: '',
-        body: '',
-        sentAt: Date.now(),
-        participants: {
-            sender: 'Me',
-            getter: ''
-        },
-        filters: {
-            all: true,
-            inbox: false,
-            sent: true,
-            important: false,
-            unread: false,
-            viewed: false,
-            draft: false,
-            trash: false
-        }
-    }
 }
+
+
 
 function remove(keep) {
     return _getById(keep.id)
@@ -160,7 +137,7 @@ function remove(keep) {
 }
 
 function _getById(id) {
-    return asyncStorageService.get(MSGS_KEY, id)
+    return asyncStorageService.get(KEEPS_KEY, id)
 }
 
 function _makeId(length = 5) {
