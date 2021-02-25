@@ -41,14 +41,9 @@ p {
 
 .email-dev-container {
     background: red;
-<<<<<<< HEAD
-    width: fit-content;
-    padding: 0px;
-=======
     width: 10%;
     padding-inline-start: unset;
     padding-inline-start: 0px;
->>>>>>> 0e23c686a1fff83bee6467b51c745a0ffd10251f
 }
 
 .email-dev-item {
