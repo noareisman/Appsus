@@ -3,7 +3,7 @@ export default {
     template: `
     <section>
             <nav class="flex email-nav space-between align-center" >
-                <div @click="openEmailList" class="email-logo">Keep</div>    
+                <div class="keep-logo">Keep</div>    
                 <form>
                     <input v-model="newNoteTxt" @input="txt" type="text" placeholder="New note..." />
                     <select v-model="filterBy" @change="setFilter" name="keep-filter-selector">

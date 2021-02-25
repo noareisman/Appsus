@@ -63,8 +63,7 @@ p {
 }
 /*/////////////////////////////////////////////////////////////*/
 /* KEEP NAV*/
-/* EMAIL NAV*/
-
+/* 
 .email-nav {
     background-color: #292929;
     height: 131px;
@@ -93,12 +92,12 @@ p {
     padding: 1em 3em;
     text-align: center;
     /* padding-inline-start:unset; */
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black;
 }
 
 .email-dev-item>*:hover {
-    cursor: pointer;
-}
+    cursor: pointer; */
+/* }  */
 /*////////////////////////////////////////////////////////*/
 /*HANDLERS*/
 .flex {
