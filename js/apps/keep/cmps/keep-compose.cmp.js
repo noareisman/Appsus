@@ -1,4 +1,6 @@
 import { eventBus } from '../../../services/event-bus.service.js';
+import { keepService } from '../services/keep.service.js';
+
 export default {
     template: `
         <section> 
@@ -9,19 +11,19 @@ export default {
                     <div class="icons flex space-around">
 
                         <div class="icon iImage" ref="imageKeep">
-                            <img @click="activeNewKeep"  src="images/keepType/imagekeep.webp" alt="" />
+                            <img @click="activateNewKeep"  src="images/keepType/imagekeep.webp" alt="" />
                         </div>
                         
                         <div class="icon iText"  ref="textKeep">
-                            <img  @click="activeNewKeep" src="images/keepType/textkeep.webp" alt="" />
+                            <img  @click="activateNewKeep" src="images/keepType/textkeep.webp" alt="" />
                         </div>
                         
                         <div class="icon iTodos" ref="todosKeep">
-                            <img  @click="activeNewKeep" src="images/keepType/todokeep.webp" alt="" />
+                            <img  @click="activateNewKeep" src="images/keepType/todokeep.webp" alt="" />
                         </div>
                         
                         <div class="icon iVideo" ref="videoKeep">
-                            <img @click="activeNewKeep"  src="images/keepType/videokeep.webp" alt="" />
+                            <img @click="activateNewKeep"  src="images/keepType/videokeep.webp" alt="" />
                         </div>
                     </div>
                 </div>
@@ -47,11 +49,11 @@ export default {
         }
     },
     methods: {
-        activeNewKeep(ev) {
-            let currEl;
+        activateNewKeep(ev) {
             const val = ev.target.src.slice(38, -5);
             const els = this.$refs;
             const elsArr = Object.keys(els).map((el) => [els[el]]);
+            let currEl;
 
             switch (val) {
                 case 'imagekeep':
@@ -63,7 +65,10 @@ export default {
                     currEl = this.$refs.imageKeep;
                     currEl.style.border = '1px solid black';
                     currEl.style.backgroundColor = 'rgb(207, 207, 207)';
+
+                    this.newKeep = keepService.newKeep('noteImg')
                     break;
+
                 case 'textkeep':
                     elsArr.forEach(el => {
                         el[0].style.border = 'unset';
@@ -73,7 +78,10 @@ export default {
                     currEl = this.$refs.textKeep;
                     currEl.style.border = '1px solid black';
                     currEl.style.backgroundColor = 'rgb(207, 207, 207)';
+
+                    this.newKeep = keepService.newKeep('noteTxt')
                     break;
+
                 case 'todokeep':
                     elsArr.forEach(el => {
                         el[0].style.border = 'unset';
@@ -83,7 +91,10 @@ export default {
                     currEl = this.$refs.todosKeep;
                     currEl.style.border = '1px solid black';
                     currEl.style.backgroundColor = 'rgb(207, 207, 207)';
+
+                    this.newKeep = keepService.newKeep('noteTodos')
                     break;
+
                 case 'videokeep':
                     elsArr.forEach(el => {
                         el[0].style.border = 'unset';
@@ -93,10 +104,12 @@ export default {
                     currEl = this.$refs.videoKeep;
                     currEl.style.border = '1px solid black';
                     currEl.style.backgroundColor = 'rgb(207, 207, 207)';
+
+                    this.newKeep = keepService.newKeep('noteVideo')
                     break;
             }
 
-            this.newKeep = true
+            // this.newKeep = true
         },
         focus() {
             console.log('focus');
