@@ -10,7 +10,7 @@ export default {
         <keep-nav />
         <keep-dev />
         <keep-compose />
-        <keep-list :notes="fliterNotes"/>
+        <keep-list v-if="allNotes" :notes="fliterNotes"/>
     </section>
     `,
     data() {
