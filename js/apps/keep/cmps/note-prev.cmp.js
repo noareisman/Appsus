@@ -1,8 +1,9 @@
-import noteImg  from './note-img.cmp.js';
+import noteTodo  from './note-todo.cmp.js';
 import noteTxt  from './note-txt.cmp.js';
 import noteVideo  from './note-video.cmp.js';
-import noteTodo  from './note-todo.cmp.js';
+import noteImg  from './note-img.cmp.js';
 import { keepService } from '../services/keep.service.js';
+
 export default {
     props: ['note'],
     template: `
