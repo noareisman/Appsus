@@ -145,11 +145,12 @@ const eMails = query();
 export const emailService = {
     query,
     updateEmailStat,
-    toogleReadStat,
+    toggleReadStat,
     removeMsg,
     msgToTrash,
     getNewEmail,
-    saveNewMsg
+    saveNewMsg,
+    toggleFav
 }
 
 function query() {
@@ -172,14 +173,22 @@ function updateEmailStat(msg) {
         })
 }
 
-function toogleReadStat(msg) {
+function toggleReadStat(msg) {
     return getById(msg.id)
         .then(msg => {
             msg.filters.viewd = !msg.filters.viewd;
             saveMsg(msg);
             return msg;
         })
+}
 
+function toggleFav(msg) {
+    return getById(msg.id)
+        .then(msg => {
+            msg.filters.important = !msg.filters.important;
+            saveMsg(msg);
+            return msg;
+        })
 }
 
 function getById(id) {
