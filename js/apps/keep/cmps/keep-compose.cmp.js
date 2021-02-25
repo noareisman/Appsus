@@ -24,7 +24,7 @@ export default {
 
     },
     created(){
-        eventBus.$emit('savedNote', {this.});
+        eventBus.$emit('savedNote', {});
     }
 
 }
