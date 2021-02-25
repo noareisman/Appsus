@@ -5,9 +5,8 @@
 }
 
 .new-msg {
-    /* outline: 1px solid black; */
     margin: 10px;
-    width: 110%;
+    width: 100%;
 }
 
 hr {
@@ -38,19 +37,27 @@ hr {
     padding: 5px;
 }
 
+.new-msg table tr {
+    width: 100%;
+}
+
 .new-msg td {
+    width: 100%;
+}
+
+.new-msg-content {
     width: 100%;
 }
 
 .new-msg input {
     border: unset;
     outline: unset;
-    width: 88%;
+    width: 90%;
 }
 
 textarea {
     border: 1px solid lightgrey;
     outline: 1px solid lightgrey;
-    width: 100% !important;
-    height: 200px;
+    width: 113.5%;
+    height: 250px;
 }

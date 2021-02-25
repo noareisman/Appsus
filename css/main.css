@@ -14,6 +14,11 @@
     /* outline: 1px solid black; */
 }
 
+body {
+    margin: 0;
+    padding: 5px;
+}
+
 h1,
 h2,
 h3,
