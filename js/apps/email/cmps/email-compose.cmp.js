@@ -5,7 +5,7 @@ export default {
         <section class="new-msg">
             <div class="new-msg-header flex space-between">
                 <h1>New Message</h1>
-                <img @click="sendMsg" src="images/sent.png" alt="" />
+                <img title="Send message" @click="sendMsg" src="images/sent.png" alt="" />
             </div>
 
             <table class="flex column">

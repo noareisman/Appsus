@@ -14,6 +14,11 @@
     /* outline: 1px solid black; */
 }
 
+body {
+    margin: 0;
+    padding: 5px;
+}
+
 h1,
 h2,
 h3,
@@ -61,8 +66,35 @@ p {
 .email-dev-item>*:hover {
     cursor: pointer;
 }
+
+.email-logo {
+    cursor: pointer;
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+
+.new-mail-btn {
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.email-logo:hover {
+    border-radius: 15%;
+    border-bottom: 2px solid white;
+}
+
+.new-mail-btn:hover {
+    border-bottom: 2px solid white;
+    background-color: unset;
+}
+
+
 /*/////////////////////////////////////////////////////////////*/
+
+
 /* KEEP NAV*/
+
+
 /* 
 .email-nav {
     background-color: #292929;
@@ -92,14 +124,23 @@ p {
     padding: 1em 3em;
     text-align: center;
     /* padding-inline-start:unset; */
-    /* border-bottom: 1px solid black;
+
+
+/* border-bottom: 1px solid black;
 }
 
 .email-dev-item>*:hover {
     cursor: pointer; */
+
+
 /* }  */
+
+
 /*////////////////////////////////////////////////////////*/
+
+
 /*HANDLERS*/
+
 .flex {
     display: flex;
 }
