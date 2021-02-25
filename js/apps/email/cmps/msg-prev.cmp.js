@@ -40,11 +40,11 @@ export default {
         detailsToggle() {
             this.msgDetails = !this.msgDetails;
             emailService.updateEmailStat(this.msg)
-                .then(msg => this.msgRead = msg.isRead)
+                .then(msg => this.msgRead = msg.filters.viewd)
         },
         readToggle() {
             emailService.toogleReadStat(this.msg)
-                .then(msg => this.msgRead = msg.isRead)
+                .then(msg => this.msgRead = msg.filters.viewd)
         }
     },
     computed: {
@@ -86,7 +86,7 @@ export default {
     },
     created() {
         this.msgDetails = false;
-        this.msgRead = this.msg.isRead;
+        this.msgRead = this.msg.filters.viewd;
     },
     components: {
         msgDetails
