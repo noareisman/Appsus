@@ -6,6 +6,7 @@ export default {
     template: `
         <section>
                 <div class ="msg-prev flex center">
+                    <div class="fav">S</div>
                     <div @click="detailsToggle" class="msg-sender" :class="isNewMsg">
                          {{msg.participants.sender}} 
                     </div>
