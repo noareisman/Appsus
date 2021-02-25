@@ -58,6 +58,7 @@ export default {
                     })
                 }
             } else {
+                if (currFilter)
                 if (!str) {
                     return this.allMsgs.filter((msg) => { return msg.filters[currFilter] })
                 } else {
