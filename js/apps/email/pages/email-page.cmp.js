@@ -12,7 +12,7 @@ export default {
         <email-nav />
         <section class="main-content flex">
             <email-dev />
-            <div>
+            <div class="list-new-msg-container">
                 <email-list v-if="isList" eventBus :msgs="filterMsgs"/>
                 <email-compose v-if="isCompose" />
             </div>
@@ -53,20 +53,19 @@ export default {
                 } else {
                     return this.allMsgs.filter((msg) => {
                         return msg.body.includes(str) ||
-                        msg.participants.sender.includes(str)||
-                        msg.subject.includes(str)
+                            msg.participants.sender.includes(str) ||
+                            msg.subject.includes(str)
                     })
                 }
             } else {
-                if (currFilter)
                 if (!str) {
                     return this.allMsgs.filter((msg) => { return msg.filters[currFilter] })
                 } else {
                     var filteredMsgs = this.allMsgs.filter((msg) => { return msg.filters[currFilter] })
                     filteredMsgs.filter((msg) => {
-                        return msg.body.includes(str) || 
-                        msg.participants.sender.includes(str)||
-                        msg.subject.includes(str)  
+                        return msg.body.includes(str) ||
+                            msg.participants.sender.includes(str) ||
+                            msg.subject.includes(str)
                     })
                     return filteredMsgs
                 }
@@ -108,7 +107,7 @@ export default {
                 .then(() => this.loadEmails())
         })
         eventBus.$off('filtered', (filter) => { this.filter = filter })
-        eventBus.$off('newMsg', () => { })
+        eventBus.$off('newMsg', () => {})
     },
 
     components: {
