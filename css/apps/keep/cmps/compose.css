@@ -2,10 +2,47 @@
     width: fit-content;
     margin: 0 auto;
     padding: 10px;
+    width: 70%;
     background-color: rgba(0, 0, 0, 0.233);
+}
+
+.new-keep input {
+    outline: unset;
+    border: unset;
+    margin-bottom: 5px;
+    width: 80%;
+    height: 25px;
+}
+
+.new-keep .icon {
+    display: inline-block;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.icons {
+    width: 20%;
+}
+
+.line1 {
+    background-color: white;
+}
+
+.line2 {
+    height: fit-content;
 }
 
 .keep-text-area {
     outline: unset;
     border: unset;
+    width: 100%;
+    height: 150px;
+}
+
+.keep-text-area::placeholder {
+    transform: translateY(100%);
+}
+
+.sentKeep {
+    border-radius: unset !important;
 }
