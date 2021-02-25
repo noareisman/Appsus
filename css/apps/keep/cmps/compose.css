@@ -1,0 +1,11 @@
+.new-keep {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.233);
+}
+
+.keep-text-area {
+    outline: unset;
+    border: unset;
+}

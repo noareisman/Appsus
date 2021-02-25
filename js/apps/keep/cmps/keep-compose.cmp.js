@@ -3,8 +3,7 @@ export default {
     template: `
         <section> 
             <div class="new-keep">
-                <textarea @click="focus" :placeholder="noteType" name="Text1" cols="130">
-                </textarea>
+                <textarea class="keep-text-area" @click="focus" :placeholder="noteType" name="Text1" cols="100"></textarea>
                 <button @click="saveNote"><img src="/images/sendkeep.png" alt="" /></button>
             </div>
         <form @submit.prevent="saveNote">
