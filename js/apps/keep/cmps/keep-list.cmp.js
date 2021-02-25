@@ -11,7 +11,7 @@ export default {
     components: {
         notePrev
     },
-    created(){
+    created() {
         console.log(this.notes);
     }
 }

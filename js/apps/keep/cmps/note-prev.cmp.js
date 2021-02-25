@@ -8,7 +8,7 @@ export default {
     props: ['note'],
     template: `
         <section> 
-                <div class="note-container" :style="{background-color: style.color}">
+                <div class="note-container">
                     <button @click="pin">Pin</button>        
                     <button @click="Edit">Edit</button>
                     <compotent :is="type" :info="info"/>
@@ -25,24 +25,18 @@ export default {
             style: {}
         }
     },
-    methods: {
-        pin() {}
-    },
-    computed() {
-
-    },
-    components: {
-        noteTodos,
-        noteTxt,
-        noteVideo,
-        noteImg
-    },
     created() {
         this.type = this.note.type,
             this.pin = this.note.isPined,
             this.info = this.note.info,
             this.style = this.note.style,
             this.id = this.note.id
+    },
+    components: {
+        noteTodos,
+        noteTxt,
+        noteVideo,
+        noteImg
     }
 
 }
