@@ -4,55 +4,55 @@ const KEEPS_KEY = 'keeps';
 
 const gTempKeeps = [{
         id: 'TempTry1',
-        type: "NoteTxt",
+        type: 'noteTxt',
         isPinned: false,
         info: {
-            txt: "Fullstack Me Baby!"
+            txt: 'Fullstack Me Baby!'
         },
         style: {
-            backgroundColor: "white",
+            backgroundColor: 'white',
             color: 'black'
         }
     },
     {
         id: 'TempTry2',
-        type: "NoteImg",
+        type: 'noteImg',
         isPinned: false,
         info: {
-            url: "http://some-img/me",
-            title: "Me playing Mi"
+            url: '',
+            title: 'Me playing Mi'
         },
         style: {
-            backgroundColor: "#00d",
+            backgroundColor: '#00d',
             color: 'black'
         }
     },
     {
         id: 'TempTry3',
-        type: "NoteTodos",
+        type: 'noteTodos',
         isPinned: false,
         info: {
-            label: "How was it:",
+            label: 'How was it:',
             todos: [
-                { txt: "Do that", doneAt: null },
-                { txt: "Do this", doneAt: 187111111 }
+                { txt: 'Do that', doneAt: null },
+                { txt: 'Do this', doneAt: 187111111 }
             ]
         },
         style: {
-            backgroundColor: "white",
+            backgroundColor: 'white',
             color: 'black'
         }
     },
     {
         id: 'TempTry4',
-        type: "NoteVideo",
+        type: 'noteVideo',
         isPinned: false,
         info: {
-            url: "http://some-img/me",
-            title: "Me playing Mi"
+            url: '',
+            title: 'Me playing Mi'
         },
         style: {
-            backgroundColor: "white",
+            backgroundColor: 'white',
             color: 'black'
         }
     }
@@ -70,7 +70,7 @@ export const keepService = {
 function query() {
     return asyncStorageService.query(KEEPS_KEY)
         .then(keeps => {
-            if (!keeps || !!keeps) {
+            if (!keeps || !keeps.length) {
                 keeps = gTempKeeps;
                 asyncStorageService.save(KEEPS_KEY, keeps);
             }
@@ -95,7 +95,7 @@ function newKeep(keepType) {
                 type: 'noteImg',
                 isPinned: false,
                 info: {
-                    url: 'https://images.unsplash.com/photo-1502124225665-6282a0146f6a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+                    url: '',
                     title: 'Fighting eval eye!'
                 },
                 style: { backgroundColor: '#00d', color: 'black' }
