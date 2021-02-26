@@ -3,6 +3,8 @@ import keepDev from '../cmps/keep-dev.cmp.js';
 import keepList from '../cmps/keep-list.cmp.js';
 import { keepService } from '../services/keep.service.js';
 import keepCompose from '../cmps/keep-compose.cmp.js';
+import { eventBus } from '../../../services/event-bus.service.js';
+import emailComposeCmp from '../../email/cmps/email-compose.cmp.js';
 
 export default {
     template: `
@@ -29,7 +31,6 @@ export default {
             return keepService.query()
                 .then(notes => {
                     this.allNotes = notes;
-                    console.log('load', this.allNotes);
                     return this.allNotes;
                 })
         },
@@ -99,7 +100,8 @@ export default {
         }
     },
     created() {
-        this.loadNotes()
+        this.loadNotes();
+        eventBus.$on('save-keep', () => this.loadNotes())
     },
     components: {
         keepNav,

@@ -7,6 +7,7 @@ const gTempKeeps = [{
         type: 'noteTxt',
         isPinned: false,
         info: {
+            title: '',
             txt: 'Fullstack Me Baby!'
         },
         style: {
@@ -20,7 +21,8 @@ const gTempKeeps = [{
         isPinned: false,
         info: {
             url: '',
-            title: 'Me playing Mi'
+            title: 'Me playing Mi',
+            txt: ''
         },
         style: {
             backgroundColor: '#00d',
@@ -32,6 +34,7 @@ const gTempKeeps = [{
         type: 'noteTodos',
         isPinned: false,
         info: {
+            title: '',
             label: 'How was it:',
             todos: [
                 { txt: 'Do that', doneAt: null },
@@ -49,7 +52,8 @@ const gTempKeeps = [{
         isPinned: false,
         info: {
             url: '',
-            title: 'Me playing Mi'
+            title: 'Me playing Mi',
+            txt: ''
         },
         style: {
             backgroundColor: 'white',
@@ -64,7 +68,8 @@ const keeps = query();
 export const keepService = {
     query,
     remove,
-    newKeep
+    newKeep,
+    saveKeep
 }
 
 function query() {
@@ -86,7 +91,7 @@ function newKeep(keepType) {
                 id: _makeId(5),
                 type: 'noteTxt',
                 isPinned: false,
-                info: { txt: '' },
+                info: { title: '', txt: '' },
                 style: { backgroundColor: 'white', color: 'black' }
             }
         case 'noteImg':
@@ -96,7 +101,8 @@ function newKeep(keepType) {
                 isPinned: false,
                 info: {
                     url: '',
-                    title: 'Fighting eval eye!'
+                    title: '',
+                    txt: ''
                 },
                 style: { backgroundColor: '#00d', color: 'black' }
             }
@@ -106,6 +112,7 @@ function newKeep(keepType) {
                 type: 'noteTodos',
                 isPinned: false,
                 info: {
+                    title: '',
                     label: '',
                     todos: [
                         { txt: '', doneAt: 0 },
@@ -120,7 +127,8 @@ function newKeep(keepType) {
                 isPinned: false,
                 info: {
                     url: '',
-                    title: ''
+                    title: '',
+                    txt: ''
                 },
                 style: { backgroundColor: 'white', color: 'black' }
             }
@@ -147,4 +155,8 @@ function _makeId(length = 5) {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return text;
+}
+
+function saveKeep(keep) {
+    console.log(keep);
 }

@@ -31,7 +31,7 @@
 }
 
 .iText:hover {
-    background-color: rgb(207, 207, 207);
+    background-color: c;
 }
 
 .iTodos:hover {
@@ -44,6 +44,25 @@
 
 .line1 {
     background-color: white;
+    height: fit-content;
+}
+
+.note-types {
+    width: 100%;
+}
+
+
+/* INPUTS */
+
+.url-input {
+    width: 100% !important;
+}
+
+.title-input {
+    padding: 3px;
+    height: 35px !important;
+    margin: unset !important;
+    font-size: 20px;
 }
 
 .line2 {
@@ -56,6 +75,8 @@
 }
 
 .keep-text-area {
+    font-size: 20px;
+    padding: 3px;
     outline: unset;
     border: unset;
     width: 100%;
@@ -68,11 +89,33 @@
 }
 
 .pin-keep-btn {
-    border-radius: unset !important;
-    /* flex-grow: ; */
+    margin-left: 5px;
 }
 
 .save-keep-btn {
+    margin-left: 5px;
     flex-grow: 2;
     border-radius: unset !important;
+}
+
+.pinned {
+    background-color: rgb(139, 139, 139);
+    border-radius: 30%;
+}
+
+
+/* COLORS */
+
+.colors-choise div {
+    width: 40%;
+    margin-top: 10px;
+}
+
+.colors-choise input {
+    margin: 0 0 0 10px;
+}
+
+.colors-choise div img {
+    width: 30px;
+    height: 30px;
 }

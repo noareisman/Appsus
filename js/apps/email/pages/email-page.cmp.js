@@ -92,10 +92,8 @@ export default {
             this.isList = true;
         })
         eventBus.$on('newMsg', (msg) => {
-            console.log('we moved here', msg);
             emailService.saveNewMsg(msg)
                 .then(() => this.loadEmails())
-
         })
     },
     destroyed() {

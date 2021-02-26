@@ -10,8 +10,5 @@ export default {
          </ul>`,
     components: {
         notePrev
-    },
-    created() {
-        console.log(this.notes);
     }
 }
