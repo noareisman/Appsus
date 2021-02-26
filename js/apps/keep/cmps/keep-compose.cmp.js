@@ -10,12 +10,21 @@ export default {
 
                 <new-note-title  @injectTitle="title" @activation="activateNewKeep" />
                  
-                <section v-if="newKeep && newKeep.type !== 'noteTxt' && newKeep.type !== 'noteTodos'"  class="note-types">
-                    <hr />
-                    <input class="url-input" v-model="urlDesc" type="text" :placeholder="noteType" />
+                <section v-if="newKeep && newKeep.type !== 'noteTxt' && newKeep.type !== 'noteTodos'"  class="note-types flex">
+                        <input ref="urlInpt" class="url-input" v-model="urlDesc" type="text" :placeholder="noteType" />
+                        <hr />
+                        <button @click="openUrl">+</button>
+                </section>
+                <section v-if="newKeep && newKeep.type !== 'noteTxt' && newKeep.type !== 'noteTodos' && newKeep.info.url.length">
+                    <!-- <--!TODO-->
+
+                    <div>
+                     <img  src="./images/keepType/color.webp" alt="" />
+                    </div>
                 </section>
 
-                <new-note-todos @save="saveNote" @pintodo="pinTheTodo" :todos="todosToShow" v-if="newKeep && newKeep.type === 'noteTodos'" @addToDo="addNewToDO" />
+
+                <new-note-todos @savetodo="saveNote" @pintodo="pinTheTodo" :todos="todosToShow" v-if="newKeep && newKeep.type === 'noteTodos'" @addToDo="addNewToDO" />
                 <new-note-txt @save="saveNote"  v-if="newKeep && newKeep.type !== 'noteTodos'" :newKeep="newKeep" />
         </section>
     `,
@@ -45,6 +54,14 @@ export default {
         title(val) { this.titleDesc = val; },
         addNewToDO(val) { this.newKeep.info.todos.unshift(val); },
         pinTheTodo() { this.newKeep.isPinned = !this.newKeep.isPinned },
+        clearIcons() {
+
+        },
+        openUrl() {
+            this.newKeep.info.url = this.urlDesc;
+            this.urlDesc = null;
+            this.$refs.urlInpt.value = ''
+        },
         activateNewKeep(ev, els) {
             const elsArr = Object.keys(els).map((el) => [els[el]]);
             let val = ev.target.src.slice(38, -5);
@@ -111,21 +128,32 @@ export default {
         },
         saveNote(childkeep) {
             if (!this.titleDesc) return;
-
             this.newKeep.info.title = this.titleDesc;
-            this.newKeep.info.txt = childkeep.info.txt
-
-            if (childkeep.bgcColorDesc) this.newKeep.style.backgroundColor = childkeep.bgcColorDesc;
-            if (childkeep.txtColorDesc) this.newKeep.style.color = childkeep.txtColorDesc;
-
+            if (this.newKeep.type !== 'noteTodos') {
+                this.newKeep.info.txt = childkeep.info.txt;
+                if (childkeep.bgcColorDesc) this.newKeep.style.backgroundColor = childkeep.bgcColorDesc;
+                if (childkeep.txtColorDesc) this.newKeep.style.color = childkeep.txtColorDesc;
+            }
             if (this.newKeep.type === 'noteImg' ||
                 this.newKeep.type === 'noteVideo') this.newKeep.info.url = this.urlDesc;
 
-            keepService.saveKeep(this.newKeep)
-            eventBus.$emit('save-keep');
+
+            // RESET
+            const elsIconArr = [document.querySelector('.iText'),
+                document.querySelector('.iImage'),
+                document.querySelector('.iVideo'),
+                document.querySelector('.iTodos')
+            ];
+            elsIconArr.forEach(el => {
+                el.style.border = 'unset';
+                el.style.backgroundColor = 'unset';
+            });
             this.newKeep = null;
             this.titleDesc = null;
             this.urlDesc = null;
+            return
+            keepService.saveKeep(this.newKeep)
+            eventBus.$emit('save-keep');
 
         },
     },
