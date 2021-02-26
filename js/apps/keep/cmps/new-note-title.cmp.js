@@ -29,7 +29,6 @@ export default {
         sendTitle(ev) {
             const val = ev.target.value
             this.$emit('injectTitle', val)
-
         }
     }
 }
