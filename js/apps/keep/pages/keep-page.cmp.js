@@ -8,7 +8,7 @@ import emailComposeCmp from '../../email/cmps/email-compose.cmp.js';
 
 export default {
     template: `
-    <section>
+    <section class="keep-app-main-container">
         <keep-nav />
         <keep-dev />
         <keep-compose />
