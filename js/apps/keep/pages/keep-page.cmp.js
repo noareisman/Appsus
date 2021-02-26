@@ -2,8 +2,8 @@ import keepNav from '../cmps/keep-nav.cmp.js';
 import keepDev from '../cmps/keep-dev.cmp.js';
 import keepList from '../cmps/keep-list.cmp.js';
 import { keepService } from '../services/keep.service.js';
-import keepCompose from '../cmps/keep-compose.cmp.js';
 import { eventBus } from '../../../services/event-bus.service.js';
+import keepCompose from '../cmps/keep-compose.cmp.js';
 import emailComposeCmp from '../../email/cmps/email-compose.cmp.js';
 
 export default {
@@ -34,6 +34,9 @@ export default {
                     return this.allNotes;
                 })
         },
+        reloadNotes(){
+            this.allNotes=this.loadNotes();
+        }
     },
     computed: {
         fliterNotes() {
@@ -43,6 +46,7 @@ export default {
     created() {
         this.loadNotes();
         eventBus.$on('save-keep', () => this.loadNotes())
+        eventBus.$on('removeNote',this.reloadNotes)
     },
     components: {
         keepNav,

@@ -67,9 +67,10 @@ const keeps = query();
 
 export const keepService = {
     query,
-    remove,
+    removeKeep,
     newKeep,
-    saveKeep
+    saveKeep,
+    getKeepById
 }
 
 function query() {
@@ -88,7 +89,7 @@ function newKeep(keepType) {
     switch (keepType) {
         case 'noteTxt':
             return {
-                id: _makeId(5),
+                id: asyncStorageService.makeId(5),
                 type: 'noteTxt',
                 isPinned: false,
                 info: { title: '', txt: '' },
@@ -96,7 +97,7 @@ function newKeep(keepType) {
             }
         case 'noteImg':
             return {
-                id: _makeId(5),
+                id:  asyncStorageService.makeId(5),
                 type: 'noteImg',
                 isPinned: false,
                 info: {
@@ -108,7 +109,7 @@ function newKeep(keepType) {
             }
         case 'noteTodos':
             return {
-                id: _makeId(5),
+                id:  asyncStorageService.makeId(5),
                 type: 'noteTodos',
                 isPinned: false,
                 info: {
@@ -122,7 +123,7 @@ function newKeep(keepType) {
             }
         case 'noteVideo':
             return {
-                id: _makeId(5),
+                id:  asyncStorageService.makeId(5),
                 type: "noteVideo",
                 isPinned: false,
                 info: {
@@ -137,24 +138,15 @@ function newKeep(keepType) {
 
 
 
-function remove(keep) {
-    return _getById(keep.id)
+function removeKeep(keep) {
+    return getKeepById(keep.id)
         .then(keep => {
             return asyncStorageService.remove(KEEPS_KEY, keep.id)
         })
 }
 
-function _getById(id) {
+function getKeepById(id) {
     return asyncStorageService.get(KEEPS_KEY, id)
-}
-
-function _makeId(length = 5) {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for (var i = 0; i < length; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return text;
 }
 
 function saveKeep(keep) {
