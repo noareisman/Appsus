@@ -149,8 +149,8 @@ const gTempKeeps = [{
             backgroundColor: 'white',
             color: 'black'
         }
-    },
-];
+    }
+]
 
 const keeps = query();
 // console.log(keeps);
@@ -237,7 +237,12 @@ function getKeepById(id) {
     return asyncStorageService.get(KEEPS_KEY, id)
 }
 
-function saveKeep(keep) {
+function saveKeep(keep) { <<
+    << << < HEAD
     if (keep.id) return asyncStorageService.put(KEEPS_KEY, keep)
-    else return asyncStorageService.post(KEEPS_KEY, keep)
+    else return asyncStorageService.post(KEEPS_KEY, keep) ===
+        === =
+        if (keep.id) return asyncStorageService.put(KEEPS_KEY, keep);
+        else return asyncStorageService.post(KEEPS_KEY, keep); >>>
+        >>> > 7e99 caf3b0ed2264dd21e98a39c04d47a4971401
 }
