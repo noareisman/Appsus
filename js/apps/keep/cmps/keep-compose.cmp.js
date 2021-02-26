@@ -15,8 +15,8 @@ export default {
                     <input class="url-input" v-model="urlDesc" type="text" :placeholder="noteType" />
                 </section>
 
-                <new-note-todos :todos="todosToShow" v-if="newKeep && newKeep.type === 'noteTodos'" @addToDo="addNewToDO" />
-                <new-note-txt @save="saveNote" v-if="newKeep && newKeep.type !== 'noteTodos'" :newKeep="newKeep" />
+                <new-note-todos @save="saveNote" @pintodo="pinTheTodo" :todos="todosToShow" v-if="newKeep && newKeep.type === 'noteTodos'" @addToDo="addNewToDO" />
+                <new-note-txt @save="saveNote"  v-if="newKeep && newKeep.type !== 'noteTodos'" :newKeep="newKeep" />
         </section>
     `,
     data() {
@@ -44,8 +44,7 @@ export default {
     methods: {
         title(val) { this.titleDesc = val; },
         addNewToDO(val) { this.newKeep.info.todos.unshift(val); },
-
-
+        pinTheTodo() { this.newKeep.isPinned = !this.newKeep.isPinned },
         activateNewKeep(ev, els) {
             const elsArr = Object.keys(els).map((el) => [els[el]]);
             let val = ev.target.src.slice(38, -5);
