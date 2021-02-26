@@ -43,6 +43,7 @@ export default {
             this.textDesc = null;
             this.txtColorDesc = null;
             this.bgcColorDesc = null;
+            document.querySelector('.title-input').value = '';
         },
         pinKeep() {
             this.currNewKeep.isPinned = !this.currNewKeep.isPinned;

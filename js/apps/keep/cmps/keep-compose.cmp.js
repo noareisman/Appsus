@@ -164,11 +164,11 @@ export default {
                 el.style.border = 'unset';
                 el.style.backgroundColor = 'unset';
             });
+            keepService.saveKeep(this.newKeep);
+            eventBus.$emit('save-keep');
             this.newKeep = null;
             this.titleDesc = null;
             this.urlDesc = null;
-            keepService.saveKeep(this.newKeep)
-            eventBus.$emit('save-keep');
 
         },
     },
