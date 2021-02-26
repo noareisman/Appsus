@@ -15,11 +15,18 @@ export default {
                         <hr />
                         <button @click="openUrl">+</button>
                 </section>
-                <section v-if="newKeep && newKeep.type !== 'noteTxt' && newKeep.type !== 'noteTodos' && newKeep.info.url.length">
-                    <!-- <--!TODO-->
 
-                    <div>
-                     <img  src="./images/keepType/color.webp" alt="" />
+                <section class="url-keep" v-if="newKeep && newKeep.type !== 'noteTxt' && newKeep.type !== 'noteTodos' && newKeep.info.url.length">
+                    <div v-if="newKeep && newKeep.type === 'noteImg'">
+                     <img  :src="keepUrl" alt="INVALID URL" />
+                    </div>
+                    <div  v-if="newKeep && newKeep.type === 'noteVideo'">
+                        <!-- <video id="video1" :src="keepUrl" > -->
+                            <!-- <div id="try1"></div> -->
+                        <video  id="video1" width="320" height="240" controls>
+                        <source :src="keepUrl" type="video/mp4">
+                        <source :src="keepUrl" type="video/ogg">
+                        </video>
                     </div>
                 </section>
 
@@ -48,19 +55,25 @@ export default {
         },
         todosToShow() {
             return this.todos
+        },
+        keepUrl() {
+            return this.urlDesc
         }
     },
     methods: {
         title(val) { this.titleDesc = val; },
         addNewToDO(val) { this.newKeep.info.todos.unshift(val); },
         pinTheTodo() { this.newKeep.isPinned = !this.newKeep.isPinned },
-        clearIcons() {
-
-        },
         openUrl() {
             this.newKeep.info.url = this.urlDesc;
-            this.urlDesc = null;
-            this.$refs.urlInpt.value = ''
+            console.log(this.$refs.urlInpt.value);
+            // if (this.newKeep.type === 'noteVideo') {
+            // const vid = document.getElementById('try1');
+            // console.log(vid);
+            // return
+            // vid.load();
+            // vid.play();
+            // }
         },
         activateNewKeep(ev, els) {
             const elsArr = Object.keys(els).map((el) => [els[el]]);
@@ -72,6 +85,7 @@ export default {
 
             switch (val) {
                 case 'imagekeep':
+                    this.urlDesc = null;
                     elsArr.forEach(el => {
                         el[0].style.border = 'unset';
                         el[0].style.backgroundColor = 'unset';
@@ -85,6 +99,7 @@ export default {
                     break;
 
                 case 'textkeep':
+                    this.urlDesc = null;
                     elsArr.forEach(el => {
                         el[0].style.border = 'unset';
                         el[0].style.backgroundColor = 'unset';
@@ -98,6 +113,7 @@ export default {
                     break;
 
                 case 'todokeep':
+                    this.urlDesc = null;
                     elsArr.forEach(el => {
                         el[0].style.border = 'unset';
                         el[0].style.backgroundColor = 'unset';
@@ -113,6 +129,7 @@ export default {
                     break;
 
                 case 'videokeep':
+                    this.urlDesc = null;
                     elsArr.forEach(el => {
                         el[0].style.border = 'unset';
                         el[0].style.backgroundColor = 'unset';
@@ -129,11 +146,10 @@ export default {
         saveNote(childkeep) {
             if (!this.titleDesc) return;
             this.newKeep.info.title = this.titleDesc;
-            if (this.newKeep.type !== 'noteTodos') {
-                this.newKeep.info.txt = childkeep.info.txt;
-                if (childkeep.bgcColorDesc) this.newKeep.style.backgroundColor = childkeep.bgcColorDesc;
-                if (childkeep.txtColorDesc) this.newKeep.style.color = childkeep.txtColorDesc;
-            }
+
+            if (this.newKeep.type !== 'noteTodos') this.newKeep.info.txt = childkeep.info.txt;
+            if (childkeep.bgcColorDesc) this.newKeep.style.backgroundColor = childkeep.bgcColorDesc;
+            if (childkeep.txtColorDesc) this.newKeep.style.color = childkeep.txtColorDesc;
             if (this.newKeep.type === 'noteImg' ||
                 this.newKeep.type === 'noteVideo') this.newKeep.info.url = this.urlDesc;
 
@@ -151,7 +167,6 @@ export default {
             this.newKeep = null;
             this.titleDesc = null;
             this.urlDesc = null;
-            return
             keepService.saveKeep(this.newKeep)
             eventBus.$emit('save-keep');
 
