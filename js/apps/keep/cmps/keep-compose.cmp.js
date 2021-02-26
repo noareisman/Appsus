@@ -15,7 +15,7 @@ export default {
                     <input class="url-input" v-model="urlDesc" type="text" :placeholder="noteType" />
                 </section>
 
-                <new-note-todos v-if="newKeep &&newKeep.type === 'noteTodos'" />
+                <new-note-todos v-if="newKeep &&newKeep.type === 'noteTodos'" @addToDo="addNewToDO" />
                 <new-note-txt @save="saveNote" v-if="newKeep && newKeep.type !== 'noteTodos'" :newKeep="newKeep" >
         </section>
     `,
@@ -41,6 +41,11 @@ export default {
     },
     methods: {
         title(val) { this.titleDesc = val; },
+        addNewToDO(val) {
+            // console.log(val);
+            this.newKeep.info.todos.push(val)
+            console.log(this.newKeep.info.todos);
+        },
 
 
         activateNewKeep(ev, els) {
@@ -88,7 +93,8 @@ export default {
                     currEl.style.border = '1px solid black';
                     currEl.style.backgroundColor = 'rgb(207, 207, 207)';
 
-                    this.newKeep = keepService.newKeep('noteTodos')
+                    this.newKeep = keepService.newKeep('noteTodos');
+                    console.log(this.newKeep);
                     break;
 
                 case 'videokeep':
