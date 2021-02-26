@@ -3,7 +3,7 @@ import notePrev from './note-prev.cmp.js';
 export default {
     props: ['notes', 'pinnedNotes'],
     template: `
-        <section>
+        <section class="keep-list-container">
             <ul class="keep-notes-container pinned-notes flex space-between"> 
                 <li class="note-item" v-for="pinnedNote in pinnedNotes" :key="pinnedNote.id">
                     <note-prev :note="pinnedNote"/>

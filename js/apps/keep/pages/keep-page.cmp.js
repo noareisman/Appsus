@@ -44,7 +44,7 @@ export default {
     },
     computed: {
         pinnedNotesToShow() {
-            return(this.allNotes.filter(note=>note.isPinned));
+            return this.allNotes.filter(note=>note.isPinned));
 		},
         filterNotes() {
             return this.allNotes.filter(note=>!note.isPinned)
