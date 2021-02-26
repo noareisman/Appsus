@@ -277,9 +277,15 @@ audio {
      align-self: flex-end;
      color: rgb(211, 209, 209);
      width: fit-content;
-     
     }
-    
+
+    .pin-btn :hover{
+        color:rgb(29, 28, 28);
+    }    
+    .isPined {
+        color:rgb(224, 22, 22);
+    }
+
     .action-btns>*{
         margin-top: 5px;
         color: rgb(211, 209, 209);

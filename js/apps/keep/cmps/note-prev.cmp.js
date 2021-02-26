@@ -9,8 +9,8 @@ export default {
     props: ['note'],
     template: `
         <section class="note-container flex column" :style="{'background-color':style.backgroundColor}"> 
-                <button class="pin-btn" @click="pinNote()"><i class="fas fa-thumbtack"></i></button>
-                <compotent v-if="note" :is="type" :info="info" :style="{'color':style.\color}"/>
+                <button :class="changePinColor" class="pin-btn"  @click="togglePinNote"><i class="fas fa-thumbtack"></i></button>
+                <compotent v-if="note" :is="type" :info="info" :style="{'color':style.color}"/>
                 <div class="flex space-between">
                     <i v-if="type" class="note-type-icon" :class="setIcon"></i>
                     <div class="action-btns">      
@@ -25,28 +25,34 @@ export default {
         return {
             id: null,
             type: null,
-            pin: null,
+            isPined: null,
             info: {},
             style: {}
         }
     },
     methods: {
-        pinNote() {
-            // keepService.ge(note)
-            // .then (()=>{
-            //     eventBus.$emit('removeNote')
-            //     return
-            // })
+        togglePinNote() {
+            this.isPined = !this.isPined;
+            return keepService.updateKeep(this.id,'togglePin')
+                .then(() => {
+                    eventBus.$emit('togglePin')
+                    return 
+                })
         },
         removeNote(note) {
             keepService.removeKeep(note)
-            .then (()=>{
-                eventBus.$emit('removeNote')
-                return
-            })
+                .then(() => {
+                    eventBus.$emit('removeNote')
+                    return
+                })
         },
     },
     computed: {
+        changePinColor() {
+            return {
+                isPined: this.isPined
+            }
+        },
         setIcon() {
             switch (this.type) {
                 case ('noteImg'):
@@ -63,11 +69,10 @@ export default {
     created() {
         if (this.note) {
             this.type = this.note.type,
-                console.log(this.type, Date.now());
-            this.pin = this.note.isPined,
-                this.info = this.note.info,
-                this.style = this.note.style,
-                this.id = this.note.id
+            this.isPined = this.note.isPined,
+            this.info = this.note.info,
+            this.style = this.note.style,
+            this.id = this.note.id
         }
     },
     components: {
