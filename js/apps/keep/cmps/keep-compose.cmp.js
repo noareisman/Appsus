@@ -16,7 +16,7 @@ export default {
                 </section>
 
                 <new-note-todos :todos="todosToShow" v-if="newKeep && newKeep.type === 'noteTodos'" @addToDo="addNewToDO" />
-                <new-note-txt @save="saveNote" v-if="newKeep && newKeep.type !== 'noteTodos'" :newKeep="newKeep" >
+                <new-note-txt @save="saveNote" v-if="newKeep && newKeep.type !== 'noteTodos'" :newKeep="newKeep" />
         </section>
     `,
     data() {
