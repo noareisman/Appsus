@@ -21,9 +21,6 @@ export default {
                 </div>            
             </div>
         </section>`,
-    data() {
-        currNewKeep = null;
-    },
     methods: {
         sendActivation(ev) {
             const els = this.$refs;
