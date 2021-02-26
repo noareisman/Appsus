@@ -4,7 +4,7 @@ export default {
     props: ['notes'],
     template: `
          <ul class="keep-notes-container flex space-between"> 
-             <li v-for="note in notes" :key="note.id">
+             <li class="note-item" v-for="note in notes" :key="note.id">
                  <note-prev :note="note"/>
              </li>
          </ul>`,
