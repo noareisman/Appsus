@@ -7,13 +7,17 @@ import { keepService } from '../services/keep.service.js';
 export default {
     props: ['note'],
     template: `
-        <section> 
-                <div class="note-container">
-                    <button @click="removeNote(note)">Remove</button>
-                    <button @click="pinNote()">Pin</button>
-                    <compotent v-if="note" :is="type" :info="info"/>
-                    <i v-if="type" :class="setIcon"></i>
-                </div>        
+        <section class="note-container flex column" :style="{'background-color':style.backgroundColor}"> 
+                <button class="pin-btn" @click="pinNote()"><i class="fas fa-thumbtack"></i></button>
+                <compotent v-if="note" :is="type" :info="info" :style="{'color':style.\color}"/>
+                <div class="flex space-between">
+                    <i v-if="type" class="note-type-icon" :class="setIcon"></i>
+                    <div class="action-btns">      
+                        <button @click="sendNote(note)"><i class="far fa-paper-plane"></i></button>      
+                        <button @click="editNote(note)"><i class="fas fa-edit"></i></button>      
+                        <button @click="removeNote(note)"><i class="far fa-trash-alt"></i></button>      
+                    </div>
+                </div>
         </section>
         `,
     data() {

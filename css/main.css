@@ -230,16 +230,16 @@ audio {
 } */
 
 /********** Style specific item types **********/
-/* 
+ 
 .note-type {
 	break-inside: avoid;
 	background: #fff;
 	padding: 1em;
 	margin: 0 0 1.5em;
 	border-radius: 2px;
-	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
+	
 }
-
+/*
 .note-type-list ul li {
 	line-height: 2em;
 }
@@ -258,17 +258,55 @@ audio {
 .note-container{
     width: fit-content;
     height: fit-content;
-}
-
-.preview-container-note{
-    background: rgb(255, 219, 76, 70%);
-    min-width: 300px ;
-    min-height: 300px;
+    min-width: 200px ;
+    min-height: fit-content;
     list-style: none;
-    border-radius: 20px;
-    padding: 40px;
+    border-radius: 4px;
+    padding: 10px 15px;
+    
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.10), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 15px 0 rgba(0,0,0,0.12);
+}
+ .keep-notes-container{
+     padding: 40px 100px;
+ }
+
+ .keep-notes-container>*{
+     margin-inline-start: 25px;
+ }
+
+ .pin-btn{
+     align-self: flex-end;
+     color: rgb(211, 209, 209);
+     width: fit-content;
+     
+    }
+    
+    .action-btns>*{
+        margin-top: 5px;
+        color: rgb(211, 209, 209);
+    
+        /* display: none; */
+    }
+    
+    .action-btns>* :hover {
+        display: flex;
+        color:rgb(29, 28, 28);
+
 }
 
+
+ .note-type-icon{
+     color: rgb(211, 209, 209);
+    font-size: 1.8em;
+    }
+
+ .note-type >*{
+     padding-bottom: 10px;
+ }
+
+ .temp{
+     color: #f8d2e4;
+ }
 
 /*HANDLERS*/
 
