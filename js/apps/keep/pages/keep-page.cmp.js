@@ -47,6 +47,7 @@ export default {
         this.loadNotes();
         eventBus.$on('save-keep', () => this.loadNotes())
         eventBus.$on('removeNote',this.reloadNotes)
+        eventBus.$on('togglePin',this.reloadNotes)
     },
     components: {
         keepNav,
