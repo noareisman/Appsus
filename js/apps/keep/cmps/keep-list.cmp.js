@@ -10,5 +10,5 @@ export default {
          </ul>`,
     components: {
         notePrev
-    }
+    },
 }

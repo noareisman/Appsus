@@ -282,7 +282,7 @@ audio {
     .pin-btn :hover{
         color:rgb(29, 28, 28);
     }    
-    .isPined {
+    .isPinned {
         color:rgb(224, 22, 22);
     }
 
