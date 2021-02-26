@@ -4,30 +4,26 @@ export default {
     template: `
     <section>
         <hr />
-        <button @click="addTodo">+</button>
-        <input  ref="todoInput" @input="writeTODO" class="todo-input" placeholder="Enter comma separated list..." />
-        <hr />
-        <new-todo-list :todoslist="todos" />
-
-
-
-            <!-- <div >
-                <img src="./images/keepType/bgcolor.png" alt="" />
-                <input @input="updateColor" type="color" /> 
+        <div class="flex">
+            <div class="todo-input">
+                <button @click="addTodo">+</button>
+                <input  @keyup.enter="addTodo" ref="todoInput" @input="writeTODO" class="todo-input" placeholder="Enter comma separated list..." />
             </div>
-            <div >
+            <hr />
+            <div class="todo-keep-img flex">
+                <img src="./images/keepType/bgcolor.png" alt="" />
+                <input id="bgc-color" class="todo-bgc-color" type="color" /> 
                 <img  src="./images/keepType/color.webp" alt="" />
-                <input @input="updateColor" class="txt-color" type="color" /> 
-            </div> -->
-
-        <!-- <div>
-            <button  @click="pinKeep"><img src="./images/keepType/pinkeep.png" alt="" /></button>
-            <button  @click="saveNote"><img src="/images/sendkeep.png" alt="" /></button>
-        </div> -->
-        <!-- <div class="new-keep-btns flex column">
-            <button class="pin-keep-btn" :class="isPinned" @click="pinKeep"><img src="./images/keepType/pinkeep.png" alt="" /></button>
-            <button class="save-keep-btn" @click="saveNote"><img src="/images/sendkeep.png" alt="" /></button>
-        </div> -->
+                <input id="txt-color" class="todo-txt-color" type="color" />
+                <hr/>
+            </div>
+            <div class="todo-keep-btns flex">
+                <button  class="pin-todo-keep" @click="pinTodoKeep"><img src="./images/keepType/pinkeep.png" alt="" /></button>
+                <button  class="save-todo-keep" @click="saveTodoKeep"><img src="/images/sendkeep.png" alt="" /></button>
+            </div>
+        </div>
+            
+            <new-todo-list :todoslist="todos" />
     </section>
     `,
     data() {
@@ -40,11 +36,19 @@ export default {
             if (!this.todo) return;
             const todo = { doneAt: Date.now(), txt: this.todo }
             this.$emit('addToDo', todo)
+
+            this.todo = null;
             this.$refs.todoInput.value = '';
         },
         writeTODO(ev) {
             const val = ev.target.value;
             this.todo = val;
+        },
+        saveTodoKeep() {
+            console.log('i am save todo keep');
+        },
+        pinTodoKeep() {
+            console.log('i am pin todo keep');
         }
     },
     components: {
