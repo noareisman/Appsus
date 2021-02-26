@@ -70,6 +70,10 @@
 
 /* INPUTS */
 
+.note-types input {
+    width: 90%;
+}
+
 .new-keep input {
     outline: unset;
     border: unset;
@@ -80,9 +84,15 @@
 }
 
 .url-input {
-    width: 100% !important;
+    flex-grow: 5;
     margin: 0 !important;
     padding: 3px;
+}
+
+.note-types button {
+    flex-grow: 1;
+    width: 10%;
+    border-radius: 25px;
 }
 
 .todo-input {

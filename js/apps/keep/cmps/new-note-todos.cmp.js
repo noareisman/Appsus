@@ -45,7 +45,7 @@ export default {
             this.todo = val;
         },
         saveTodoKeep() {
-            this.$emit('save');
+            this.$emit('savetodo');
         },
         pinTodoKeep() {
             this.$emit('pintodo');
