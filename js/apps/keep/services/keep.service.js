@@ -114,9 +114,7 @@ function newKeep(keepType) {
                 info: {
                     title: '',
                     label: '',
-                    todos: [
-                        { txt: '', doneAt: 0 },
-                    ]
+                    todos: []
                 },
                 style: { backgroundColor: 'white', color: 'black' }
             }

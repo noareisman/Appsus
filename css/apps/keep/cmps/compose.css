@@ -6,15 +6,6 @@
     background-color: #e8e8e8;
 }
 
-.new-keep input {
-    outline: unset;
-    border: unset;
-    margin-bottom: 5px;
-    width: 80%;
-    height: 25px;
-    background-color: #e8e8e8;
-}
-
 .icon {
     display: inline-block;
     margin: 3px;
@@ -52,12 +43,50 @@
     width: 100%;
 }
 
+.line2 {
+    height: fit-content;
+}
+
+.line2 img {
+    width: 40px;
+    height: 40px;
+}
+
+.pin-keep-btn {
+    margin-left: 5px;
+}
+
+.save-keep-btn {
+    margin-left: 5px;
+    flex-grow: 2;
+    border-radius: unset !important;
+}
+
+.pinned {
+    background-color: rgb(139, 139, 139);
+    border-radius: 30%;
+}
+
 
 /* INPUTS */
+
+.new-keep input {
+    outline: unset;
+    border: unset;
+    margin-bottom: 5px;
+    width: 80%;
+    height: 25px;
+    background-color: #e8e8e8;
+}
 
 .url-input {
     width: 100% !important;
     margin: 0 !important;
+    padding: 3px;
+}
+
+.todo-input {
+    padding: 3px;
 }
 
 .title-input {
@@ -68,15 +97,6 @@
     height: 45px !important;
     margin: unset !important;
     font-size: 20px;
-}
-
-.line2 {
-    height: fit-content;
-}
-
-.line2 img {
-    width: 40px;
-    height: 40px;
 }
 
 .keep-text-area {
@@ -93,21 +113,6 @@
 
 .keep-text-area::placeholder {
     transform: translateY(100%);
-}
-
-.pin-keep-btn {
-    margin-left: 5px;
-}
-
-.save-keep-btn {
-    margin-left: 5px;
-    flex-grow: 2;
-    border-radius: unset !important;
-}
-
-.pinned {
-    background-color: rgb(139, 139, 139);
-    border-radius: 30%;
 }
 
 
