@@ -1,6 +1,9 @@
 export default {
     props:['info'],
     template:`
-    <title>{{info.title}}</title>
-    `,
+    <section>
+        <h1>{{info.title}}</h1>
+        <img :src="info.url">
+    </section>
+        `,
 }
