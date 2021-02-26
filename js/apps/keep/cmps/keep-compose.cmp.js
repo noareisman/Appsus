@@ -1,5 +1,6 @@
 import { eventBus } from '../../../services/event-bus.service.js';
 import { keepService } from '../services/keep.service.js';
+import newNote from '../cmps/new-note.cmp.js';
 
 export default {
     template: `
@@ -31,34 +32,16 @@ export default {
                     <input class="url-input" v-model="urlDesc" type="text" :placeholder="noteType" />
                 </section>
                 <hr />
-                <section v-if="newKeep">
-                    <div class="line2 flex">
-                        <textarea class="keep-text-area" v-model="textDesc" @click="focus" :placeholder="noteType" name="Text1" cols="100"></textarea>
-                        <div class="new-keep-btns flex column">
-                            <button class="pin-keep-btn" :class="isPinned" @click="pinKeep"><img src="./images/keepType/pinkeep.png" alt="" /></button>
-                            <button class="save-keep-btn" @click="saveNote"><img src="/images/sendkeep.png" alt="" /></button>
-                        </div>
-                    </div>
-                    <div class="colors-choise flex space-around">
-                        <div class="flex">
-                            <img src="./images/keepType/bgcolor.png" alt="" />
-                            <input @input="updateColor" class="bgc-color" type="color" /> 
-                        </div>
-                        <div class="flex">
-                            <img class="txt-color-img" src="./images/keepType/color.webp" alt="" />
-                            <input @input="updateColor" class="txt-color" type="color" /> 
-                        </div>
-                    </div>
-                </section>
+                
+                <new-note  @save="saveNote" v-if="newKeep" :newKeep="newKeep" >
         </section>
     `,
     data() {
         return {
             newKeep: null,
             titleDesc: null,
-            textDesc: null,
-            txtColorDesc: null,
-            bgcColorDesc: null,
+            // HERE WAS TEXT DESC
+            // HERE WAS COLORS CHOISE
             urlDesc: null
         }
     },
@@ -73,24 +56,22 @@ export default {
                 case 'noteTodos':
                     return 'Enter comma separated list...';
             }
-            return 'Enter text here...';
-        },
-        isPinned() {
-            return { pinned: this.newKeep.isPinned }
         }
+        // HERE WAS ISPINNED?
     },
     methods: {
         activateNewKeep(ev) {
-
             const els = this.$refs;
             const elsArr = Object.keys(els).map((el) => [els[el]]);
 
             let val = ev.target.src.slice(38, -5);
+            console.log(val);
             let currEl;
-
             if (ev.target.type === 'text' && this.newKeep) return;
             if (ev.target.type === 'text') val = 'textkeep';
+            // return
 
+            console.log('now i am here');
             switch (val) {
                 case 'imagekeep':
                     elsArr.forEach(el => {
@@ -145,57 +126,45 @@ export default {
                     break;
             }
         },
-        focus() {
-            console.log('focus');
-        },
-        saveNote() {
+        // HERE WAS FOCUS
+        saveNote(childkeep) {
             if (!this.titleDesc) return;
+            console.log('i am children keep', childkeep);
 
             this.newKeep.info.title = this.titleDesc;
-            this.newKeep.info.txt = this.textDesc;
+            this.newKeep.info.txt = childkeep.info.txt
 
-            if (this.bgcColorDesc) this.newKeep.style.backgroundColor = this.bgcColorDesc;
-            if (this.txtColorDesc) this.newKeep.style.color = this.txtColorDesc;
+            if (childkeep.bgcColorDesc) this.newKeep.style.backgroundColor = childkeep.bgcColorDesc;
+            if (childkeep.txtColorDesc) this.newKeep.style.color = childkeep.txtColorDesc;
 
             if (this.newKeep.type === 'noteImg' ||
                 this.newKeep.type === 'noteVideo') this.newKeep.info.url = this.urlDesc;
 
+
+
+            console.log('i am father keep', this.newKeep);
+            return
+
+
             keepService.saveKeep(this.newKeep)
             eventBus.$emit('save-keep');
-
             this.newKeep = null;
             this.titleDesc = null;
-            this.textDesc = null;
-            this.txtColorDesc = null;
-            this.bgcColorDesc = null;
             this.urlDesc = null;
-        },
-        pinKeep() {
-            this.newKeep.isPinned = !this.newKeep.isPinned;
-        },
-        updateColor(ev) {
-            const currEl = ev.srcElement.className;
-            const currColor = ev.target.value;
-            const elsText = [
-                document.querySelector('.title-input'),
-                document.querySelector('.keep-text-area')
-            ]
 
-            switch (currEl) {
-                case 'txt-color':
-                    this.txtColorDesc = currColor;
-                    elsText.forEach(el => el.style.color = this.txtColorDesc)
-                    break;
-                case 'bgc-color':
-                    this.bgcColorDesc = currColor;
-                    elsText.forEach(el => el.style.backgroundColor = this.bgcColorDesc)
-
-                    break;
-            }
         },
+        // PIN KEEP WAS HERE
+        // HERE WAS UPDATECOLOR
         keepIsNotTxt() {
             return true
         }
+    },
+    components: {
+        newNote
+    },
+    created() {
+        this.$on('save-curr-new-keep', (newkeep))
+
     }
 
 }
