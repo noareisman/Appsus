@@ -11,8 +11,8 @@ const gTempKeeps = [{
             txt: 'Fullstack Me Baby!'
         },
         style: {
-            backgroundColor: 'white',
-            color: 'black'
+            backgroundColor:'moccasin', 
+            color: 'red'
         }
     },
     {
@@ -20,12 +20,12 @@ const gTempKeeps = [{
         type: 'noteImg',
         isPinned: false,
         info: {
-            url: '',
+            url: 'https://images.unsplash.com/photo-1469598614039-ccfeb0a21111?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80',
             title: 'Me playing Mi',
             txt: ''
         },
         style: {
-            backgroundColor: '#00d',
+            backgroundColor: '#f8d2e4',
             color: 'black'
         }
     },
@@ -51,8 +51,8 @@ const gTempKeeps = [{
         type: 'noteVideo',
         isPinned: false,
         info: {
-            url: '',
-            title: 'Me playing Mi',
+            url: 'https://i.ytimg.com/an_webp/CduA0TULnow/mqdefault_6s.webp?du=3000&sqp=COzt44EG&rs=AOn4CLBxY6Ssg3C6cMlh-gOI0ukScfJ9BA',
+            title: 'Free Britney, Bitch!',
             txt: ''
         },
         style: {
