@@ -25,19 +25,18 @@ export default {
         return {
             id: null,
             type: null,
-            isPined: null,
+            isPinned: null,
             info: {},
             style: {}
         }
     },
     methods: {
         togglePinNote() {
-            this.isPined = !this.isPined;
             return keepService.updateKeep(this.id,'togglePin')
-                .then(() => {
-                    eventBus.$emit('togglePin')
-                    return 
-                })
+            .then (()=>{
+                console.log(this.isPinned);
+                eventBus.$emit('togglePin')
+            })
         },
         removeNote(note) {
             keepService.removeKeep(note)
@@ -50,7 +49,7 @@ export default {
     computed: {
         changePinColor() {
             return {
-                isPined: this.isPined
+                isPinned: this.isPinned
             }
         },
         setIcon() {
@@ -69,7 +68,7 @@ export default {
     created() {
         if (this.note) {
             this.type = this.note.type,
-            this.isPined = this.note.isPined,
+            this.isPinned = this.note.isPinned,
             this.info = this.note.info,
             this.style = this.note.style,
             this.id = this.note.id

@@ -12,7 +12,7 @@ export default {
         <keep-nav />
         <keep-dev />
         <keep-compose />
-        <keep-list v-if="allNotes" :notes="fliterNotes"/>
+        <keep-list v-if="allNotes" :notes="filterNotes"/>
     </section>
     `,
     data() {
@@ -29,18 +29,25 @@ export default {
     methods: {
         loadNotes() {
             return keepService.query()
-                .then(notes => {
-                    this.allNotes = notes;
+            .then(notes => {
+                this.allNotes = notes;
                     return this.allNotes;
                 })
         },
         reloadNotes(){
-            this.allNotes=this.loadNotes();
+            this.allNotes=this.loadNotes()
+            .then(()=>{
+                console.log('notes reloaded',this.allNotes)
+                return
+            })
         }
     },
     computed: {
-        fliterNotes() {
-                return this.allNotes
+        pinnedNotesToShow() {
+			return this.allNotes.filter(note=>note.isPinned);
+		},
+        filterNotes() {
+            return this.allNotes
         }
     },
     created() {
