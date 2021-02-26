@@ -4,7 +4,7 @@ export default {
     template: `
     <section>
         <hr />
-        <div class="flex">
+        <div class="new-todo-content flex">
             <div class="todo-input">
                 <button @click="addTodo">+</button>
                 <input  @keyup.enter="addTodo" ref="todoInput" @input="writeTODO" class="todo-input" placeholder="Enter comma separated list..." />
@@ -12,11 +12,11 @@ export default {
             <hr />
             <div class="todo-keep-img flex">
                 <img src="./images/keepType/bgcolor.png" alt="" />
-                <input id="bgc-color" class="todo-bgc-color" type="color" /> 
+                <input id="bgc-color" @input="updateTodoColor" class="todo-bgc-color" type="color" /> 
                 <img  src="./images/keepType/color.webp" alt="" />
-                <input id="txt-color" class="todo-txt-color" type="color" />
-                <hr/>
+                <input id="txt-color" @input="updateTodoColor" class="todo-txt-color" type="color" />
             </div>
+            <hr/>
             <div class="todo-keep-btns flex">
                 <button  class="pin-todo-keep" @click="pinTodoKeep"><img src="./images/keepType/pinkeep.png" alt="" /></button>
                 <button  class="save-todo-keep" @click="saveTodoKeep"><img src="/images/sendkeep.png" alt="" /></button>
@@ -45,10 +45,22 @@ export default {
             this.todo = val;
         },
         saveTodoKeep() {
-            console.log('i am save todo keep');
+            this.$emit('save');
         },
         pinTodoKeep() {
-            console.log('i am pin todo keep');
+            this.$emit('pintodo');
+        },
+        updateTodoColor(ev) {
+            // TODO
+            return;
+            const currEl = ev.srcElement.className;
+            const currColor = ev.target.value;
+            switch (currEl) {
+                case 'todo-txt-color':
+                    break;
+                case 'todo-bgc-color':
+                    break;
+            }
         }
     },
     components: {
