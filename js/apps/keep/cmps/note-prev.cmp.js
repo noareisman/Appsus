@@ -3,6 +3,7 @@ import noteTxt from './note-txt.cmp.js';
 import noteVideo from './note-video.cmp.js';
 import noteImg from './note-img.cmp.js';
 import { keepService } from '../services/keep.service.js';
+import { eventBus } from '../../../services/event-bus.service.js';
 
 export default {
     props: ['note'],
@@ -24,7 +25,6 @@ export default {
         return {
             id: null,
             type: null,
-            // icon: null,
             pin: null,
             info: {},
             style: {}
@@ -32,28 +32,31 @@ export default {
     },
     methods: {
         pinNote() {
-            this.pin = true;
+            // keepService.ge(note)
+            // .then (()=>{
+            //     eventBus.$emit('removeNote')
+            //     return
+            // })
         },
         removeNote(note) {
-            keepService.remove(note)
+            keepService.removeKeep(note)
+            .then (()=>{
+                eventBus.$emit('removeNote')
+                return
+            })
         },
     },
     computed: {
         setIcon() {
             switch (this.type) {
                 case ('noteImg'):
-                    return 'far fa-image'
-                    break;
+                    return 'far fa-image';
                 case ('noteTodos'):
                     return 'fas fa-list'
-                    break;
                 case ('noteVideo'):
                     return 'fab fa-youtube'
-                    break;
                 case ('noteTxt'):
-                    return 'fas fa-font'
-                    break;
-
+                    return 'fas fa-font';
             }
         }
     },

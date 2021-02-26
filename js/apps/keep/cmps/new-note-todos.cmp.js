@@ -7,7 +7,7 @@ export default {
         <button @click="addTodo">+</button>
         <input  ref="todoInput" @input="writeTODO" class="todo-input" placeholder="Enter comma separated list..." />
         <hr />
-        <new-todo-list  :todoslist="todos" />
+        <new-todo-list :todoslist="todos" />
 
 
 
