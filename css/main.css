@@ -1,3 +1,5 @@
+/*RESET*/
+@import "reset.css";
 /* MAIN */
 
 @import "../css/main/helpers.css";
@@ -96,48 +98,17 @@ p {
 /*/////////////////////////////////////////////////////////////*/
 
 
-/* KEEP NAV*/
-
-
-/* 
-.email-nav {
-    background-color: #292929;
-    height: 131px;
-    padding: 30px;
-    border-bottom: solid #1c1c1c;
-    justify-content: center;
+/* KEEP*/
+img,
+video,
+audio {
+	max-width: 100%;
+	height: auto;
 }
 
-.email-nav>* {
-    color: antiquewhite
+audio {
+	min-height: 60px;
 }
-
-.email-dev-container {
-    background: red;
-    width: 10%;
-    padding-inline-start: unset;
-    padding-inline-start: 0px;
-}
-
-.email-dev-item {
-    padding: 0;
-}
-
-.email-dev-item>* {
-    list-style: none;
-    padding: 1em 3em;
-    text-align: center;
-    /* padding-inline-start:unset; */
-
-
-/* border-bottom: 1px solid black;
-}
-
-.email-dev-item>*:hover {
-    cursor: pointer; */
-
-
-/* }  */
 
 
 /*////////////////////////////////////////////////////////*/
