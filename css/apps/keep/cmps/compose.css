@@ -56,6 +56,12 @@
     margin-left: 5px;
 }
 
+.url-keep {
+    /* height: 250px !important; */
+    padding: 10px 0 3px 0;
+    text-align: center;
+}
+
 .save-keep-btn {
     margin-left: 5px;
     flex-grow: 2;
