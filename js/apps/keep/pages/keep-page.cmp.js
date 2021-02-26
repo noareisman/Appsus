@@ -12,7 +12,7 @@ export default {
         <keep-nav />
         <keep-dev />
         <keep-compose />
-        <keep-list v-if="allNotes" :notes="filterNotes"/>
+        <keep-list v-if="allNotes" :notes="filterNotes" :pinnedNotes="pinnedNotesToShow"/>
     </section>
     `,
     data() {
@@ -44,10 +44,11 @@ export default {
     },
     computed: {
         pinnedNotesToShow() {
-			return this.allNotes.filter(note=>note.isPinned);
+            return(this.allNotes.filter(note=>note.isPinned));
 		},
         filterNotes() {
-            return this.allNotes
+            return this.allNotes.filter(note=>!note.isPinned)
+ 
         }
     },
     created() {

@@ -258,6 +258,7 @@ audio {
 .note-container{
     width: fit-content;
     height: fit-content;
+    max-width: 500px;
     min-width: 200px ;
     min-height: fit-content;
     list-style: none;
