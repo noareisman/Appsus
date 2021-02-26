@@ -29,13 +29,8 @@ export default {
                 <section v-if="newKeep && newKeep.type !== 'noteTxt' && newKeep.type !== 'noteTodos'"  class="note-types">
                     <hr />
                     <input class="url-input" v-model="urlDesc" type="text" :placeholder="noteType" />
-
-                    
                 </section>
-
-                
                 <hr />
-                
                 <section v-if="newKeep">
                     <div class="line2 flex">
                         <textarea class="keep-text-area" v-model="textDesc" @click="focus" :placeholder="noteType" name="Text1" cols="100"></textarea>
@@ -154,14 +149,26 @@ export default {
             console.log('focus');
         },
         saveNote() {
+            if (!this.titleDesc) return;
+
             this.newKeep.info.title = this.titleDesc;
             this.newKeep.info.txt = this.textDesc;
-            this.newKeep.style.backgroundColor = this.bgcColorDesc;
-            this.newKeep.style.color = this.txtColorDesc;
+
+            if (this.bgcColorDesc) this.newKeep.style.backgroundColor = this.bgcColorDesc;
+            if (this.txtColorDesc) this.newKeep.style.color = this.txtColorDesc;
+
+            if (this.newKeep.type === 'noteImg' ||
+                this.newKeep.type === 'noteVideo') this.newKeep.info.url = this.urlDesc;
 
             keepService.saveKeep(this.newKeep)
             eventBus.$emit('save-keep');
-            //TODO: RESET NOTE
+
+            this.newKeep = null;
+            this.titleDesc = null;
+            this.textDesc = null;
+            this.txtColorDesc = null;
+            this.bgcColorDesc = null;
+            this.urlDesc = null;
         },
         pinKeep() {
             this.newKeep.isPinned = !this.newKeep.isPinned;
