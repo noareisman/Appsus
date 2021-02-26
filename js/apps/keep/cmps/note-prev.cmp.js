@@ -32,10 +32,14 @@ export default {
     },
     methods: {
         pinNote() {
-            this.pin = true;
+            // keepService.ge(note)
+            // .then (()=>{
+            //     eventBus.$emit('removeNote')
+            //     return
+            // })
         },
         removeNote(note) {
-            keepService.remove(note)
+            keepService.removeKeep(note)
             .then (()=>{
                 eventBus.$emit('removeNote')
                 return
