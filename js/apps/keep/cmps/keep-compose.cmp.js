@@ -15,7 +15,7 @@ export default {
                         <hr />
                         <button @click="openUrl">+</button>
                 </section>
-                <section v-if="newKeep">
+                <section v-if="newKeep && newKeep.type !== 'noteTxt' && newKeep.type !== 'noteTodos' && newKeep.info.url.length">
                     <!-- <--!TODO-->
 
                     <div>
