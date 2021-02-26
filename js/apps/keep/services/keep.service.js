@@ -11,7 +11,7 @@ const gTempKeeps = [{
             txt: 'Fullstack Me Baby!'
         },
         style: {
-            backgroundColor:'moccasin', 
+            backgroundColor: 'moccasin',
             color: 'red'
         }
     },

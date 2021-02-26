@@ -15,7 +15,7 @@ export default {
                     <input class="url-input" v-model="urlDesc" type="text" :placeholder="noteType" />
                 </section>
 
-                <new-note-todos v-if="newKeep &&newKeep.type === 'noteTodos'" @addToDo="addNewToDO" />
+                <new-note-todos :todos="todosToShow" v-if="newKeep && newKeep.type === 'noteTodos'" @addToDo="addNewToDO" />
                 <new-note-txt @save="saveNote" v-if="newKeep && newKeep.type !== 'noteTodos'" :newKeep="newKeep" >
         </section>
     `,
@@ -23,7 +23,8 @@ export default {
         return {
             newKeep: null,
             titleDesc: null,
-            urlDesc: null
+            urlDesc: null,
+            todos: null
         }
     },
     computed: {
@@ -34,18 +35,15 @@ export default {
 
                 case 'noteVideo':
                     return 'Enter video URL...';
-                case 'noteTodos':
-                    return 'Enter comma separated list...';
             }
+        },
+        todosToShow() {
+            return this.todos
         }
     },
     methods: {
         title(val) { this.titleDesc = val; },
-        addNewToDO(val) {
-            // console.log(val);
-            this.newKeep.info.todos.push(val)
-            console.log(this.newKeep.info.todos);
-        },
+        addNewToDO(val) { this.newKeep.info.todos.unshift(val); },
 
 
         activateNewKeep(ev, els) {
@@ -94,6 +92,7 @@ export default {
                     currEl.style.backgroundColor = 'rgb(207, 207, 207)';
 
                     this.newKeep = keepService.newKeep('noteTodos');
+                    this.todos = this.newKeep.info.todos;
                     console.log(this.newKeep);
                     break;
 
