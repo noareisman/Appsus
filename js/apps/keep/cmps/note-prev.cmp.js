@@ -1,6 +1,6 @@
-// import noteTodos from './note-todos.cmp.js';
-// import noteTxt from './note-txt.cmp.js';
-// import noteVideo from './note-video.cmp.js';
+import noteTodos from './note-todos.cmp.js';
+import noteTxt from './note-txt.cmp.js';
+import noteVideo from './note-video.cmp.js';
 import noteImg from './note-img.cmp.js';
 import { keepService } from '../services/keep.service.js';
 
@@ -9,8 +9,9 @@ export default {
     template: `
         <section> 
                 <div class="note-container">
-                    <!-- <compotent :is="type" :info="info"/> -->
-                    <pre :style="{color: style.color}">{{this.txt}}</pre>
+                    <button @click="removeNote(note)">Remove</button>
+                    <button @click="pinNote()">Pin</button>
+                    <compotent v-if="note" :is="type" :info="info"/>
                 </div>        
         </section>
         `,
@@ -23,23 +24,27 @@ export default {
             style: {}
         }
     },
-    components: {
-        // noteTodos,
-        // noteTxt,
-        // noteVideo,
-        noteImg
+    methods:{
+        pinNote(){
+            this.pin=true;
+        },
+        removeNote(note){
+            keepService.remove(note)
+        }
     },
     created() {
-        this.type = this.note.type,
+        if (this.note) {
+            this.type = this.note.type,
             this.pin = this.note.isPined,
             this.info = this.note.info,
             this.style = this.note.style,
             this.id = this.note.id
+        }
     },
     components: {
-        // noteTodos,
-        // noteTxt,
-        // noteVideo,
+        noteTodos,
+        noteTxt,
+        noteVideo,
         noteImg
     }
 

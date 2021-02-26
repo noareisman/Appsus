@@ -1,6 +1,6 @@
 export default {
     props:['info'],
     template:`
-    <title>{{info.title}}</title>
-    `,
+    <h1>{{info.txt}}</h1>
+    `
 }

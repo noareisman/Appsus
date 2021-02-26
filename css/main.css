@@ -145,12 +145,17 @@ p {
 .note-container{
     width: fit-content;
     height: fit-content;
-    ;
 }
 
 .preview-container-note{
-    background: red;
+    background: rgb(255, 219, 76, 70%);
+    min-width: 300px ;
+    min-height: 300px;
+    list-style: none;
+    border-radius: 20px;
+    padding: 40px;
 }
+
 
 /*HANDLERS*/
 
