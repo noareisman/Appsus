@@ -1,47 +1,28 @@
 import { eventBus } from '../../../services/event-bus.service.js';
 import { keepService } from '../services/keep.service.js';
-import newNote from '../cmps/new-note.cmp.js';
+import newNoteTxt from '../cmps/new-note.cmp.js';
+import newNoteTitle from '../cmps/new-note-title.cmp.js';
+import newNoteTodos from '../cmps/new-note-todos.cmp.js';
 
 export default {
     template: `
         <section  class="new-keep"> 
-                <div class="line1 flex center">
-                    <input @click="activateNewKeep" class="title-input" v-model="titleDesc" type="text" placeholder="Title..." />
-                    <div class="icons flex space-around">
-                        
-                        <div class="icon iText"  ref="textKeep">
-                            <img  @click="activateNewKeep" src="images/keepType/textkeep.webp" alt="" />
-                        </div>
-                        
-                        <div class="icon iImage" ref="imageKeep">
-                            <img @click="activateNewKeep"  src="images/keepType/imagekeep.webp" alt="" />
-                        </div>
-                        
-                        <div class="icon iVideo" ref="videoKeep">
-                            <img @click="activateNewKeep"  src="images/keepType/videokeep.webp" alt="" />
-                        </div>
-                        
-                        <div class="icon iTodos" ref="todosKeep">
-                            <img  @click="activateNewKeep" src="images/keepType/todokeep.webp" alt="" />
-                        </div>
-                        
-                    </div>
-                </div>
+
+                <new-note-title  @injectTitle="title" @activation="activateNewKeep" />
+                 
                 <section v-if="newKeep && newKeep.type !== 'noteTxt' && newKeep.type !== 'noteTodos'"  class="note-types">
                     <hr />
                     <input class="url-input" v-model="urlDesc" type="text" :placeholder="noteType" />
                 </section>
-                <hr />
-                
-                <new-note  @save="saveNote" v-if="newKeep" :newKeep="newKeep" >
+
+                <new-note-todos v-if="newKeep &&newKeep.type === 'noteTodos'" />
+                <new-note-txt @save="saveNote" v-if="newKeep && newKeep.type !== 'noteTodos'" :newKeep="newKeep" >
         </section>
     `,
     data() {
         return {
             newKeep: null,
             titleDesc: null,
-            // HERE WAS TEXT DESC
-            // HERE WAS COLORS CHOISE
             urlDesc: null
         }
     },
@@ -57,21 +38,19 @@ export default {
                     return 'Enter comma separated list...';
             }
         }
-        // HERE WAS ISPINNED?
     },
     methods: {
-        activateNewKeep(ev) {
-            const els = this.$refs;
-            const elsArr = Object.keys(els).map((el) => [els[el]]);
+        title(val) { this.titleDesc = val; },
 
+
+        activateNewKeep(ev, els) {
+            const elsArr = Object.keys(els).map((el) => [els[el]]);
             let val = ev.target.src.slice(38, -5);
-            console.log(val);
             let currEl;
+
             if (ev.target.type === 'text' && this.newKeep) return;
             if (ev.target.type === 'text') val = 'textkeep';
-            // return
 
-            console.log('now i am here');
             switch (val) {
                 case 'imagekeep':
                     elsArr.forEach(el => {
@@ -79,7 +58,7 @@ export default {
                         el[0].style.backgroundColor = 'unset';
                     });
 
-                    currEl = this.$refs.imageKeep;
+                    currEl = els.imageKeep;
                     currEl.style.border = '1px solid black';
                     currEl.style.backgroundColor = 'rgb(207, 207, 207)';
 
@@ -92,7 +71,7 @@ export default {
                         el[0].style.backgroundColor = 'unset';
                     });
 
-                    currEl = this.$refs.textKeep;
+                    currEl = els.textKeep;
                     currEl.style.border = '1px solid black';
                     currEl.style.backgroundColor = 'rgb(207, 207, 207)';
 
@@ -105,7 +84,7 @@ export default {
                         el[0].style.backgroundColor = 'unset';
                     });
 
-                    currEl = this.$refs.todosKeep;
+                    currEl = els.todosKeep;
                     currEl.style.border = '1px solid black';
                     currEl.style.backgroundColor = 'rgb(207, 207, 207)';
 
@@ -118,7 +97,7 @@ export default {
                         el[0].style.backgroundColor = 'unset';
                     });
 
-                    currEl = this.$refs.videoKeep;
+                    currEl = els.videoKeep;
                     currEl.style.border = '1px solid black';
                     currEl.style.backgroundColor = 'rgb(207, 207, 207)';
 
@@ -126,10 +105,8 @@ export default {
                     break;
             }
         },
-        // HERE WAS FOCUS
         saveNote(childkeep) {
             if (!this.titleDesc) return;
-            console.log('i am children keep', childkeep);
 
             this.newKeep.info.title = this.titleDesc;
             this.newKeep.info.txt = childkeep.info.txt
@@ -140,12 +117,6 @@ export default {
             if (this.newKeep.type === 'noteImg' ||
                 this.newKeep.type === 'noteVideo') this.newKeep.info.url = this.urlDesc;
 
-
-
-            console.log('i am father keep', this.newKeep);
-            return
-
-
             keepService.saveKeep(this.newKeep)
             eventBus.$emit('save-keep');
             this.newKeep = null;
@@ -153,18 +124,11 @@ export default {
             this.urlDesc = null;
 
         },
-        // PIN KEEP WAS HERE
-        // HERE WAS UPDATECOLOR
-        keepIsNotTxt() {
-            return true
-        }
     },
     components: {
-        newNote
-    },
-    created() {
-        this.$on('save-curr-new-keep', (newkeep))
-
+        newNoteTxt,
+        newNoteTitle,
+        newNoteTodos
     }
 
 }

@@ -2,6 +2,7 @@ export default {
     props: ['newKeep'],
     template: `
         <section>
+            <hr />
             <div class="line2 flex">
                 <textarea class="keep-text-area" v-model="textDesc" @click="focus" placeholder="Enter text here..." name="Text1" cols="100"></textarea>
                 <div class="new-keep-btns flex column">
@@ -42,7 +43,6 @@ export default {
             this.textDesc = null;
             this.txtColorDesc = null;
             this.bgcColorDesc = null;
-
         },
         pinKeep() {
             this.currNewKeep.isPinned = !this.currNewKeep.isPinned;
