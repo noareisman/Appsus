@@ -23,6 +23,7 @@ export default {
         </section>`,
     methods: {
         sendActivation(ev) {
+            console.log('why not avtivate');
             const els = this.$refs;
             this.$emit('activation', ev, els)
         },
