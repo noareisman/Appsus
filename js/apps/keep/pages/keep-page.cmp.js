@@ -8,11 +8,15 @@ import emailComposeCmp from '../../email/cmps/email-compose.cmp.js';
 
 export default {
     template: `
-    <section class="keep-app-main-container">
-        <keep-nav />
-        <keep-dev />
-        <keep-compose />
-        <keep-list v-if="allNotes" :notes="filterNotes" :pinnedNotes="pinnedNotesToShow"/>
+    <section class="keep-app-main-container flex column align-center">
+        <keep-nav class="keep-main-nav" />
+        <div class="keep-body">
+            <keep-dev class="flex column"/>
+                <div class="flex column align-center">
+                    <keep-compose/>
+                    <keep-list v-if="allNotes" :notes="filterNotes" :pinnedNotes="pinnedNotesToShow"/>
+                </div>
+        </div>
     </section>
     `,
     data() {
