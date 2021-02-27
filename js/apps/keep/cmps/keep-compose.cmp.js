@@ -20,7 +20,7 @@ export default {
                     <div v-if="newKeep && newKeep.type === 'noteImg'">
                      <img  :src="keepUrl" alt="INVALID URL" />
                     </div>
-                    <div class="videoPrev" v-if="newKeep && newKeep.type === 'noteVideo'">
+                    <div class="video-prev" v-if="newKeep && newKeep.type === 'noteVideo'">
                         <iframe width="760" height="200" :src=keepUrl frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </section>
@@ -69,10 +69,10 @@ export default {
         pinTheTodo() { this.newKeep.isPinned = !this.newKeep.isPinned },
         openUrl() { this.newKeep.info.url = this.urlDesc; },
         initialization() {
-            const elsIconArr = [document.querySelector('.iText'),
-                document.querySelector('.iImage'),
-                document.querySelector('.iVideo'),
-                document.querySelector('.iTodos')
+            const elsIconArr = [document.querySelector('.i-text'),
+                document.querySelector('.i-image'),
+                document.querySelector('.i-video'),
+                document.querySelector('.i-todos')
             ];
             elsIconArr.forEach(el => {
                 el.style.border = 'unset';

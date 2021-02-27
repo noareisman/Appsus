@@ -157,9 +157,13 @@ audio {
 
 .keep-list-container {
     max-width: 1400px;
+<<<<<<< HEAD
     /* background-color:red; */
     padding: 40px 100px;
 } 
+=======
+}
+>>>>>>> acfcd41efdc68f8a59c4e3c1231ad5f15a07443e
 
 .keep-list-container h1 {
     padding: 0 0 10px 23px;
@@ -173,7 +177,10 @@ audio {
     height: 800px;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> acfcd41efdc68f8a59c4e3c1231ad5f15a07443e
 .keep-notes-container>* {
     display: inline-block;
     margin-inline-start: 25px;
@@ -213,7 +220,10 @@ audio {
 
 /*NOTE PREV*/
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> acfcd41efdc68f8a59c4e3c1231ad5f15a07443e
 .note-container {
     width: fit-content;
     height: fit-content;
@@ -237,11 +247,14 @@ audio {
     color: rgb(29, 28, 28);
 }
 
-.isPinned {
+.is-pinned {
     color: rgb(224, 22, 22);
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> acfcd41efdc68f8a59c4e3c1231ad5f15a07443e
 .action-btns>* {
     margin-top: 5px;
     color: rgb(211, 209, 209);
@@ -257,7 +270,10 @@ audio {
     font-size: 1.8em;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> acfcd41efdc68f8a59c4e3c1231ad5f15a07443e
 .note-type>* {
     padding-bottom: 10px;
 }

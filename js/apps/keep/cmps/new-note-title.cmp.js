@@ -4,19 +4,19 @@ export default {
             <input @click="sendActivation" class="title-input"  @input="sendTitle" type="text" placeholder="Title..." />
             <div class="icons flex space-around">
                 
-                <div @click="sendActivation" class="icon iText"  ref="textKeep">
+                <div @click="sendActivation" class="icon i-text"  ref="textKeep">
                     <img   src="images/keepType/textkeep.webp" alt="" />
                 </div>
                 
-                <div @click="sendActivation" class="icon iImage" ref="imageKeep">
+                <div @click="sendActivation" class="icon i-mage" ref="imageKeep">
                     <img   src="images/keepType/imagekeep.webp" alt="" />
                 </div>
                 
-                <div @click="sendActivation" class="icon iVideo" ref="videoKeep">
+                <div @click="sendActivation" class="icon i-video" ref="videoKeep">
                     <img   src="images/keepType/videokeep.webp" alt="" />
                 </div>
                 
-                <div @click="sendActivation" class="icon iTodos" ref="todosKeep">
+                <div @click="sendActivation" class="icon i-todos" ref="todosKeep">
                     <img   src="images/keepType/todokeep.webp" alt="" />
                 </div>            
             </div>

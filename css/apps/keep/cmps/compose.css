@@ -18,19 +18,19 @@
     width: 20%;
 }
 
-.iImage:hover {
+.i-image:hover {
     background-color: rgb(207, 207, 207);
 }
 
-.iText:hover {
+.i-text:hover {
     background-color: rgb(207, 207, 207);
 }
 
-.iTodos:hover {
+.i-todos:hover {
     background-color: rgb(207, 207, 207);
 }
 
-.iVideo:hover {
+.i-video:hover {
     background-color: rgb(207, 207, 207);
 }
 
@@ -213,6 +213,6 @@
 
 /* VIDEO */
 
-.videoPrev {
+.video-prev {
     text-align: left;
 }
