@@ -1,15 +1,28 @@
 export default {
     template: `
-    <header class="flex space-between">
+    <header class="main-header flex space-between">
             <div class="logo">
                 <router-link to="/" exact>
-                     <h1>Appsus</h1>
+                     <h1>
+                         <button class="home-page">
+                             Appsus
+                        </button>
+                    </h1>
                 </router-link> 
             </div>
-            <div class="appsus-main-nav">
-                <router-link to="/email">Email</router-link> |
-                <router-link to="/keep">Keep</router-link> |
-                <router-link to="/book">Books</router-link> 
+            <div class="appsus-main-nav flex">
+                <router-link to="/email">
+                    <button class="email-btn">
+                        Email
+                    </button>
+                </router-link> 
+                <hr />
+                
+                <router-link to="/keep">
+                    <button class="keep-btn">
+                        Keep
+                    </button>
+                </router-link> 
             </div>
      </header>
      `,
