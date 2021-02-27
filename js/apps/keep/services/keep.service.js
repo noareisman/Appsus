@@ -160,7 +160,8 @@ export const keepService = {
     newKeep,
     saveKeep,
     getKeepById,
-    updateKeep
+    updateKeep,
+    saveNewKeep
 }
 
 function updateKeep(id, whatTodo) {
@@ -247,10 +248,15 @@ function getKeepById(id) {
     return asyncStorageService.get(KEEPS_KEY, id)
 }
 
-function saveKeep(keep) {
+function saveNewKeep(keep) {
     return keeps
         .then((keeps) => {
             keeps.push(keep)
             asyncStorageService.save(KEEPS_KEY, keeps)
         })
+}
+
+function saveKeep(keep) {
+    if (keep.id) return asyncStorageService.put(KEEPS_KEY, keep);
+    else return asyncStorageService.post(KEEPS_KEY, keep);
 }

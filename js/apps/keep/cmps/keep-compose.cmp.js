@@ -146,7 +146,7 @@ export default {
                 this.newKeep.type === 'noteVideo') this.newKeep.info.url = this.urlDesc;
             this.newKeep.info.title = this.titleDesc;
 
-            keepService.saveKeep(this.newKeep);
+            keepService.saveNewKeep(this.newKeep);
             eventBus.$emit('saveKeep');
             this.initialization();
         },
