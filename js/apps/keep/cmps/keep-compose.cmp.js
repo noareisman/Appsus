@@ -21,15 +21,10 @@ export default {
                      <img  :src="keepUrl" alt="INVALID URL" />
                     </div>
                     <div  v-if="newKeep && newKeep.type === 'noteVideo'">
-                        <video ref="video" :src="keepUrl" autoplay controls></video>
-                            <!-- <div id="try1"></div> -->
-                        <!-- <video  id="video1" width="320" height="240" controls>
-                        <source :src="keepUrl" type="video/mp4">
-                        <source :src="keepUrl" type="video/ogg">
-                        </video> -->
+                        <iframe width="400" height="200" :src=keepUrl frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </section>
-
+                
 
                 <new-note-todos @savetodo="saveNote" @pintodo="pinTheTodo" :todos="todosToShow" v-if="newKeep && newKeep.type === 'noteTodos'" @toggleDone="toggleIsDone" @addToDo="addNewToDO" />
                 <new-note-txt @save="saveNote"  v-if="newKeep && newKeep.type !== 'noteTodos'" :newKeep="newKeep" />
@@ -57,7 +52,13 @@ export default {
             return this.todos
         },
         keepUrl() {
-            return this.urlDesc
+            switch (this.newKeep.type) {
+                case 'noteVideo':
+                    const id = this.urlDesc.slice(32);
+                    return `https://www.youtube.com/embed/${id}`;
+                case 'noteImg':
+                    return this.urlDesc
+            }
         }
     },
     methods: {
@@ -65,6 +66,7 @@ export default {
         addNewToDO(val) { this.newKeep.info.todos.unshift(val); },
         toggleIsDone(val, idx) { this.newKeep.info.todos[idx].isDone = val; },
         pinTheTodo() { this.newKeep.isPinned = !this.newKeep.isPinned },
+        openUrl() { this.newKeep.info.url = this.urlDesc; },
         initialization() {
             const elsIconArr = [document.querySelector('.iText'),
                 document.querySelector('.iImage'),
@@ -82,13 +84,6 @@ export default {
             this.newKeep = null;
             this.titleDesc = null;
             this.urlDesc = null;
-        },
-        openUrl() {
-            this.newKeep.info.url = this.urlDesc;
-
-            if (this.newKeep.type === 'noteVideo') {
-                this.$refs.video.play();
-            }
         },
         activateNewKeep(ev, els) {
             const elsArr = Object.keys(els).map((el) => [els[el]]);
