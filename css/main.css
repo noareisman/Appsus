@@ -162,8 +162,7 @@ audio {
     max-width: 1400px;
     /* background-color:red; */
     padding: 40px 100px;
-} 
-
+}
 
 .keep-list-container h1 {
     padding: 0 0 10px 23px;
@@ -258,7 +257,6 @@ audio {
     font-size: 1.8em;
 }
 
-
 .note-type>* {
     padding-bottom: 10px;
 }
@@ -293,4 +291,48 @@ audio {
 .border {
     border-style: solid;
     border-width: 1px;
+}
+
+
+/* HEADER */
+
+.main-header {
+    color: white;
+    background-color: lightslategray;
+    align-items: center;
+    padding: 3px;
+}
+
+.email-btn {
+    font-size: 1.5rem;
+    margin-right: 5px;
+    color: white;
+}
+
+.keep-btn {
+    margin-right: 5px;
+    margin-left: 5px;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.email-btn:hover {
+    color: red;
+    border-radius: unset !important;
+}
+
+.keep-btn:hover {
+    color: red;
+    border-radius: unset !important;
+}
+
+.home-page {
+    margin-left: 20%;
+    color: white;
+    font-size: 2rem;
+}
+
+.home-page:hover {
+    border-radius: unset !important;
+    color: red;
 }
