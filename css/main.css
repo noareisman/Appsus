@@ -93,6 +93,7 @@ h2 {
     width: 10%;
     padding-inline-start: unset;
     padding-inline-start: 0px;
+    background-color: lightgray;
 }
 
 .email-dev-item {
@@ -130,10 +131,6 @@ h2 {
     border-bottom: 2px solid white;
     background-color: unset;
 }
-
-
-/*/////////////////////////////////////////////////////////////*/
-
 
 /* KEEP*/
 

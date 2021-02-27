@@ -167,7 +167,7 @@ function query() {
 function updateEmailStat(msg) {
     return getById(msg.id)
         .then(msg => {
-            msg.filters.viewd = true;
+            msg.filters.viewed = true;
             saveMsg(msg);
             return msg;
         })
@@ -176,7 +176,7 @@ function updateEmailStat(msg) {
 function toggleReadStat(msg) {
     return getById(msg.id)
         .then(msg => {
-            msg.filters.viewd = !msg.filters.viewd;
+            msg.filters.viewed = !msg.filters.viewed;
             saveMsg(msg);
             return msg;
         })
