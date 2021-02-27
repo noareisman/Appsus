@@ -8,7 +8,7 @@ export default {
                     <img   src="images/keepType/textkeep.webp" alt="" />
                 </div>
                 
-                <div @click="sendActivation" class="icon i-mage" ref="imageKeep">
+                <div @click="sendActivation" class="icon i-image" ref="imageKeep">
                     <img   src="images/keepType/imagekeep.webp" alt="" />
                 </div>
                 
