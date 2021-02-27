@@ -20,7 +20,7 @@ export default {
                     <div v-if="newKeep && newKeep.type === 'noteImg'">
                      <img  :src="keepUrl" alt="INVALID URL" />
                     </div>
-                    <div class="videoPrev" v-if="newKeep && newKeep.type === 'noteVideo'">
+                    <div class="video-prev" v-if="newKeep && newKeep.type === 'noteVideo'">
                         <iframe width="760" height="200" :src=keepUrl frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </section>

@@ -156,9 +156,7 @@ audio {
 }
 
 .keep-list-container {
-    /* max-width: 1400px; */
-    /* background-color:red; */
-    /* padding: 40px 100px; */
+    max-width: 1400px;
 }
 
 .keep-list-container h1 {
@@ -173,12 +171,11 @@ audio {
     height: 800px;
 }
 
-
-/* .keep-notes-container>* {
+.keep-notes-container>* {
     display: inline-block;
     margin-inline-start: 25px;
     width: 100%;
-} */
+}
 
 
 /*KEEP DEV TOOLS*/
@@ -346,8 +343,7 @@ audio {
 
 /*NOTE PREV*/
 
-
-/* .note-container {
+.note-container {
     width: fit-content;
     height: fit-content;
     width: 100%;
@@ -358,7 +354,7 @@ audio {
     padding: 10px 15px;
     margin-block-end: 25px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 15px 0 rgba(0, 0, 0, 0.12);
-} */
+}
 
 .pin-btn {
     align-self: flex-end;
@@ -370,15 +366,14 @@ audio {
     color: rgb(29, 28, 28);
 }
 
-.isPinned {
+.is-pinned {
     color: rgb(224, 22, 22);
 }
 
-
-/* .action-btns>* {
+.action-btns>* {
     margin-top: 5px;
     color: rgb(211, 209, 209);
-} */
+}
 
 .action-btns>* :hover {
     display: flex;
@@ -390,10 +385,9 @@ audio {
     font-size: 1.8em;
 }
 
-
-/* .note-type>* {
+.note-type>* {
     padding-bottom: 10px;
-} */
+}
 
 .temp {
     color: #fcba41;

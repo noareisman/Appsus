@@ -45,9 +45,7 @@ export default {
     },
     computed: {
         changePinColor() {
-            return {
-                isPinned: this.isPinned
-            }
+            if (this.isPinned) return 'is-pinned'
         },
         setIcon() {
             switch (this.type) {
