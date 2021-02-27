@@ -198,3 +198,10 @@
 .todo-input {
     flex-grow: 3;
 }
+
+
+/* VIDEO */
+
+.videoPrev {
+    text-align: left;
+}

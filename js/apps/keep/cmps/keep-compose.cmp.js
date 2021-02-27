@@ -20,8 +20,8 @@ export default {
                     <div v-if="newKeep && newKeep.type === 'noteImg'">
                      <img  :src="keepUrl" alt="INVALID URL" />
                     </div>
-                    <div  v-if="newKeep && newKeep.type === 'noteVideo'">
-                        <iframe width="400" height="200" :src=keepUrl frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="videoPrev" v-if="newKeep && newKeep.type === 'noteVideo'">
+                        <iframe width="760" height="200" :src=keepUrl frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </section>
                 
@@ -55,7 +55,8 @@ export default {
             switch (this.newKeep.type) {
                 case 'noteVideo':
                     const id = this.urlDesc.slice(32);
-                    return `https://www.youtube.com/embed/${id}`;
+                    this.urlDesc = `https://www.youtube.com/embed/${id}`;
+                    return this.urlDesc;
                 case 'noteImg':
                     return this.urlDesc
             }
