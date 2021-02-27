@@ -56,6 +56,9 @@ export default {
         isNewMsg() {
             if (!this.msgRead) return 'is-msg-not-read'
             if (this.msgRead) return 'is-msg-read'
+
+            // if (!this.msgRead) return { isMsgNotRead: true, isMsgRead: false }
+            // else return { isMsgNotRead: false, isMsgRead: true }
         },
         shortBodyMsg() {
             return this.msg.body.slice(0, 80)
