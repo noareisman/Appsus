@@ -36,8 +36,7 @@ img {
 /* EMAILS PREVIEW */
 
 .preview-container-email {
-    padding: 10px;
-
+line-height: 3rem;
     border-bottom: 1px solid rgb(95, 94, 94);
     list-style: none;
 }
@@ -45,6 +44,10 @@ img {
 .msg-prev {
     cursor: pointer;
     padding: 5px;
+}
+
+.preview-container-email :hover{
+background: rgb(245, 243, 243);
 }
 
 .isMsgNotRead {
@@ -94,7 +97,6 @@ color: rgb(129, 129, 129);
 .msg-details {
     padding-top: 15px;
     background-color: rgba(204, 200, 200, 0.561);
-    /* color: white; */
     width: 100% !;
 }
 
