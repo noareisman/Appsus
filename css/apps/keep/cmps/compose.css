@@ -3,7 +3,7 @@
     margin: 0 auto;
     padding: 10px;
     width: 70%;
-    background-color: #e8e8e8;
+    background-color: white;
 }
 
 .icon {
@@ -35,7 +35,7 @@
 }
 
 .line1 {
-    background-color: #e8e8e8;
+    background-color: white;
     height: fit-content;
 }
 
@@ -86,7 +86,7 @@
     margin-bottom: 5px;
     width: 80%;
     height: 25px;
-    background-color: #e8e8e8;
+    background-color: white;
 }
 
 .url-input {
@@ -116,7 +116,7 @@
 }
 
 .keep-text-area {
-    background-color: #e8e8e8;
+    background-color: white;
     border-bottom-right-radius: 25px;
     border-top-right-radius: 25px;
     font-size: 20px;
