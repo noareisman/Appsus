@@ -18,7 +18,7 @@ export default {
                 <msg-details :msg="msg" v-if="msgDetails"/>
         </section>
     `,
-    data(){ 
+    data() {
         return {
             msgDetails: null,
             msgRead: null,
@@ -45,11 +45,14 @@ export default {
     },
     computed: {
         isNewMsg() {
-            if (!this.msgRead) return { isMsgNotRead: true, isMsgRead: false }
-            else return { isMsgNotRead: false, isMsgRead: true }
+            if (!this.msgRead) return 'is-msg-not-read'
+            if (this.msgRead) return 'is-msg-read'
+
+            // if (!this.msgRead) return { isMsgNotRead: true, isMsgRead: false }
+            // else return { isMsgNotRead: false, isMsgRead: true }
         },
         shortBodyMsg() {
-            return this.msg.body.slice(0,80)
+            return this.msg.body.slice(0, 80)
         },
         showDots() {
             if (this.msg.body.length > 80) return '...'
