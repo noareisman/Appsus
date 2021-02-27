@@ -80,6 +80,10 @@ export default {
             let val = ev.target.src.slice(38, -5);
             let currEl;
 
+            const elTitle = document.querySelector('.title-input');
+            elTitle.value = '';
+            this.newKeep = null;
+
             if (ev.target.type === 'text' && this.newKeep) return;
             if (ev.target.type === 'text') val = 'textkeep';
 
@@ -148,8 +152,10 @@ export default {
             this.newKeep.info.title = this.titleDesc;
 
             if (this.newKeep.type !== 'noteTodos') this.newKeep.info.txt = childkeep.info.txt;
-            if (childkeep.bgcColorDesc) this.newKeep.style.backgroundColor = childkeep.bgcColorDesc;
-            if (childkeep.txtColorDesc) this.newKeep.style.color = childkeep.txtColorDesc;
+
+            if ((this.newKeep.type !== 'noteTodos') && childkeep.bgcColorDesc) this.newKeep.style.backgroundColor = childkeep.bgcColorDesc;
+            if ((this.newKeep.type !== 'noteTodos') && childkeep.txtColorDesc) this.newKeep.style.color = childkeep.txtColorDesc;
+
             if (this.newKeep.type === 'noteImg' ||
                 this.newKeep.type === 'noteVideo') this.newKeep.info.url = this.urlDesc;
 
@@ -164,6 +170,12 @@ export default {
                 el.style.border = 'unset';
                 el.style.backgroundColor = 'unset';
             });
+            const elTitle = document.querySelector('.title-input');
+            elTitle.style.backgroundColor = '#e8e8e8';
+            elTitle.color = 'black';
+            elTitle.value = '';
+
+            console.log(this.newKeep);
             keepService.saveKeep(this.newKeep);
             eventBus.$emit('save-keep');
             this.newKeep = null;

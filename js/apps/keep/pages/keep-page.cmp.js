@@ -29,33 +29,33 @@ export default {
     methods: {
         loadNotes() {
             return keepService.query()
-            .then(notes => {
-                this.allNotes = notes;
+                .then(notes => {
+                    this.allNotes = notes;
                     return this.allNotes;
                 })
         },
-        reloadNotes(){
-            this.allNotes=this.loadNotes()
-            .then(()=>{
-                console.log('notes reloaded',this.allNotes)
-                return
-            })
+        reloadNotes() {
+            this.allNotes = this.loadNotes()
+                .then(() => {
+                    console.log('notes reloaded', this.allNotes)
+                    return
+                })
         }
     },
     computed: {
         pinnedNotesToShow() {
-            return this.allNotes.filter(note=>note.isPinned));
-		},
+            return this.allNotes.filter(note => note.isPinned);
+        },
         filterNotes() {
-            return this.allNotes.filter(note=>!note.isPinned)
- 
+            return this.allNotes.filter(note => !note.isPinned)
+
         }
     },
     created() {
         this.loadNotes();
         eventBus.$on('save-keep', () => this.loadNotes())
-        eventBus.$on('removeNote',this.reloadNotes)
-        eventBus.$on('togglePin',this.reloadNotes)
+        eventBus.$on('removeNote', this.reloadNotes)
+        eventBus.$on('togglePin', this.reloadNotes)
     },
     components: {
         keepNav,

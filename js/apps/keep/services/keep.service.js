@@ -183,7 +183,7 @@ function newKeep(keepType) {
                 type: 'noteTxt',
                 isPinned: false,
                 info: { title: '', txt: '' },
-                style: { backgroundColor: 'white', color: 'black' }
+                style: { backgroundColor: '#e8e8e8', color: 'black' }
             }
         case 'noteImg':
             return {
@@ -195,7 +195,7 @@ function newKeep(keepType) {
                     title: '',
                     txt: ''
                 },
-                style: { backgroundColor: '#00d', color: 'black' }
+                style: { backgroundColor: '#e8e8e8', color: 'black' }
             }
         case 'noteTodos':
             return {
@@ -207,7 +207,7 @@ function newKeep(keepType) {
                     label: '',
                     todos: []
                 },
-                style: { backgroundColor: 'white', color: 'black' }
+                style: { backgroundColor: '#e8e8e8', color: 'black' }
             }
         case 'noteVideo':
             return {
@@ -219,7 +219,7 @@ function newKeep(keepType) {
                     title: '',
                     txt: ''
                 },
-                style: { backgroundColor: 'white', color: 'black' }
+                style: { backgroundColor: '#e8e8e8', color: 'black' }
             }
     }
 }
@@ -237,12 +237,7 @@ function getKeepById(id) {
     return asyncStorageService.get(KEEPS_KEY, id)
 }
 
-function saveKeep(keep) { <<
-    << << < HEAD
+function saveKeep(keep) {
     if (keep.id) return asyncStorageService.put(KEEPS_KEY, keep)
-    else return asyncStorageService.post(KEEPS_KEY, keep) ===
-        === =
-        if (keep.id) return asyncStorageService.put(KEEPS_KEY, keep);
-        else return asyncStorageService.post(KEEPS_KEY, keep); >>>
-        >>> > 7e99 caf3b0ed2264dd21e98a39c04d47a4971401
+    else return asyncStorageService.post(KEEPS_KEY, keep)
 }

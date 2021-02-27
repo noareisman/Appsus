@@ -32,11 +32,11 @@ export default {
     },
     methods: {
         saveNote() {
+            console.log(this.currNewKeep.info.txt);
             this.currNewKeep.info.txt = this.textDesc;
 
             if (this.bgcColorDesc) this.currNewKeep.style.backgroundColor = this.bgcColorDesc;
             if (this.txtColorDesc) this.currNewKeep.style.color = this.txtColorDesc;
-
             this.$emit('save', this.currNewKeep);
 
             this.currNewKeep = null;
