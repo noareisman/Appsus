@@ -8,11 +8,15 @@ import emailComposeCmp from '../../email/cmps/email-compose.cmp.js';
 
 export default {
     template: `
-    <section class="keep-app-main-container">
-        <keep-nav />
-        <keep-dev />
-        <keep-compose />
-        <keep-list v-if="allNotes" :notes="filterNotes" :pinnedNotes="pinnedNotesToShow"/>
+    <section class="keep-app-main-container flex column align-center">
+        <keep-nav class="keep-main-nav" />
+        <div class="keep-body">
+            <keep-dev class="flex column"/>
+                <div class="flex column align-center">
+                    <keep-compose/>
+                    <keep-list v-if="allNotes" :notes="filterNotes" :pinnedNotes="pinnedNotesToShow"/>
+                </div>
+        </div>
     </section>
     `,
     data() {
@@ -29,33 +33,33 @@ export default {
     methods: {
         loadNotes() {
             return keepService.query()
-            .then(notes => {
-                this.allNotes = notes;
+                .then(notes => {
+                    this.allNotes = notes;
                     return this.allNotes;
                 })
         },
-        reloadNotes(){
-            this.allNotes=this.loadNotes()
-            .then(()=>{
-                console.log('notes reloaded',this.allNotes)
-                return
-            })
+        reloadNotes() {
+            this.allNotes = this.loadNotes()
+                .then(() => {
+                    console.log('notes reloaded', this.allNotes)
+                    return
+                })
         }
     },
     computed: {
         pinnedNotesToShow() {
-            return this.allNotes.filter(note=>note.isPinned));
-		},
+            return this.allNotes.filter(note => note.isPinned);
+        },
         filterNotes() {
-            return this.allNotes.filter(note=>!note.isPinned)
- 
+            return this.allNotes.filter(note => !note.isPinned)
+
         }
     },
     created() {
         this.loadNotes();
         eventBus.$on('save-keep', () => this.loadNotes())
-        eventBus.$on('removeNote',this.reloadNotes)
-        eventBus.$on('togglePin',this.reloadNotes)
+        eventBus.$on('removeNote', this.reloadNotes)
+        eventBus.$on('togglePin', this.reloadNotes)
     },
     components: {
         keepNav,

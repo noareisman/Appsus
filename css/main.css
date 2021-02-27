@@ -35,6 +35,9 @@ p {
     margin: 0;
 }
 
+h1{
+    font-size: 2em;
+}
 
 /* EMAIL NAV*/
 
@@ -109,15 +112,38 @@ audio {
 audio {
 	min-height: 60px;
 }
-
-.keep-app-main-container {
-	background-color: #e8e8e8;
-	padding: 2em 0;
+.keep-app-main-container{
+    width: 100%;
+}
+.keep-main-nav{
+    width: 100%;
 }
 
 .keep-list-container{
-    width:1200px;
+    max-width:1400px;
+    /* background-color:red; */
+    padding: 40px 100px;
+    
+    
 }
+
+.keep-notes-container{
+    height: fit-content;
+    border-bottom: solid 1px rgb(193, 194, 196);
+    columns: 3;
+    column-gap: 3em;
+    height: 800px;
+}
+
+.keep-notes-container>*{
+    display: inline-block;
+    margin-inline-start: 25px;
+    width: 100%;
+}
+
+
+
+
 /*
 .notes-app .note-type {
 	transition: 0.3s;
@@ -227,15 +253,7 @@ audio {
 } */
 
 /********** Style specific item types **********/
- 
-.note-type {
-	break-inside: avoid;
-	background: #fff;
-	padding: 1em;
-	margin: 0 0 1.5em;
-	border-radius: 2px;
-	
-}
+
 /*
 .note-type-list ul li {
 	line-height: 2em;
@@ -255,21 +273,16 @@ audio {
 .note-container{
     width: fit-content;
     height: fit-content;
-    max-width: 500px;
-    min-width: 200px ;
+    width:100%;
+    min-width: 250px ;
     min-height: fit-content;
     list-style: none;
     border-radius: 4px;
     padding: 10px 15px;
+    margin-block-end: 25px;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.10), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 15px 0 rgba(0,0,0,0.12);
 }
- .keep-notes-container{
-     padding: 40px 100px;
- }
-
- .keep-notes-container>*{
-     margin-inline-start: 25px;
- }
+ 
 
  .pin-btn{
      align-self: flex-end;
@@ -287,8 +300,6 @@ audio {
     .action-btns>*{
         margin-top: 5px;
         color: rgb(211, 209, 209);
-    
-        /* display: none; */
     }
     
     .action-btns>* :hover {
