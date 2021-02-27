@@ -55,8 +55,8 @@ const gTempKeeps = [{
         type: 'noteVideo',
         isPinned: false,
         info: {
-            url: 'https://i.ytimg.com/an_webp/2Q_ZzBGPdqE/mqdefault_6s.webp?du=3000&sqp=CJO_5YEG&rs=AOn4CLB7cK7FdGidmCfXUPdce_WB40Jf0A',
-            title: '',
+            url: 'https://www.youtube.com/embed/pt8VYOfr8To',
+            title: 'It\'s Britney bitch!',
             txt: ''
         },
         style: {
@@ -127,9 +127,9 @@ const gTempKeeps = [{
         type: 'noteVideo',
         isPinned: true,
         info: {
-            url: 'https://i.ytimg.com/an_webp/CduA0TULnow/mqdefault_6s.webp?du=3000&sqp=COzt44EG&rs=AOn4CLBxY6Ssg3C6cMlh-gOI0ukScfJ9BA',
-            title: 'Free Britney, Bitch!',
-            txt: ''
+            url: 'https://www.youtube.com/embed/L01b0bSK9Ww',
+            title: 'דברים שלמדתי היום',
+            txt: 'עובדה הכי חשובה: השחקן שמדבב את בבוספוג והשחקנית שמדבבת את קרן, אשתו של פלנקטון נשואים במציאות!'
         },
         style: {
             backgroundColor: ' #fcba41',

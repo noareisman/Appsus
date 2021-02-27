@@ -1,10 +1,14 @@
+import exitTodoPrev from './exit-todo-prev.cmp.js';
 export default {
     props: ['info'],
     template: `
     <section class="note-type">
-        <h2>{{info.label}}</h2>
+        <h1>{{info.title}}</h1>
         <ul>
-            <li v-for="(todo,idx) in info.todos">{{info.todos[idx].txt}}</li>
+            <li v-for="(todo, idx) in info.todos">
+                <exit-todo-prev :todo="todo" :idx="idx" />
+            </li>
         </ul>
-    </section>`
+    </section>`,
+    components: { exitTodoPrev }
 }

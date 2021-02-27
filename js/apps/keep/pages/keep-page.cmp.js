@@ -48,9 +48,11 @@ export default {
     },
     computed: {
         pinnedNotesToShow() {
+            // return this.allNotes;
             return this.allNotes.filter(note => note.isPinned);
         },
         filterNotes() {
+            // return this.allNotes;
             return this.allNotes.filter(note => !note.isPinned)
         }
     },
