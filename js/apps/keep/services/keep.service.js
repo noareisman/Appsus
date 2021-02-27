@@ -137,7 +137,7 @@ const gTempKeeps = [{
         }
     },
     {
-        id: 'TempTry5',
+        id: 'TempTry10',
         type: 'noteImg',
         isPinned: false,
         info: {
@@ -160,8 +160,23 @@ export const keepService = {
     removeKeep,
     newKeep,
     saveKeep,
-    getKeepById
+    getKeepById,
+    updateKeep
 }
+
+function updateKeep(id, whatTodo) {
+    return getKeepById(id)
+        .then((note) => {
+            switch (whatTodo) {
+                case 'togglePin':
+                    note.isPinned = !note.isPinned
+                    saveKeep(note)
+                    return note;
+            }
+        })
+}
+
+
 
 function query() {
     return asyncStorageService.query(KEEPS_KEY)
