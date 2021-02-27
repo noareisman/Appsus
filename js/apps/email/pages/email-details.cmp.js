@@ -1,4 +1,5 @@
 import { eventBus } from '../../../services/event-bus.service.js';
+import { emailService } from '../services/email.service.js';
 
 
 export default {
@@ -12,7 +13,7 @@ export default {
                 </div>
 
                 <div class="msg-btns">
-                    <span @click="deleteMsg"><i class="fas fa-trash"></i></span>
+                    <span @click="deleteMsg"><i class="far fa-trash-alt"></i></span>
                 </div>
             </div>
 
@@ -29,8 +30,10 @@ export default {
     },
     methods: {
         deleteMsg() {
-            eventBus.$emit('remove', this.msg);
+            emailService.msgToTrash(this.msg)
+                .then(() => { eventBus.$emit('trash',this.msg) })
         }
+
     },
     created() {
         this.incominMsg = !this.msg.filters.sent

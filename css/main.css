@@ -157,7 +157,10 @@ audio {
 
 .keep-list-container {
     max-width: 1400px;
-}
+    /* background-color:red; */
+    padding: 40px 100px;
+} 
+
 
 .keep-list-container h1 {
     padding: 0 0 10px 23px;
@@ -208,139 +211,6 @@ audio {
 }
 
 
-/*
-.notes-app .note-type {
-	transition: 0.3s;
-	border-width: 2px;
-	border-style: solid;
-	border-color: transparent;
-}
-
-.notes-app .note-type:hover {
-	transform: scale(1.025);
-	box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 2px 15px rgba(0,0,0,0.30);
-}
-
-.notes-app .note-type.marked {
-	border-color: #888;
-	border-radius: 5px;
-}
-
-/********** NOTE EDIT **********/
-
-
-/* 
-.notes-edit {
-	padding-top: 1em;
-	text-align: center;
-}
-
-.notes-edit input {
-	display: block;
-	padding: 0.5em 0.5em;
-	line-height: 1.5em;
-	border: 0;
-	background-color: rgba(0,0,0,0.1);
-    width: 100%;
-	max-width: 100%;
-	height: fit-content;
-}
-
-.notes-edit button {
- 	padding: 0.5em 1em;
-    margin: 10px auto 0;
-	border: transparent;
-	background-color: rgba(0,0,0,0.25);
-	cursor: pointer;
-} */
-
-
-/********** NOTE ACTIONS **********/
-
-
-/* .note-item-actions {
-	position: relative;
-	visibility: hidden;
-	padding-top: 1em;
-}
-
-.notes-app .note-type:hover .note-item-actions {
-	visibility: visible;
-}
-
-.note-item-actions i {
-	cursor: pointer;
-	color: #999;
-}
-
-.note-item-actions i:hover {
-	color: #666;
-}
-
-.note-item-actions i.visible {
-	visibility: visible;
-	cursor: default;
-}
-
-.note-item-actions i.visible:hover {
-	color: #ccc;
-}
-
-.note-item-actions i.info:hover {
-	color: blue;
-}
-
-.note-item-actions i.danger:hover {
-	color: red;
-}
-
-.note-item-actions i.pinned,
-.note-item-actions i.marked {
-	color: #000;
-}
-
-.note-item-actions i.colors .dropdown-content {
-	position: absolute;
-	right: 0;
-	top: 2em;
-	padding-top: 7px;
-}
-
-.note-item-actions i.colors span {
-	width: 20px;
-    height: 20px;
-    display: inline-block;
-    cursor: pointer;
-    border-radius: 50%;
-    border: 1px solid #eee;
-}
-
-.note-item-actions i.colors span:hover,
-.note-item-actions i.colors span.selected {
-	border-color: #000;
-} */
-
-
-/********** Style specific item types **********/
-
-
-/*
-.note-type-list ul li {
-	line-height: 2em;
-}
-
-.note-type-list ul li:not(:last-of-type) {
-	border-bottom: 1px solid #aaa;
-}
-
-.note-type-list ul li.completed {
-	text-decoration: line-through;
-}  */
-
-
-/*////////////////////////////////////////////////////////*/
-
-
 /*NOTE PREV*/
 
 .note-container {
@@ -384,6 +254,7 @@ audio {
     color: rgb(211, 209, 209);
     font-size: 1.8em;
 }
+
 
 .note-type>* {
     padding-bottom: 10px;

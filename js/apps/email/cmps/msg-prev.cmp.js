@@ -1,3 +1,4 @@
+import { eventBus } from '../../../services/event-bus.service.js';
 import msgDetails from '../pages/email-details.cmp.js';
 import { emailService } from '../services/email.service.js';
 
@@ -35,18 +36,29 @@ export default {
         toggleRead() {
             this.msgRead = !this.msgRead;
             emailService.toggleReadStat(this.msg)
-                .then(msg => this.msgRead = msg.filters.viewed)
-        },
-        toggleFav() {
-            this.msgFav = !this.msgFav;
-            emailService.toggleFav(this.msg)
-                .then(msg => this.msgFav = msg.filters.important)
-        }
+                .then(msg => {
+                    this.msgRead = msg.filters.viewed
+                    console.log('viewed',msg.filters.viewed);
+                    eventBus.$emit('reloadMails')
+                })
+            },
+            toggleFav() {
+                this.msgFav = !this.msgFav;
+                emailService.toggleFav(this.msg)
+                .then(msg => {
+                    this.msgFav = msg.filters.important
+                    console.log('starred',msg.filters.important);
+                    eventBus.$emit('reloadMails')
+                })
+            }
     },
     computed: {
         isNewMsg() {
             if (!this.msgRead) return 'is-msg-not-read'
             if (this.msgRead) return 'is-msg-read'
+
+            // if (!this.msgRead) return { isMsgNotRead: true, isMsgRead: false }
+            // else return { isMsgNotRead: false, isMsgRead: true }
         },
         shortBodyMsg() {
             return this.msg.body.slice(0, 80)
@@ -76,7 +88,11 @@ export default {
 
         },
         isRead() {
-            if (this.incomingMsg) return (this.msgRead) ? 'far fa-envelope-open' : 'fas fa-envelope';
+            if (this.incomingMsg) {
+                return (this.msgRead) ? 'far fa-envelope-open' : 'fas fa-envelope'
+            }else{
+                return 'fas fa-share'
+            }
         },
         isFav() {
             return (this.msgFav) ? 'fav-star-starred fas fa-star' : 'fav-star far fa-star'
