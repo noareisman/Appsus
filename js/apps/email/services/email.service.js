@@ -7,7 +7,7 @@ const gTempMsgs = [{
     id: 'temptry1',
     subject: 'Wassap1?',
     body: 'Lorem ipsum',
-    sentAt: 85511323,
+    sentAt: Date.now(),
     participants: {
         sender: 'Don',
         getter: 'me'
@@ -133,8 +133,6 @@ const gTempMsgs = [{
         inbox: false,
         sent: true,
         important: true,
-        unread: false,
-        viewed: false,
         draft: false,
         trash: false
     }
@@ -256,10 +254,10 @@ const gTempMsgs = [{
 }, {
     id: 'temptry14',
     subject: 'My Gift List',
-    body: 'I want to be Kim Kardashian!\n Thank you, \n Some random well behaved girl ',
+    body: 'and please stop COVID.... ',
     sentAt: 2551113,
     participants: {
-        sender: 'To: Santa Claus',
+        sender: 'Re: Santa Claus',
         getter: 'Me'
     },
     filters: {
@@ -267,8 +265,6 @@ const gTempMsgs = [{
         inbox: false,
         sent: true,
         important: true,
-        unread: false,
-        viewed: false,
         draft: false,
         trash: false
     }
@@ -312,6 +308,7 @@ function toggleReadStat(msg) {
     return getById(msg.id)
         .then(msg => {
             msg.filters.viewed = !msg.filters.viewed;
+            msg.filters.unread = !msg.filters.unread;
             saveMsg(msg);
             return msg;
         })
@@ -358,8 +355,6 @@ function getNewEmail() {
             inbox: false,
             sent: true,
             important: false,
-            unread: false,
-            viewed: false,
             draft: false,
             trash: false
         }
