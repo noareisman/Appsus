@@ -151,9 +151,8 @@ const gTempKeeps = [{
         }
     }
 ]
-
 const keeps = query();
-// console.log(keeps);
+
 
 export const keepService = {
     query,
@@ -175,8 +174,6 @@ function updateKeep(id, whatTodo) {
             }
         })
 }
-
-
 
 function query() {
     return asyncStorageService.query(KEEPS_KEY)
@@ -239,8 +236,6 @@ function newKeep(keepType) {
     }
 }
 
-
-
 function removeKeep(keep) {
     return getKeepById(keep.id)
         .then(keep => {
@@ -253,6 +248,9 @@ function getKeepById(id) {
 }
 
 function saveKeep(keep) {
-    if (keep.id) return asyncStorageService.put(KEEPS_KEY, keep)
-    else return asyncStorageService.post(KEEPS_KEY, keep)
+    return keeps
+        .then((keeps) => {
+            keeps.push(keep)
+            asyncStorageService.save(KEEPS_KEY, keeps)
+        })
 }

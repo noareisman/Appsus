@@ -6,7 +6,7 @@ export default {
         <section>
             <hr />
             <div class="line2 flex">
-                <textarea class="keep-text-area" v-model="textDesc" @click="focus" placeholder="Enter text here..." name="Text1" cols="100"></textarea>
+                <textarea class="keep-text-area" v-model="textDesc" placeholder="Enter text here..." name="Text1" cols="100"></textarea>
                 <div class="new-keep-btns flex column">
                     <button class="pin-keep-btn" :class="isPinned" @click="pinKeep"><img src="./images/keepType/pinkeep.png" alt="" /></button>
                     <button class="save-keep-btn" @click="saveNote"><img src="/images/sendkeep.png" alt="" /></button>
@@ -34,7 +34,6 @@ export default {
     },
     methods: {
         saveNote() {
-            console.log(this.currNewKeep);
             this.currNewKeep.info.txt = this.textDesc;
 
             if (this.bgcColorDesc) this.currNewKeep.style.backgroundColor = this.bgcColorDesc;
@@ -49,9 +48,6 @@ export default {
         },
         pinKeep() {
             this.currNewKeep.isPinned = !this.currNewKeep.isPinned;
-        },
-        focus() {
-            console.log('focus');
         },
         updateColor(ev) {
             const currEl = ev.srcElement.className;
@@ -71,7 +67,6 @@ export default {
                     break;
             }
         },
-
     },
     computed: {
         isPinned() {

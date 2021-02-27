@@ -29,7 +29,7 @@ export default {
         }
     },
     methods: {
-        search(){
+        search() {
             eventBus.$emit('search', this.searchedStr)
         },
         setFilter() {
@@ -45,5 +45,3 @@ export default {
         }
     },
 }
-    
-

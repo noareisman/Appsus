@@ -66,10 +66,8 @@ export default {
         pinTheTodo() { this.newKeep.isPinned = !this.newKeep.isPinned },
         openUrl() {
             this.newKeep.info.url = this.urlDesc;
-            console.log(this.$refs.urlInpt.value);
 
             if (this.newKeep.type === 'noteVideo') {
-                console.log(this.newKeep.type);
                 this.$refs.video.play();
             }
         },
@@ -123,7 +121,6 @@ export default {
 
                     this.newKeep = keepService.newKeep('noteTodos');
                     this.todos = this.newKeep.info.todos;
-                    console.log(this.newKeep);
                     break;
 
                 case 'videokeep':
@@ -154,8 +151,6 @@ export default {
             this.initialization();
         },
         initialization() {
-            console.log('initialize...');
-
             const elsIconArr = [document.querySelector('.iText'),
                 document.querySelector('.iImage'),
                 document.querySelector('.iVideo'),
@@ -182,5 +177,4 @@ export default {
         newNoteTitle,
         newNoteTodos
     }
-
 }

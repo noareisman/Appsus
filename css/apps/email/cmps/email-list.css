@@ -18,16 +18,10 @@ img {
 }
 
 
-/* .main-content {
-    height: 100%;
-} */
-
-
 /* EMAILS LIST */
 
 .list-new-msg-container {
     width: 88% !important;
-    /* height: 70vh; */
 }
 
 .emails-container {
@@ -116,5 +110,4 @@ img {
 
 .msg-main-content p {
     cursor: text;
-    /* width: 100%; */
 }

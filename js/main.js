@@ -16,5 +16,4 @@ const options = {
         // userMsg
     }
 }
-
 const app = new Vue(options);

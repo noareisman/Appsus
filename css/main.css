@@ -1,5 +1,7 @@
 /*RESET*/
+
 @import "reset.css";
+
 /* MAIN */
 
 @import "../css/main/helpers.css";
@@ -16,32 +18,34 @@
 /* FONTS */
 
 @font-face {
-    font-family:champagne ;
+    font-family: champagne;
     src: url(../fonts/champagne/Champagne\ &\ Limousines.ttf)
 }
 
-@font-face{
+@font-face {
     font-family: eurofurence;
     src: url(../fonts/eurofurence/eurof55.ttf)
 }
 
-@font-face{
+@font-face {
     font-family: lato-bold;
     src: url(../fonts/lato/Lato-Bold.ttf);
 }
 
-@font-face{
+@font-face {
     font-family: lato-reg;
     src: url(../fonts/lato/Lato-Regular.ttf);
 }
+
+
 /* GENERAL */
-html{
+
+html {
     font-family: lato-reg, sans-serif;
 }
 
 * {
     box-sizing: border-box;
-    /* outline: 1px solid black; */
 }
 
 body {
@@ -59,12 +63,14 @@ p {
     margin: 0;
 }
 
-h1{
+h1 {
     font-size: 2em;
 }
-h2{
+
+h2 {
     font-size: 1.3em;
 }
+
 
 /* EMAIL NAV*/
 
@@ -79,7 +85,10 @@ h2{
 .email-nav>* {
     color: antiquewhite
 }
+
+
 /*EMAIL DEV TOOLS*/
+
 .email-dev-container {
     width: 10%;
     padding-inline-start: unset;
@@ -94,7 +103,6 @@ h2{
     list-style: none;
     padding: 1em 3em;
     text-align: center;
-    /* padding-inline-start:unset; */
     border-bottom: 1px solid black;
 }
 
@@ -128,32 +136,33 @@ h2{
 
 
 /* KEEP*/
+
 img,
 video,
 audio {
-	max-width: 100%;
-	height: auto;
+    max-width: 100%;
+    height: auto;
 }
 
 audio {
-	min-height: 60px;
+    min-height: 60px;
 }
-.keep-app-main-container{
-    width: 100%;
-}
-.keep-main-nav{
+
+.keep-app-main-container {
     width: 100%;
 }
 
-.keep-list-container{
-    max-width:1400px;
+.keep-main-nav {
+    width: 100%;
+}
+
+.keep-list-container {
+    max-width: 1400px;
     /* background-color:red; */
     padding: 40px 100px;
-    
-    
 }
 
-.keep-notes-container{
+.keep-notes-container {
     height: fit-content;
     border-bottom: solid 1px rgb(193, 194, 196);
     columns: 3;
@@ -161,12 +170,15 @@ audio {
     height: 800px;
 }
 
-.keep-notes-container>*{
+.keep-notes-container>* {
     display: inline-block;
     margin-inline-start: 25px;
     width: 100%;
 }
+
+
 /*KEEP DEV TOOLS*/
+
 .keep-dev-container {
     width: 350px;
     min-width: 200px;
@@ -184,13 +196,16 @@ audio {
     cursor: pointer;
 }
 
+
 /*KEEP HEADER*/
-.keep-nav{
+
+.keep-nav {
     background-color: #292929;
     height: 131px;
     padding: 30px;
     border-bottom: solid #1c1c1c;
 }
+
 
 /*
 .notes-app .note-type {
@@ -211,6 +226,8 @@ audio {
 }
 
 /********** NOTE EDIT **********/
+
+
 /* 
 .notes-edit {
 	padding-top: 1em;
@@ -234,9 +251,11 @@ audio {
 	border: transparent;
 	background-color: rgba(0,0,0,0.25);
 	cursor: pointer;
-} */ 
+} */
+
 
 /********** NOTE ACTIONS **********/
+
 
 /* .note-item-actions {
 	position: relative;
@@ -300,7 +319,9 @@ audio {
 	border-color: #000;
 } */
 
+
 /********** Style specific item types **********/
+
 
 /*
 .note-type-list ul li {
@@ -317,57 +338,60 @@ audio {
 
 
 /*////////////////////////////////////////////////////////*/
+
+
 /*NOTE PREV*/
-.note-container{
+
+.note-container {
     width: fit-content;
     height: fit-content;
-    width:100%;
-    min-width: 250px ;
+    width: 100%;
+    min-width: 250px;
     min-height: fit-content;
     list-style: none;
     border-radius: 4px;
     padding: 10px 15px;
     margin-block-end: 25px;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.10), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 15px 0 rgba(0,0,0,0.12);
-}
- 
-
- .pin-btn{
-     align-self: flex-end;
-     color: rgb(211, 209, 209);
-     width: fit-content;
-    }
-
-    .pin-btn :hover{
-        color:rgb(29, 28, 28);
-    }    
-    .isPinned {
-        color:rgb(224, 22, 22);
-    }
-
-    .action-btns>*{
-        margin-top: 5px;
-        color: rgb(211, 209, 209);
-    }
-    
-    .action-btns>* :hover {
-        display: flex;
-        color:rgb(29, 28, 28);
-
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 15px 0 rgba(0, 0, 0, 0.12);
 }
 
- .note-type-icon{
-     color: rgb(211, 209, 209);
+.pin-btn {
+    align-self: flex-end;
+    color: rgb(211, 209, 209);
+    width: fit-content;
+}
+
+.pin-btn :hover {
+    color: rgb(29, 28, 28);
+}
+
+.isPinned {
+    color: rgb(224, 22, 22);
+}
+
+.action-btns>* {
+    margin-top: 5px;
+    color: rgb(211, 209, 209);
+}
+
+.action-btns>* :hover {
+    display: flex;
+    color: rgb(29, 28, 28);
+}
+
+.note-type-icon {
+    color: rgb(211, 209, 209);
     font-size: 1.8em;
-    }
+}
 
- .note-type >*{
-     padding-bottom: 10px;
- }
+.note-type>* {
+    padding-bottom: 10px;
+}
 
- .temp{
-     color: #fcba41;
- }
+.temp {
+    color: #fcba41;
+}
+
 
 /*HANDLERS*/
 

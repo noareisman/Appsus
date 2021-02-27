@@ -236,7 +236,7 @@ function msgToTrash(msg) {
         .then(msg => {
             msg.filters.trash = true;
             saveMsg(msg);
-            return msg; //khkjhjkkjkjhkjkjkjk
+            return msg;
         })
 }
 

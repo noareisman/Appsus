@@ -31,9 +31,8 @@ export default {
         searchByStr() {
             eventBus.$emit('search', this.searchedStr)
         },
-
     },
-    created(){
+    created() {
         eventBus.$on('filtered', (filter) => { this.filter = filter })
         eventBus.$on('search', (searchedStr) => { this.searchedStr = searchedStr })
     }

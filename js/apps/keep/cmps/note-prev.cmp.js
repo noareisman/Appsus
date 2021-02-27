@@ -32,11 +32,8 @@ export default {
     },
     methods: {
         togglePinNote() {
-            return keepService.updateKeep(this.id,'togglePin')
-            .then (()=>{
-                console.log(this.isPinned);
-                eventBus.$emit('togglePin')
-            })
+            return keepService.updateKeep(this.id, 'togglePin')
+                .then(() => eventBus.$emit('togglePin'))
         },
         removeNote(note) {
             keepService.removeKeep(note)
@@ -68,10 +65,10 @@ export default {
     created() {
         if (this.note) {
             this.type = this.note.type,
-            this.isPinned = this.note.isPinned,
-            this.info = this.note.info,
-            this.style = this.note.style,
-            this.id = this.note.id
+                this.isPinned = this.note.isPinned,
+                this.info = this.note.info,
+                this.style = this.note.style,
+                this.id = this.note.id
         }
     },
     components: {
@@ -80,7 +77,5 @@ export default {
         noteVideo,
         noteImg
     }
-
 }
-
 // < component : is = "cmp.type"  : info = "cmp.info" @setVal="setAns($event, idx)" ></component >

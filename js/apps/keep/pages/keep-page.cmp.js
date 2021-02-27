@@ -39,7 +39,6 @@ export default {
                 })
         },
         reloadNotes() {
-            console.log('cam here');
             this.allNotes = this.loadNotes()
                 .then(() => {
                     console.log('notes reloaded', this.allNotes)
@@ -53,7 +52,6 @@ export default {
         },
         filterNotes() {
             return this.allNotes.filter(note => !note.isPinned)
-
         }
     },
     created() {

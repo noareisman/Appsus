@@ -45,7 +45,6 @@ export default {
         filterMsgs() {
             var currFilter = this.filter;
             var str = this.searchedStr;
-            console.log(str)
             if (!currFilter) {
                 if (!str) {
                     return this.allMsgs;
