@@ -31,7 +31,7 @@ export default {
                 </section>
 
 
-                <new-note-todos @savetodo="saveNote" @pintodo="pinTheTodo" :todos="todosToShow" v-if="newKeep && newKeep.type === 'noteTodos'" @addToDo="addNewToDO" />
+                <new-note-todos @savetodo="saveNote" @pintodo="pinTheTodo" :todos="todosToShow" v-if="newKeep && newKeep.type === 'noteTodos'" @toggleDone="toggleIsDone" @addToDo="addNewToDO" />
                 <new-note-txt @save="saveNote"  v-if="newKeep && newKeep.type !== 'noteTodos'" :newKeep="newKeep" />
         </section>
     `,
@@ -63,7 +63,26 @@ export default {
     methods: {
         title(val) { this.titleDesc = val; },
         addNewToDO(val) { this.newKeep.info.todos.unshift(val); },
+        toggleIsDone(val, idx) { this.newKeep.info.todos[idx].isDone = val; },
         pinTheTodo() { this.newKeep.isPinned = !this.newKeep.isPinned },
+        initialization() {
+            const elsIconArr = [document.querySelector('.iText'),
+                document.querySelector('.iImage'),
+                document.querySelector('.iVideo'),
+                document.querySelector('.iTodos')
+            ];
+            elsIconArr.forEach(el => {
+                el.style.border = 'unset';
+                el.style.backgroundColor = 'unset';
+            });
+            const elTitle = document.querySelector('.title-input');
+            elTitle.style.backgroundColor = 'white';
+            elTitle.color = 'black';
+            elTitle.value = '';
+            this.newKeep = null;
+            this.titleDesc = null;
+            this.urlDesc = null;
+        },
         openUrl() {
             this.newKeep.info.url = this.urlDesc;
 
@@ -146,30 +165,13 @@ export default {
                 this.newKeep.type === 'noteVideo') this.newKeep.info.url = this.urlDesc;
             this.newKeep.info.title = this.titleDesc;
 
+            console.log(this.newKeep);
             keepService.saveNewKeep(this.newKeep)
-            .then (()=>{
-                eventBus.$emit('saveKeep');
-                this.initialization();
-            })
+                .then(() => {
+                    eventBus.$emit('saveKeep');
+                    this.initialization();
+                })
 
-        },
-        initialization() {
-            const elsIconArr = [document.querySelector('.iText'),
-                document.querySelector('.iImage'),
-                document.querySelector('.iVideo'),
-                document.querySelector('.iTodos')
-            ];
-            elsIconArr.forEach(el => {
-                el.style.border = 'unset';
-                el.style.backgroundColor = 'unset';
-            });
-            const elTitle = document.querySelector('.title-input');
-            elTitle.style.backgroundColor = 'white';
-            elTitle.color = 'black';
-            elTitle.value = '';
-            this.newKeep = null;
-            this.titleDesc = null;
-            this.urlDesc = null;
         }
     },
     created() {

@@ -23,23 +23,27 @@ export default {
             </div>
         </div>
             
-            <new-todo-list :todoslist="todos" />
+            <new-todo-list @done="markAsDone" :todoslist="todos" />
     </section>
     `,
     data() {
         return {
             todo: null,
-            todosPined: false
+            todosPined: null,
+            isDone: null
         }
     },
     methods: {
         addTodo() {
             if (!this.todo) return;
-            const todo = { doneAt: Date.now(), txt: this.todo }
+            const todo = {
+                // id: asyncStorageService.makeId(),
+                doneAt: Date.now(),
+                txt: this.todo,
+                isDone: this.isDone
+            }
             this.$emit('addToDo', todo)
-
-            this.todo = null;
-            this.$refs.todoInput.value = '';
+            this.initialization()
         },
         writeTODO(ev) {
             const val = ev.target.value;
@@ -63,12 +67,24 @@ export default {
                 case 'todo-bgc-color':
                     break;
             }
+        },
+        markAsDone(doneVal, index) {
+            this.$emit('toggleDone', doneVal, index)
+        },
+        initialization() {
+            this.todo = null;
+            this.isDone = null;
+            this.$refs.todoInput.value = '';
         }
     },
     computed: {
         isPinde() {
             return { pinned: this.todosPined }
         }
+    },
+    created() {
+        this.todosPined = false;
+        this.isDone = false;
     },
     components: {
         newTodoList

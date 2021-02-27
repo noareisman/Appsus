@@ -37,12 +37,12 @@ const gTempKeeps = [{
             title: '',
             label: 'List:',
             todos: [
-                { txt: 'Eggs', doneAt: null },
-                { txt: 'Milk', doneAt: 187111111 },
-                { txt: 'BBQ sauce', doneAt: 187111111 },
-                { txt: 'Cheese', doneAt: 187111111 },
-                { txt: 'Sugar', doneAt: 187111111 },
-                { txt: 'Wine', doneAt: 187111111 },
+                { txt: 'Eggs', doneAt: null, isDone: false },
+                { txt: 'Milk', doneAt: 187111111, isDone: false },
+                { txt: 'BBQ sauce', doneAt: 187111111, isDone: false },
+                { txt: 'Cheese', doneAt: 187111111, isDone: false },
+                { txt: 'Sugar', doneAt: 187111111, isDone: false },
+                { txt: 'Wine', doneAt: 187111111, isDone: false },
             ]
         },
         style: {
@@ -113,8 +113,8 @@ const gTempKeeps = [{
             title: '',
             label: 'How was it:',
             todos: [
-                { txt: 'Do that', doneAt: null },
-                { txt: 'Do this', doneAt: 187111111 }
+                { txt: 'Do that', doneAt: null, isDone: false },
+                { txt: 'Do this', doneAt: 187111111, isDone: false }
             ]
         },
         style: {
