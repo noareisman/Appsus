@@ -17,17 +17,17 @@ hr {
 /* HEADER */
 
 .new-msg-header {
-    background-color: black;
+    background-color: rgb(60, 134, 194);
     color: white;
-    height: 45px;
+    line-height: 3em;
     padding: 14px;
     font-weight: bolder;
 }
 
-.new-msg img {
-    background-color: white;
-    border-radius: 15%;
+.send-mail-btn {
     cursor: pointer;
+    font-size: 2em;
+    margin-inline-end: 10px;
 }
 
 
@@ -58,6 +58,6 @@ hr {
 .email-text-area {
     border: 1px solid lightgrey;
     outline: 1px solid lightgrey;
-    width: 113.5%;
+    width: 100%;
     height: 250px;
 }

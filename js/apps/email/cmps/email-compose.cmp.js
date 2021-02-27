@@ -3,9 +3,9 @@ import { emailService } from '../services/email.service.js';
 export default {
     template: `
         <section class="new-msg">
-            <div class="new-msg-header flex space-between">
+            <div class="new-msg-header flex space-between align-center">
                 <h1>New Message</h1>
-                <img title="Send message" @click="sendMsg" src="images/sent.png" alt="" />
+                <i class="far fa-paper-plane send-mail-btn" title="Send message" @click="sendMsg"></i>
             </div>
 
             <table class="flex column">
