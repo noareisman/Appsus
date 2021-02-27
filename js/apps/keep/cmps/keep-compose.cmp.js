@@ -21,12 +21,12 @@ export default {
                      <img  :src="keepUrl" alt="INVALID URL" />
                     </div>
                     <div  v-if="newKeep && newKeep.type === 'noteVideo'">
-                        <!-- <video id="video1" :src="keepUrl" > -->
+                        <video ref="video" :src="keepUrl" autoplay controls></video>
                             <!-- <div id="try1"></div> -->
-                        <video  id="video1" width="320" height="240" controls>
+                        <!-- <video  id="video1" width="320" height="240" controls>
                         <source :src="keepUrl" type="video/mp4">
                         <source :src="keepUrl" type="video/ogg">
-                        </video>
+                        </video> -->
                     </div>
                 </section>
 
@@ -67,13 +67,11 @@ export default {
         openUrl() {
             this.newKeep.info.url = this.urlDesc;
             console.log(this.$refs.urlInpt.value);
-            // if (this.newKeep.type === 'noteVideo') {
-            // const vid = document.getElementById('try1');
-            // console.log(vid);
-            // return
-            // vid.load();
-            // vid.play();
-            // }
+
+            if (this.newKeep.type === 'noteVideo') {
+                console.log(this.newKeep.type);
+                this.$refs.video.play();
+            }
         },
         activateNewKeep(ev, els) {
             const elsArr = Object.keys(els).map((el) => [els[el]]);
@@ -144,7 +142,6 @@ export default {
             }
         },
         saveNote(childkeep) {
-            if (!this.titleDesc) return;
             this.newKeep.info.title = this.titleDesc;
 
             if (this.newKeep.type !== 'noteTodos') this.newKeep.info.txt = childkeep.info.txt;
@@ -154,9 +151,16 @@ export default {
 
             if (this.newKeep.type === 'noteImg' ||
                 this.newKeep.type === 'noteVideo') this.newKeep.info.url = this.urlDesc;
-
-
             // RESET
+            keepService.saveKeep(this.newKeep);
+            eventBus.$emit('save-keep');
+            this.initialization();
+
+
+        },
+        initialization() {
+            console.log('initialize...');
+
             const elsIconArr = [document.querySelector('.iText'),
                 document.querySelector('.iImage'),
                 document.querySelector('.iVideo'),
@@ -167,18 +171,16 @@ export default {
                 el.style.backgroundColor = 'unset';
             });
             const elTitle = document.querySelector('.title-input');
-            elTitle.style.backgroundColor = '#e8e8e8';
+            elTitle.style.backgroundColor = 'white';
             elTitle.color = 'black';
             elTitle.value = '';
-
-            console.log(this.newKeep);
-            keepService.saveKeep(this.newKeep);
-            eventBus.$emit('save-keep');
             this.newKeep = null;
             this.titleDesc = null;
             this.urlDesc = null;
-
-        },
+        }
+    },
+    created() {
+        eventBus.$on('close', () => this.initialization())
     },
     components: {
         newNoteTxt,

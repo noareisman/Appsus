@@ -1,3 +1,5 @@
+import { eventBus } from "../../../services/event-bus.service.js";
+
 export default {
     props: ['newKeep'],
     template: `
@@ -32,7 +34,7 @@ export default {
     },
     methods: {
         saveNote() {
-            console.log(this.currNewKeep.info.txt);
+            console.log(this.currNewKeep);
             this.currNewKeep.info.txt = this.textDesc;
 
             if (this.bgcColorDesc) this.currNewKeep.style.backgroundColor = this.bgcColorDesc;
@@ -69,6 +71,7 @@ export default {
                     break;
             }
         },
+
     },
     computed: {
         isPinned() {
@@ -78,6 +81,13 @@ export default {
     created() {
         this.currNewKeep = this.newKeep
         this.textDesc = '';
+        eventBus.$on('close', () => {
+            this.currNewKeep = null;
+            this.textDesc = null;
+            this.txtColorDesc = null;
+            this.bgcColorDesc = null;
+            document.querySelector('.title-input').value = '';
+        })
     }
 
 }
