@@ -1,37 +1,40 @@
 import { eventBus } from '../../../services/event-bus.service.js';
-import keepInput from '../cmps/keep-input.cmp.js';
 
 export default {
     template: `
-    <section>
-            <nav class="flex email-nav space-between align-center" >
-                <div class="keep-logo">Keep</div>    
-                <form>
-                    <keep-input />
-                    <!-- <input v-model="newNoteTxt" @input="txt" type="text" placeholder="New note..." /> -->
-                    <select v-model="filterBy" @change="setFilter" name="keep-filter-selector">
-                        <option value="all">All</option>
-                        <option value="inbox">Video</option>
-                        <option value="sent">Audio</option>
-                        <option value="sent">Text</option>
-                    </select>
-                </form>
+        <section>
+            <nav class="keep-nav flex align-center space-around" >
+            <div class="">   
+                <input v-model="searchedStr" @input="searchByStr" type="text" placeholder="Search note..." />
+                <select v-model="filterBy" @change="setFilter" name="keep-filter-selector">
+                    <option value="all">All</option>
+                    <option value="inbox">Video</option>
+                    <option value="sent">Audio</option>
+                    <option value="sent">Text</option>
+                    <option value="sent">list</option>
+                </select>
+            </div>
             </nav> 
-    </section>
+        </section>
     `,
     data() {
         return {
             filterBy: "all",
-            newNoteTxt: null
+            searchedStr: null,
         }
     },
     methods: {
         setFilter() {
             var filter = this.filterBy;
             eventBus.$emit('filtered', filter)
-        }
+        },
+        searchByStr() {
+            eventBus.$emit('search', this.searchedStr)
+        },
+
     },
-    components: {
-        keepInput
+    created(){
+        eventBus.$on('filtered', (filter) => { this.filter = filter })
+        eventBus.$on('search', (searchedStr) => { this.searchedStr = searchedStr })
     }
 }

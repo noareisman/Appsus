@@ -12,7 +12,7 @@ export default {
                 </div>
 
                 <div class="msg-btns">
-                    <button @click="deleteMsg"><img src="images/trash.png" alt=""></button>
+                    <span @click="deleteMsg"><i class="fas fa-trash"></i></span>
                 </div>
             </div>
 

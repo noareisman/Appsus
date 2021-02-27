@@ -6,9 +6,10 @@ export default {
     template: `
         <section>
                 <div class ="msg-prev flex center">
-                    <div class="fav" @click="favToggle">
-                        <img class="fav-stat-img" :src=favStat alt="">
-                    </div>
+                    <span class="fav">
+                    <i class="fav-star far fa-star"></i>
+                    <!-- <i class="fav-star-starred fas fa-star"></i> -->
+                    </span>
                     <div @click="detailsToggle" class="msg-sender" :class="isNewMsg">
                          {{msg.participants.sender}} 
                     </div>
