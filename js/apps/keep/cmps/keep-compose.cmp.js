@@ -69,19 +69,19 @@ export default {
         pinTheTodo() { this.newKeep.isPinned = !this.newKeep.isPinned },
         openUrl() { this.newKeep.info.url = this.urlDesc; },
         initialization() {
-            // const elsIconArr = [document.querySelector('.i-text'),
-            //     document.querySelector('.i-image'),
-            //     document.querySelector('.i-video'),
-            //     document.querySelector('.i-todos')
-            // ];
-            // elsIconArr.forEach(el => {
-            //     el.style.border = 'unset';
-            //     el.style.backgroundColor = 'unset';
-            // });
-            // const elTitle = document.querySelector('.title-input');
-            // elTitle.style.backgroundColor = 'white';
-            // elTitle.color = 'black';
-            // elTitle.value = '';
+            const elsIconArr = [document.querySelector('.i-text'),
+                document.querySelector('.i-image'),
+                document.querySelector('.i-video'),
+                document.querySelector('.i-todos')
+            ];
+            elsIconArr.forEach(el => {
+                el.style.border = 'unset';
+                el.style.backgroundColor = 'unset';
+            });
+            const elTitle = document.querySelector('.title-input');
+            elTitle.style.backgroundColor = 'white';
+            elTitle.color = 'black';
+            elTitle.value = '';
             this.newKeep = null;
             this.titleDesc = null;
             this.urlDesc = null;
