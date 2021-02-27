@@ -37,7 +37,6 @@ export default {
         addTodo() {
             if (!this.todo) return;
             const todo = {
-                // id: asyncStorageService.makeId(),
                 doneAt: Date.now(),
                 txt: this.todo,
                 isDone: this.isDone
@@ -57,7 +56,6 @@ export default {
             this.$emit('pintodo');
         },
         updateTodoColor(ev) {
-            // TODO
             return;
             const currEl = ev.srcElement.className;
             const currColor = ev.target.value;
