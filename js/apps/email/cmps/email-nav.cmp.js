@@ -39,7 +39,6 @@ export default {
         openComposeMsg() {
             eventBus.$emit('compose')
         },
-
         openEmailList() {
             eventBus.$emit('email')
         }
