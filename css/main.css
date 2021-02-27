@@ -71,7 +71,10 @@ h1 {
 h2 {
     font-size: 1.3em;
 }
-
+/* HOMEPAGE*/
+.homePage{
+    width: 100%;
+}
 
 /* EMAIL NAV*/
 
