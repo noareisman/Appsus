@@ -146,9 +146,12 @@ export default {
                 this.newKeep.type === 'noteVideo') this.newKeep.info.url = this.urlDesc;
             this.newKeep.info.title = this.titleDesc;
 
-            keepService.saveNewKeep(this.newKeep);
-            eventBus.$emit('saveKeep');
-            this.initialization();
+            keepService.saveNewKeep(this.newKeep)
+            .then (()=>{
+                eventBus.$emit('saveKeep');
+                this.initialization();
+            })
+
         },
         initialization() {
             const elsIconArr = [document.querySelector('.iText'),
