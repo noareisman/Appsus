@@ -18,7 +18,7 @@ export default {
             </div>
             <hr/>
             <div class="todo-keep-btns flex">
-                <button  class="pin-todo-keep" @click="pinTodoKeep"><img src="./images/keepType/pinkeep.png" alt="" /></button>
+                <button :class="isPinde" class="pin-todo-keep" @click="pinTodoKeep"><img src="./images/keepType/pinkeep.png" alt="" /></button>
                 <button  class="save-todo-keep" @click="saveTodoKeep"><img src="/images/sendkeep.png" alt="" /></button>
             </div>
         </div>
@@ -28,7 +28,8 @@ export default {
     `,
     data() {
         return {
-            todo: null
+            todo: null,
+            todosPined: false
         }
     },
     methods: {
@@ -48,6 +49,7 @@ export default {
             this.$emit('savetodo');
         },
         pinTodoKeep() {
+            this.todosPined = !this.todosPined;
             this.$emit('pintodo');
         },
         updateTodoColor(ev) {
@@ -61,6 +63,11 @@ export default {
                 case 'todo-bgc-color':
                     break;
             }
+        }
+    },
+    computed: {
+        isPinde() {
+            return { pinned: this.todosPined }
         }
     },
     components: {
