@@ -132,6 +132,7 @@ h2 {
     background-color: unset;
 }
 
+
 /* KEEP*/
 
 img,
@@ -156,7 +157,11 @@ audio {
 .keep-list-container {
     max-width: 1400px;
     /* background-color:red; */
-    padding: 40px 100px;
+    /* padding: 40px 100px; */
+}
+
+.keep-list-container h1 {
+    padding: 0 0 10px 23px;
 }
 
 .keep-notes-container {
