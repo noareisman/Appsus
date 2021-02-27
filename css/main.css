@@ -90,7 +90,9 @@ h2 {
     color: antiquewhite
 }
 
-
+.home-page{
+    font-size: 3rem;
+}
 /*EMAIL DEV TOOLS*/
 
 .email-dev-container {
@@ -300,7 +302,7 @@ audio {
     color: white;
     background-color: lightslategray;
     align-items: center;
-    padding: 3px;
+    padding: 30px;
 }
 
 .email-btn {
@@ -317,22 +319,22 @@ audio {
 }
 
 .email-btn:hover {
-    color: red;
+    color: rgb(12, 12, 12);
     border-radius: unset !important;
 }
 
 .keep-btn:hover {
-    color: red;
+    color: rgb(5, 5, 5);
     border-radius: unset !important;
 }
 
 .home-page {
     margin-left: 20%;
     color: white;
-    font-size: 2rem;
+    font-size: 4.5rem;
 }
 
 .home-page:hover {
     border-radius: unset !important;
-    color: red;
+    color: rgb(5, 5, 5);
 }
