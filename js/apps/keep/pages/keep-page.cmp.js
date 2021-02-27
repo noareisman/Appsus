@@ -39,6 +39,7 @@ export default {
                 })
         },
         reloadNotes() {
+            console.log('cam here');
             this.allNotes = this.loadNotes()
                 .then(() => {
                     console.log('notes reloaded', this.allNotes)
@@ -57,7 +58,7 @@ export default {
     },
     created() {
         this.loadNotes();
-        eventBus.$on('save-keep', () => this.loadNotes())
+        eventBus.$on('saveKeep', this.reloadNotes)
         eventBus.$on('removeNote', this.reloadNotes)
         eventBus.$on('togglePin', this.reloadNotes)
     },

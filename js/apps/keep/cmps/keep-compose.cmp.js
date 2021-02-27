@@ -142,21 +142,16 @@ export default {
             }
         },
         saveNote(childkeep) {
-            this.newKeep.info.title = this.titleDesc;
-
             if (this.newKeep.type !== 'noteTodos') this.newKeep.info.txt = childkeep.info.txt;
-
             if ((this.newKeep.type !== 'noteTodos') && childkeep.bgcColorDesc) this.newKeep.style.backgroundColor = childkeep.bgcColorDesc;
             if ((this.newKeep.type !== 'noteTodos') && childkeep.txtColorDesc) this.newKeep.style.color = childkeep.txtColorDesc;
-
             if (this.newKeep.type === 'noteImg' ||
                 this.newKeep.type === 'noteVideo') this.newKeep.info.url = this.urlDesc;
-            // RESET
+            this.newKeep.info.title = this.titleDesc;
+
             keepService.saveKeep(this.newKeep);
-            eventBus.$emit('save-keep');
+            eventBus.$emit('saveKeep');
             this.initialization();
-
-
         },
         initialization() {
             console.log('initialize...');
