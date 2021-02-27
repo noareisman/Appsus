@@ -40,7 +40,7 @@ export default {
             newKeep: null,
             titleDesc: null,
             urlDesc: null,
-            todos: null
+            todos: null,
         }
     },
     computed: {
@@ -79,10 +79,6 @@ export default {
             const elsArr = Object.keys(els).map((el) => [els[el]]);
             let val = ev.target.src.slice(38, -5);
             let currEl;
-
-            const elTitle = document.querySelector('.title-input');
-            elTitle.value = '';
-            this.newKeep = null;
 
             if (ev.target.type === 'text' && this.newKeep) return;
             if (ev.target.type === 'text') val = 'textkeep';
