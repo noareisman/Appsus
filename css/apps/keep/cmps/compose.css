@@ -90,12 +90,15 @@
 
 .url-input {
     flex-grow: 5;
+    font-size: 20px;
     margin: 0 !important;
     padding: 3px;
 }
 
 .note-types button {
+    margin-left: 3px;
     flex-grow: 1;
+    font-size: 20px;
     width: 10%;
     border-radius: 25px;
 }
@@ -184,6 +187,14 @@
 .save-todo-keep {
     height: 30px;
     width: 30px;
+}
+
+.todo-keep-img {
+    padding: 3px;
+}
+
+.todo-keep-btns {
+    padding: 3px;
 }
 
 .todo-keep-img img {

@@ -87,6 +87,9 @@ export default {
             this.urlDesc = null;
         },
         activateNewKeep(ev, els) {
+            console.log('activation');
+            console.log(ev);
+            console.log(els);
             const elsArr = Object.keys(els).map((el) => [els[el]]);
             let val = ev.target.src.slice(38, -5);
             let currEl;

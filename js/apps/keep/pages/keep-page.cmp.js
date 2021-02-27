@@ -11,7 +11,7 @@ export default {
     <section class="keep-app-main-container flex column align-center">
         <keep-nav class="keep-main-nav" />
         <div class="keep-body flex">
-            <keep-dev class="keep-dev-container"/>
+            <!-- <keep-dev class="keep-dev-container"/> -->
                 <div class="flex column align-center">
                     <keep-compose/>
                     <keep-list v-if="allNotes" :notes="filterNotes" :pinnedNotes="pinnedNotesToShow"/>
@@ -48,9 +48,11 @@ export default {
     },
     computed: {
         pinnedNotesToShow() {
+            // return this.allNotes;
             return this.allNotes.filter(note => note.isPinned);
         },
         filterNotes() {
+            // return this.allNotes;
             return this.allNotes.filter(note => !note.isPinned)
         }
     },

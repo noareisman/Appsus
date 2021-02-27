@@ -4,20 +4,20 @@ export default {
             <input @click="sendActivation" class="title-input"  @input="sendTitle" type="text" placeholder="Title..." />
             <div class="icons flex space-around">
                 
-                <div class="icon iText"  ref="textKeep">
-                    <img  @click="sendActivation" src="images/keepType/textkeep.webp" alt="" />
+                <div @click="sendActivation" class="icon iText"  ref="textKeep">
+                    <img   src="images/keepType/textkeep.webp" alt="" />
                 </div>
                 
-                <div class="icon iImage" ref="imageKeep">
-                    <img @click="sendActivation"  src="images/keepType/imagekeep.webp" alt="" />
+                <div @click="sendActivation" class="icon iImage" ref="imageKeep">
+                    <img   src="images/keepType/imagekeep.webp" alt="" />
                 </div>
                 
-                <div class="icon iVideo" ref="videoKeep">
-                    <img @click="sendActivation"  src="images/keepType/videokeep.webp" alt="" />
+                <div @click="sendActivation" class="icon iVideo" ref="videoKeep">
+                    <img   src="images/keepType/videokeep.webp" alt="" />
                 </div>
                 
-                <div class="icon iTodos" ref="todosKeep">
-                    <img  @click="sendActivation" src="images/keepType/todokeep.webp" alt="" />
+                <div @click="sendActivation" class="icon iTodos" ref="todosKeep">
+                    <img   src="images/keepType/todokeep.webp" alt="" />
                 </div>            
             </div>
         </section>`,

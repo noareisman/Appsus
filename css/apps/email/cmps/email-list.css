@@ -36,7 +36,7 @@ img {
 /* EMAILS PREVIEW */
 
 .preview-container-email {
-line-height: 3rem;
+    line-height: 3rem;
     border-bottom: 1px solid rgb(95, 94, 94);
     list-style: none;
 }
@@ -46,15 +46,15 @@ line-height: 3rem;
     padding: 5px;
 }
 
-.preview-container-email :hover{
-background: rgb(245, 243, 243);
+.preview-container-email :hover {
+    background: rgb(245, 243, 243);
 }
 
-.isMsgNotRead {
+.is-msg-not-read {
     font-weight: bolder;
 }
 
-.isMsgRead {
+.is-msg-read {
     font-weight: unset;
 }
 
@@ -68,7 +68,7 @@ background: rgb(245, 243, 243);
 }
 
 .msg-short-body {
-color: rgb(129, 129, 129);
+    color: rgb(129, 129, 129);
 }
 
 .send-time {
