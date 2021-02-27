@@ -1,7 +1,7 @@
 import { eventBus } from '../../../services/event-bus.service.js';
 export default {
     template: `
-        <section class="email-dev-container"> 
+        <section class="email-dev-container flex column"> 
             <ul class="email-dev-item">
                 <li @click="setFilter('inbox')">Inbox</li>
                 <li @click="setFilter('sent')">Sent</li>
