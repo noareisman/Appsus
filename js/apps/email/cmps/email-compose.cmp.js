@@ -8,7 +8,7 @@ export default {
                 <i class="far fa-paper-plane send-mail-btn" title="Send message" @click="sendMsg"></i>
             </div>
 
-            <table class="flex column">
+            <table class="mail-table flex column">
                 <tr class="flex"> 
                     <td class="new-msg-to"> To:<input @keyup="updateNewMsgDestanation" type="text" ></td>
                 </tr>

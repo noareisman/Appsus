@@ -16,9 +16,7 @@ export default {
                 <email-list v-if="isList" :msgs="filterMsgs"/>
                 <email-compose v-if="isCompose" />
             </div>
-            
         </section>
-        
     </section>
     `,
     data() {
@@ -30,14 +28,16 @@ export default {
             msgs: null,
             filter: null,
             searchedStr: '',
+            trash: null
         }
     },
     methods: {
         loadEmails() {
             return emailService.query()
                 .then(msgs => {
-                    this.allMsgs = msgs
-                    return this.allMsgs
+                    this.allMsgs = msgs.filter((msg) => { return !msg.filters.trash })
+                    this.trash = msgs.filter((msg) => { return msg.filters.trash })
+                    return
                 })
         },
     },
@@ -56,16 +56,20 @@ export default {
                     })
                 }
             } else {
-                if (!str) {
-                    return this.allMsgs.filter((msg) => { return msg.filters[currFilter] })
+                if (currFilter === 'trash') {
+                    return this.trash
                 } else {
-                    console.log('search:', str);
-                    var filteredMsgs = this.allMsgs.filter((msg) => { return msg.filters[currFilter] })
-                    return filteredMsgs.filter((msg) => {
-                        return msg.body.includes(str) ||
-                            msg.participants.sender.includes(str) ||
-                            msg.subject.includes(str)
-                    })
+                    if (!str) {
+                        return this.allMsgs.filter((msg) => { return msg.filters[currFilter] })
+                    } else {
+                        console.log('search:', str);
+                        var filteredMsgs = this.allMsgs.filter((msg) => { return msg.filters[currFilter] })
+                        return filteredMsgs.filter((msg) => {
+                            return msg.body.includes(str) ||
+                                msg.participants.sender.includes(str) ||
+                                msg.subject.includes(str)
+                        })
+                    }
                 }
             }
         }
@@ -76,11 +80,28 @@ export default {
         this.isCompose = false;
         this.isDetails = false;
         this.loadEmails();
-        eventBus.$on('remove', (msg) => {
-            emailService.msgToTrash(msg)
-                .then(() => this.loadEmails())
-        })
         eventBus.$on('filtered', (filter) => { this.filter = filter })
+        eventBus.$on('trash', (msg) => {
+            if (this.filter === 'trash') {
+                return emailService.removeMsg(msg)
+                    .then(() => {
+                        this.loadEmails()
+                        return
+                    })
+                    .then(() => {
+                        this.filterMsgs
+                        return
+                    })
+            }
+            else {
+                this.loadEmails()
+                    .then(this.filterMsgs)
+            }
+        })
+        eventBus.$on('reloadMails', () => {
+            this.loadEmails()
+                .then(this.filterMsgs)
+        })
         eventBus.$on('search', (searchedStr) => { this.searchedStr = searchedStr })
         eventBus.$on('compose', () => {
             this.isList = false;
@@ -96,12 +117,8 @@ export default {
         })
     },
     destroyed() {
-        eventBus.$off('remove', (msg) => {
-            emailService.msgToTrash(msg)
-                .then(() => this.loadEmails())
-        })
         eventBus.$off('filtered', (filter) => { this.filter = filter })
-        eventBus.$off('newMsg', () => {})
+        eventBus.$off('newMsg', () => { })
     },
 
     components: {

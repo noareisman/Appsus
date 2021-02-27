@@ -25,7 +25,7 @@ export default {
     data() {
         return {
             searchedStr: null,
-            filterBy: "inbox",
+            filterBy: "all",
         }
     },
     methods: {
