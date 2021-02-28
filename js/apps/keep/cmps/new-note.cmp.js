@@ -18,7 +18,7 @@ export default {
                     <input @input="updateColor" class="bgc-color" type="color" /> 
                 </div>
                 <div class="flex">
-                    <img class="txt-color-img" src="./images/keepType/color.webp" alt="" />
+                    <img class="txt-color-img" src="images/keepType/color.webp" alt="" />
                     <input @input="updateColor" class="txt-color" type="color" /> 
                 </div>
             </div>
