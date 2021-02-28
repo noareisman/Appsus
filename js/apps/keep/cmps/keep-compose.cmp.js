@@ -87,9 +87,6 @@ export default {
             this.urlDesc = null;
         },
         activateNewKeep(ev, els) {
-            console.log('activation');
-            console.log(ev);
-            console.log(els);
             const elsArr = Object.keys(els).map((el) => [els[el]]);
             let val = ev.target.src.slice(38, -5);
             let currEl;
@@ -164,7 +161,6 @@ export default {
                 this.newKeep.type === 'noteVideo') this.newKeep.info.url = this.urlDesc;
             this.newKeep.info.title = this.titleDesc;
 
-            console.log(this.newKeep);
             keepService.saveNewKeep(this.newKeep)
                 .then(() => {
                     eventBus.$emit('saveKeep');

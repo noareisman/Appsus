@@ -62,7 +62,6 @@ export default {
                     if (!str) {
                         return this.allMsgs.filter((msg) => { return msg.filters[currFilter] })
                     } else {
-                        console.log('search:', str);
                         var filteredMsgs = this.allMsgs.filter((msg) => { return msg.filters[currFilter] })
                         return filteredMsgs.filter((msg) => {
                             return msg.body.includes(str) ||
@@ -92,8 +91,7 @@ export default {
                         this.filterMsgs
                         return
                     })
-            }
-            else {
+            } else {
                 this.loadEmails()
                     .then(this.filterMsgs)
             }
@@ -118,7 +116,7 @@ export default {
     },
     destroyed() {
         eventBus.$off('filtered', (filter) => { this.filter = filter })
-        eventBus.$off('newMsg', () => { })
+        eventBus.$off('newMsg', () => {})
     },
 
     components: {

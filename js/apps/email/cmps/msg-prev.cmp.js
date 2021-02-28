@@ -38,19 +38,17 @@ export default {
             emailService.toggleReadStat(this.msg)
                 .then(msg => {
                     this.msgRead = msg.filters.viewed
-                    console.log('viewed',msg.filters.viewed);
                     eventBus.$emit('reloadMails')
                 })
-            },
-            toggleFav() {
-                this.msgFav = !this.msgFav;
-                emailService.toggleFav(this.msg)
+        },
+        toggleFav() {
+            this.msgFav = !this.msgFav;
+            emailService.toggleFav(this.msg)
                 .then(msg => {
                     this.msgFav = msg.filters.important
-                    console.log('starred',msg.filters.important);
                     eventBus.$emit('reloadMails')
                 })
-            }
+        }
     },
     computed: {
         isNewMsg() {
@@ -90,7 +88,7 @@ export default {
         isRead() {
             if (this.incomingMsg) {
                 return (this.msgRead) ? 'far fa-envelope-open' : 'fas fa-envelope'
-            }else{
+            } else {
                 return 'fas fa-share'
             }
         },
