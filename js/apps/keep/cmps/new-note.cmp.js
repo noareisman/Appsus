@@ -9,7 +9,7 @@ export default {
                 <textarea class="keep-text-area" v-model="textDesc" placeholder="Enter text here..." name="Text1" cols="100"></textarea>
                 <div class="new-keep-btns flex column">
                     <button class="pin-keep-btn" :class="isPinned" @click="pinKeep"><img src="./images/keepType/pinkeep.png" alt="" /></button>
-                    <button class="save-keep-btn" @click="saveNote"><img src="/images/sendkeep.png" alt="" /></button>
+                    <button class="save-keep-btn" @click="saveNote"><img src="./images/sendkeep.png" alt="" /></button>
                 </div>
             </div>
             <div class="colors-choise flex space-around">
@@ -18,7 +18,7 @@ export default {
                     <input @input="updateColor" class="bgc-color" type="color" /> 
                 </div>
                 <div class="flex">
-                    <img class="txt-color-img" src="images/keepType/color.webp" alt="" />
+                    <img class="txt-color-img" src="./images/keepType/color.webp" alt="" />
                     <input @input="updateColor" class="txt-color" type="color" /> 
                 </div>
             </div>
